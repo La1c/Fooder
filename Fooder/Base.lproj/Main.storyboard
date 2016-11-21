@@ -14,39 +14,38 @@
         <scene sceneID="d4J-Kk-mCq">
             <objects>
                 <collectionViewController id="STB-k6-Exw" customClass="ExploreCollectionViewController" customModule="Fooder" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" misplaced="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" id="CcQ-3q-ytk">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" id="CcQ-3q-ytk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="h1q-gY-e2x">
-                            <size key="itemSize" width="286" height="171"/>
+                            <size key="itemSize" width="290" height="170"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="BOl-iM-omh">
-                                <rect key="frame" x="17" y="0.0" width="286" height="171"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MealCell" id="BOl-iM-omh" customClass="ExploreRecipeCell" customModule="Fooder" customModuleProvider="target">
+                                <rect key="frame" x="15" y="0.0" width="290" height="170"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="286" height="171"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="290" height="170"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4yx-lt-17h">
-                                            <rect key="frame" x="0.0" y="0.0" width="286" height="171"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4yx-lt-17h">
+                                            <rect key="frame" x="0.0" y="0.0" width="290" height="170"/>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qXz-5k-Osu">
-                                            <rect key="frame" x="0.0" y="137" width="286" height="34"/>
+                                            <rect key="frame" x="0.0" y="136" width="290" height="34"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jyd-PF-AWe">
-                                                    <rect key="frame" x="8" y="6.5" width="86.5" height="21"/>
+                                                    <rect key="frame" x="8" y="7" width="87" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N43-G5-p59">
-                                                    <rect key="frame" x="195" y="2" width="83" height="30"/>
+                                                    <rect key="frame" x="199" y="2" width="83" height="30"/>
                                                     <state key="normal" title="Check it out"/>
                                                 </button>
                                             </subviews>
@@ -61,11 +60,20 @@
                                     </subviews>
                                 </view>
                                 <constraints>
+                                    <constraint firstItem="4yx-lt-17h" firstAttribute="top" secondItem="BOl-iM-omh" secondAttribute="top" id="5D0-QJ-642"/>
                                     <constraint firstAttribute="bottom" secondItem="qXz-5k-Osu" secondAttribute="bottom" id="76a-Vk-3Rx"/>
                                     <constraint firstItem="qXz-5k-Osu" firstAttribute="height" secondItem="BOl-iM-omh" secondAttribute="height" multiplier="1:5" id="HDm-IP-t5Y"/>
+                                    <constraint firstItem="4yx-lt-17h" firstAttribute="leading" secondItem="BOl-iM-omh" secondAttribute="leading" id="Jmk-lL-swL"/>
+                                    <constraint firstAttribute="bottom" secondItem="4yx-lt-17h" secondAttribute="bottom" id="QF7-Au-fo7"/>
                                     <constraint firstAttribute="trailing" secondItem="qXz-5k-Osu" secondAttribute="trailing" id="SBY-W3-DwD"/>
                                     <constraint firstItem="qXz-5k-Osu" firstAttribute="leading" secondItem="BOl-iM-omh" secondAttribute="leading" id="nyw-hv-neM"/>
+                                    <constraint firstAttribute="trailing" secondItem="4yx-lt-17h" secondAttribute="trailing" id="sOi-4S-Lcy"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="detailsButton" destination="N43-G5-p59" id="axW-GM-B1R"/>
+                                    <outlet property="imageView" destination="4yx-lt-17h" id="Y7Y-zJ-QMb"/>
+                                    <outlet property="mealNameLabel" destination="Jyd-PF-AWe" id="vQH-hk-tTX"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
