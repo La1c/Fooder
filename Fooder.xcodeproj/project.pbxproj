@@ -15,6 +15,7 @@
 		E78AB2611DE2FA4F00565CBF /* ExploreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78AB2601DE2FA4F00565CBF /* ExploreModel.swift */; };
 		E78AB2631DE3041000565CBF /* ExploreRecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78AB2621DE3041000565CBF /* ExploreRecipeCell.swift */; };
 		E78AB2651DE30E9C00565CBF /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78AB2641DE30E9C00565CBF /* UIImageExtension.swift */; };
+		E78AB2671DE32A7A00565CBF /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78AB2661DE32A7A00565CBF /* DetailsViewController.swift */; };
 		E7DD8BEB1DE1DC1C00EA1584 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DD8BEA1DE1DC1C00EA1584 /* AppDelegate.swift */; };
 		E7DD8BED1DE1DC1C00EA1584 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DD8BEC1DE1DC1C00EA1584 /* ViewController.swift */; };
 		E7DD8BF01DE1DC1C00EA1584 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7DD8BEE1DE1DC1C00EA1584 /* Main.storyboard */; };
@@ -51,6 +52,7 @@
 		E78AB2601DE2FA4F00565CBF /* ExploreModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreModel.swift; sourceTree = "<group>"; };
 		E78AB2621DE3041000565CBF /* ExploreRecipeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreRecipeCell.swift; sourceTree = "<group>"; };
 		E78AB2641DE30E9C00565CBF /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		E78AB2661DE32A7A00565CBF /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		E7DD8BE71DE1DC1C00EA1584 /* Fooder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fooder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7DD8BEA1DE1DC1C00EA1584 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7DD8BEC1DE1DC1C00EA1584 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				E78AB2601DE2FA4F00565CBF /* ExploreModel.swift */,
 				E78AB2621DE3041000565CBF /* ExploreRecipeCell.swift */,
 				E78AB2641DE30E9C00565CBF /* UIImageExtension.swift */,
+				E78AB2661DE32A7A00565CBF /* DetailsViewController.swift */,
 			);
 			path = Fooder;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				E78AB2571DE25B0700565CBF /* FoodNetworkService.swift in Sources */,
 				E78AB25B1DE2E97300565CBF /* ExploreCollectionViewController.swift in Sources */,
 				E7DD8BEB1DE1DC1C00EA1584 /* AppDelegate.swift in Sources */,
+				E78AB2671DE32A7A00565CBF /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

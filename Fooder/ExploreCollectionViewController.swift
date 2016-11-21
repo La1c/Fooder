@@ -101,9 +101,28 @@ class ExploreCollectionViewController: UICollectionViewController {
     */
 }
 
+//MARK: -ExploreModelDelegate
 extension ExploreCollectionViewController: ExploreModelDelegate{
     func modelDidLoadNewData() {
         recipes = model.recipes
         collectionView?.reloadData()
     }
+}
+
+//MARK: -prepareForSegue
+extension ExploreCollectionViewController{
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDetails"{
+            if let cell = sender as? ExploreRecipeCell{
+                guard let row = collectionView?.indexPath(for: cell)?.row else{
+                    return
+                }
+                
+                let vc = segue.destination as! DetailsViewController
+                vc.image = cell.imageView.image
+                vc.recipe = recipes[row]
+                
+            }
+    }
+}
 }
