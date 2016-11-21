@@ -11,7 +11,11 @@ import UIKit
 class DetailsViewController: UIViewController {
 
     @IBOutlet weak var imgeView: UIImageView!
-    @IBOutlet weak var InstructionsTextField: UITextView!
+    
+    @IBOutlet weak var instructionsTextField: UITextView!
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var contentView: UIView!
     
     var recipe: Recipe!
     var image: UIImage!
@@ -30,7 +34,7 @@ class DetailsViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         imgeView.image = image
-        InstructionsTextField.text = recipe.instructions
+        instructionsTextField.text = recipe.instructions
     }
     
 
