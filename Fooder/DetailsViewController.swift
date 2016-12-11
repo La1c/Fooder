@@ -38,13 +38,13 @@ class DetailsViewController: UIViewController {
             
             let newItemInList = GroceryListItem()
             newItemInList.id = item.id
-            newItemInList.amount = item.amount
             newItemInList.unit = item.unitShort
             newItemInList.name = item.name
             
             try! realm.write {
                let someItem = realm.create(GroceryListItem.self, value: newItemInList, update: true)
                 someItem.fromRecipes.append(newFromRecipe)
+                someItem.amount += item.amount
             }
         }
 

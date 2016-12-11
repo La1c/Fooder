@@ -10,9 +10,12 @@ import UIKit
 import RealmSwift
 
 class GroceryListTableViewController: UITableViewController {
+    
+    var items: Results<GroceryListItem>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        items = realm.objects(GroceryListItem.self)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -30,23 +33,22 @@ class GroceryListTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return items.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemToBuy", for: indexPath)
+        cell.textLabel?.text = items[indexPath.row].name
+        cell.detailTextLabel?.text = String(items[indexPath.row].amount) + " " + items[indexPath.row].unit
         return cell
     }
-    */
+ 
 
     /*
     // Override to support conditional editing of the table view.

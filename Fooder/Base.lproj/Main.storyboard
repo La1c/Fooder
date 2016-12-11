@@ -14,7 +14,7 @@
         <scene sceneID="d4J-Kk-mCq">
             <objects>
                 <collectionViewController id="STB-k6-Exw" customClass="ExploreCollectionViewController" customModule="Fooder" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" id="CcQ-3q-ytk">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" misplaced="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" id="CcQ-3q-ytk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -256,6 +256,7 @@
         <!--List-->
         <scene sceneID="eMc-h4-uOP">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q3a-8d-TS6" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="FzB-g4-bUz" customClass="GroceryListTableViewController" customModule="Fooder" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="CSm-Yl-AS5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
@@ -293,8 +294,8 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="List" image="List" id="HZX-8E-RWf"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Q3a-8d-TS6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2080" y="-991"/>
         </scene>
