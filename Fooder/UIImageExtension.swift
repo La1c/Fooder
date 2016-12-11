@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 
+
 extension UIImageView{
     public func imageFromUrl(urlString: String) {
         Alamofire.request(urlString, method: HTTPMethod.get).response(completionHandler: {response in

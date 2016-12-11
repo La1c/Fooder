@@ -14,7 +14,7 @@
         <scene sceneID="d4J-Kk-mCq">
             <objects>
                 <collectionViewController id="STB-k6-Exw" customClass="ExploreCollectionViewController" customModule="Fooder" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" id="CcQ-3q-ytk">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" misplaced="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" id="CcQ-3q-ytk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -38,15 +38,16 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qXz-5k-Osu">
                                             <rect key="frame" x="0.0" y="187.5" width="290" height="62.5"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Jyd-PF-AWe">
-                                                    <rect key="frame" x="8" y="0.0" width="85.5" height="63"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal Name" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jyd-PF-AWe">
+                                                    <rect key="frame" x="8" y="0.0" width="274" height="63"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.46274509800000002" green="0.64313725489999995" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="Jyd-PF-AWe" secondAttribute="trailing" constant="8" id="3GJ-Jp-TVF"/>
                                                 <constraint firstItem="Jyd-PF-AWe" firstAttribute="centerY" secondItem="qXz-5k-Osu" secondAttribute="centerY" id="6jQ-qg-u9f"/>
                                                 <constraint firstItem="Jyd-PF-AWe" firstAttribute="top" secondItem="qXz-5k-Osu" secondAttribute="top" id="INj-gB-9HT"/>
                                                 <constraint firstAttribute="bottom" secondItem="Jyd-PF-AWe" secondAttribute="bottom" id="c1L-m0-ecy"/>
@@ -68,6 +69,7 @@
                                 <connections>
                                     <outlet property="imageView" destination="4yx-lt-17h" id="Y7Y-zJ-QMb"/>
                                     <outlet property="mealNameLabel" destination="Jyd-PF-AWe" id="vQH-hk-tTX"/>
+                                    <outlet property="mealNameView" destination="qXz-5k-Osu" id="YxP-JI-U5c"/>
                                     <segue destination="dOq-uW-hRa" kind="show" identifier="ShowDetails" id="WgT-Ry-eYl"/>
                                 </connections>
                             </collectionViewCell>
@@ -374,5 +376,5 @@
         <image name="add" width="24" height="24"/>
         <image name="gear" width="25" height="25"/>
     </resources>
-    <color key="tintColor" red="0.46403196454048157" green="0.64173346757888794" blue="0.23268052935600281" alpha="1" colorSpace="calibratedRGB"/>
+    <color key="tintColor" red="0.46274509803921571" green="0.64313725490196072" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
 </document>

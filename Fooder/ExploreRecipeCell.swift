@@ -7,13 +7,13 @@
 //
 
 import UIKit
+import CoreGraphics
 
 class ExploreRecipeCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var mealNameLabel: UILabel!
-    @IBOutlet weak var detailsButton: UIButton!
-    
+    @IBOutlet weak var mealNameView: UIView!
     
     func configureCell(for recipe: Recipe){
         imageView.imageFromUrl(urlString: recipe.imageURL)
