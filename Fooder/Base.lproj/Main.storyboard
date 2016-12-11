@@ -129,6 +129,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DQO-Nr-A1U">
                                                 <rect key="frame" x="148" y="399" width="24" height="24"/>
                                                 <state key="normal" backgroundImage="add"/>
+                                                <connections>
+                                                    <action selector="AddToGroceryListButonTapped:" destination="dOq-uW-hRa" eventType="touchUpInside" id="ta6-yN-63e"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instructions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KCn-ix-772">
                                                 <rect key="frame" x="115" y="431" width="90.5" height="21"/>
@@ -192,8 +195,10 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="900"/>
                     <connections>
+                        <outlet property="containerViewHeightConstrain" destination="UOW-uh-axD" id="17j-NF-vuu"/>
                         <outlet property="contentView" destination="yhX-cG-kze" id="FJe-pL-p3s"/>
                         <outlet property="imgeView" destination="kEv-Rv-zrL" id="SNC-X3-Ltt"/>
+                        <outlet property="ingridientsTableViewContainer" destination="5TE-6b-PSC" id="Hxu-ky-gas"/>
                         <outlet property="instructionsHeightConstrain" destination="gjD-3b-85O" id="w1B-0j-qhM"/>
                         <outlet property="instructionsTextField" destination="j0s-CZ-WY6" id="Lcf-fw-ipC"/>
                         <outlet property="scrollView" destination="hJN-Wb-T2G" id="3xe-Vg-bfa"/>
@@ -248,25 +253,50 @@
             </objects>
             <point key="canvasLocation" x="4888" y="301"/>
         </scene>
-        <!--Check-->
-        <scene sceneID="hWp-9J-Ccs">
+        <!--List-->
+        <scene sceneID="eMc-h4-uOP">
             <objects>
-                <viewController id="h1T-gw-3th" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="JIE-nS-73D"/>
-                        <viewControllerLayoutGuide type="bottom" id="bOW-fl-s9R"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="hGE-tJ-Uwh">
+                <tableViewController id="FzB-g4-bUz" customClass="GroceryListTableViewController" customModule="Fooder" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="CSm-Yl-AS5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Check" image="cart" id="XZQ-5N-O2t"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DQS-Eh-KOL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ItemToBuy" textLabel="qTh-fx-E9w" detailTextLabel="DyF-eP-gZb" style="IBUITableViewCellStyleValue1" id="adg-SS-v5b">
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="adg-SS-v5b" id="BO0-X5-SfW">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qTh-fx-E9w">
+                                            <rect key="frame" x="15" y="11" width="34" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DyF-eP-gZb">
+                                            <rect key="frame" x="261" y="11" width="44" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="FzB-g4-bUz" id="og3-7R-a4x"/>
+                            <outlet property="delegate" destination="FzB-g4-bUz" id="mLS-21-8gy"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="List" image="List" id="HZX-8E-RWf"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q3a-8d-TS6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2270" y="-1134"/>
+            <point key="canvasLocation" x="2080" y="-991"/>
         </scene>
         <!--Settings-->
         <scene sceneID="kp8-DU-Ada">
@@ -299,7 +329,7 @@
                     <connections>
                         <segue destination="ubc-sX-hBo" kind="relationship" relationship="viewControllers" id="G4J-fe-WCQ"/>
                         <segue destination="nUo-Ah-cTT" kind="relationship" relationship="viewControllers" id="1CD-Xt-yj4"/>
-                        <segue destination="h1T-gw-3th" kind="relationship" relationship="viewControllers" id="YPZ-0Q-s2f"/>
+                        <segue destination="FzB-g4-bUz" kind="relationship" relationship="viewControllers" id="Kox-XY-75Z"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="elB-BG-hSU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -328,8 +358,8 @@
     </scenes>
     <resources>
         <image name="Explore Icon" width="24" height="24"/>
+        <image name="List" width="26" height="26"/>
         <image name="add" width="24" height="24"/>
-        <image name="cart" width="24" height="24"/>
         <image name="gear" width="25" height="25"/>
     </resources>
 </document>

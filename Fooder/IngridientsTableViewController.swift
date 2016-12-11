@@ -8,35 +8,34 @@
 
 import UIKit
 
+
+protocol IngridientsTableViewDelegate: class {
+    func didLayoutAllCells(sender: IngridientsTableViewController)
+}
+
 class IngridientsTableViewController: UITableViewController {
     
     
     var ingridients:[Ingridient]!
+    weak var delegate:IngridientsTableViewDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+      //  self.tableView.isScrollEnabled = false
+        self.tableView.tableFooterView = UIView(frame: .zero)
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return ingridients.count
     }
 
@@ -49,6 +48,19 @@ class IngridientsTableViewController: UITableViewController {
 
         return cell
     }
+
+    
+    
+    //FIX-ME: -figure out how to show full table view
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        //self.tableView.frame.size.height = self.tableView.contentSize.height
+       // print("Table view did appear")
+        //   delegate?.didLayoutAllCells(sender: self)
+        //self.tableView.frame.size.height = self.tableView.contentSize.height
+    }
+    
+    
 
 
 }

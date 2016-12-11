@@ -10,7 +10,7 @@ import Foundation
 
 
 class Recipe{
-    let id: Double
+    let id: Int
     let vegeterian: Bool
     let vegan: Bool
     let title: String
@@ -20,7 +20,7 @@ class Recipe{
     let preparationMinutes: Double
     let cookingMinutes: Double
     
-    init(id: Double, vegeterian: Bool, vegan: Bool, title: String, imageURL: String, ingridients: [Ingridient], instructions: String, preparationMinutes: Double, cookingMinutes: Double) {
+    init(id: Int, vegeterian: Bool, vegan: Bool, title: String, imageURL: String, ingridients: [Ingridient], instructions: String, preparationMinutes: Double, cookingMinutes: Double) {
         
         self.id = id
         self.vegeterian = vegeterian

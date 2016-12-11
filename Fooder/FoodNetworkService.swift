@@ -35,7 +35,7 @@ struct FoodService {
                     var ingridients = [Ingridient]()
                     
                     for ingridient in recipe["extendedIngredients"].arrayValue{
-                        let newIngridient = Ingridient(id: ingridient["id"].doubleValue,
+                        let newIngridient = Ingridient(id: ingridient["id"].intValue,
                                                        amount: ingridient["amount"].doubleValue,
                                                        unit: ingridient["unit"].stringValue,
                                                        unitShort: ingridient["unitShort"].stringValue,
@@ -43,7 +43,7 @@ struct FoodService {
                         ingridients.append(newIngridient)
                     }
                     
-                    let newRecipe = Recipe(id: recipe["id"].doubleValue,
+                    let newRecipe = Recipe(id: recipe["id"].intValue,
                                            vegeterian: recipe["vegeterian"].boolValue,
                                            vegan: recipe["vegan"].boolValue,
                                            title: recipe["title"].stringValue,
@@ -55,7 +55,6 @@ struct FoodService {
                     responseRecipes.append(newRecipe)
                 }
                 
-                print(json)
                 completion(responseRecipes)
                
             })

@@ -71,7 +71,6 @@ extension ExploreCollectionViewController{
                 let vc = segue.destination as! DetailsViewController
                 vc.image = cell.imageView.image
                 vc.recipe = recipes[row]
-                
             }
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class DetailsViewController: UIViewController {
 
@@ -17,6 +18,8 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var instructionsHeightConstrain: NSLayoutConstraint!
+    @IBOutlet weak var ingridientsTableViewContainer: UIView!
+    @IBOutlet weak var containerViewHeightConstrain: NSLayoutConstraint!
     
     var recipe: Recipe!
     var image: UIImage!
@@ -25,25 +28,52 @@ class DetailsViewController: UIViewController {
         super.viewDidLoad()
         imgeView.image = image
         instructionsTextField.text = recipe.instructions
-        // Do any additional setup after loading the view.
-        print(recipe.instructions)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    @IBAction func AddToGroceryListButonTapped(_ sender: Any) {
+        let newFromRecipe = RecipeRealm()
+        newFromRecipe.id = recipe.id
+        newFromRecipe.title = recipe.title
+        for item in recipe.ingridients{
+            
+            let newItemInList = GroceryListItem()
+            newItemInList.id = item.id
+            newItemInList.amount = item.amount
+            newItemInList.unit = item.unitShort
+            newItemInList.name = item.name
+            
+            try! realm.write {
+               let someItem = realm.create(GroceryListItem.self, value: newItemInList, update: true)
+                someItem.fromRecipes.append(newFromRecipe)
+            }
+        }
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         instructionsHeightConstrain.constant = instructionsTextField.intrinsicContentSize.height
+      //  print("Big view did appear!")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EbededTableViewSegue"{
             if let tableVC = segue.destination as? IngridientsTableViewController{
                 tableVC.ingridients = recipe.ingridients
+                tableVC.delegate = self
             }
         }
         
     }
-    
-    
-    
+}
+
+
+//MARK: -figure out how to show full table view
+extension DetailsViewController: IngridientsTableViewDelegate{
+    func didLayoutAllCells(sender: IngridientsTableViewController) {
+        containerViewHeightConstrain.constant = sender.tableView.intrinsicContentSize.height
+        ingridientsTableViewContainer.sizeToFit()
+        //contentView.updateConstraintsIfNeeded()
+    }
     
 }
