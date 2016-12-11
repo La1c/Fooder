@@ -39,7 +39,8 @@ struct FoodService {
                                                        amount: ingridient["amount"].doubleValue,
                                                        unit: ingridient["unit"].stringValue,
                                                        unitShort: ingridient["unitShort"].stringValue,
-                                                       name: ingridient["name"].stringValue)
+                                                       name: ingridient["name"].stringValue,
+                                                       imageURL: ingridient["image"].stringValue)
                         ingridients.append(newIngridient)
                     }
                     
@@ -50,8 +51,8 @@ struct FoodService {
                                            imageURL: recipe["image"].stringValue,
                                            ingridients: ingridients,
                                            instructions: recipe["instructions"].stringValue,
-                                           preparationMinutes: recipe["preparationMinutes"].doubleValue,
-                                           cookingMinutes: recipe["cookingMinutes"].doubleValue)
+                                           readyInMinutes: recipe["readyInMinutes"].doubleValue,
+                                           servings: recipe["servings"].intValue)
                     responseRecipes.append(newRecipe)
                 }
                 

@@ -21,6 +21,9 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var ingridientsTableViewContainer: UIView!
     @IBOutlet weak var containerViewHeightConstrain: NSLayoutConstraint!
     
+    @IBOutlet weak var recipeNameLabel: UILabel!
+    @IBOutlet weak var servingsLabel: UILabel!
+    @IBOutlet weak var readyInLabel: UILabel!
     var recipe: Recipe!
     var image: UIImage!
     
@@ -28,6 +31,10 @@ class DetailsViewController: UIViewController {
         super.viewDidLoad()
         imgeView.image = image
         instructionsTextField.text = recipe.instructions
+        recipeNameLabel.text = recipe.title
+        
+        servingsLabel.text = servingsLabel.text! + " " + String(recipe.servings)
+        readyInLabel.text = readyInLabel.text! + " " + String(recipe.readyInMinutes) + " min"
     }
     
     @IBAction func AddToGroceryListButonTapped(_ sender: Any) {
@@ -40,6 +47,7 @@ class DetailsViewController: UIViewController {
             newItemInList.id = item.id
             newItemInList.unit = item.unitShort
             newItemInList.name = item.name
+            newItemInList.imageURL = item.imageURL
             
             try! realm.write {
                let someItem = realm.create(GroceryListItem.self, value: newItemInList, update: true)

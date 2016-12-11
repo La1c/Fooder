@@ -15,6 +15,7 @@ class GroceryListItem: Object{
     dynamic var amount: Double = 0
     dynamic var unit: String = ""
     dynamic var name: String = ""
+    dynamic var imageURL: String = ""
     let fromRecipes = List<RecipeRealm>()
     
     

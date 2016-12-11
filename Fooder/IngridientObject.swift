@@ -14,12 +14,14 @@ class Ingridient{
     let unit: String
     let unitShort: String
     let name: String
+    let imageURL: String
     
-    init(id: Int, amount: Double, unit: String, unitShort: String, name: String) {
+    init(id: Int, amount: Double, unit: String, unitShort: String, name: String, imageURL:String) {
         self.id = id
         self.amount = amount
         self.unit = unit
         self.unitShort = unitShort
         self.name = name
+        self.imageURL = imageURL
     }
 }

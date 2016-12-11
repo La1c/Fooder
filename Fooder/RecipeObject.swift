@@ -17,10 +17,11 @@ class Recipe{
     let imageURL: String
     let ingridients: [Ingridient]
     let instructions: String
-    let preparationMinutes: Double
-    let cookingMinutes: Double
+    let readyInMinutes: Double
+    let servings: Int
     
-    init(id: Int, vegeterian: Bool, vegan: Bool, title: String, imageURL: String, ingridients: [Ingridient], instructions: String, preparationMinutes: Double, cookingMinutes: Double) {
+    
+    init(id: Int, vegeterian: Bool, vegan: Bool, title: String, imageURL: String, ingridients: [Ingridient], instructions: String, readyInMinutes: Double, servings: Int) {
         
         self.id = id
         self.vegeterian = vegeterian
@@ -29,8 +30,8 @@ class Recipe{
         self.imageURL = imageURL
         self.ingridients = ingridients
         self.instructions = instructions
-        self.preparationMinutes = preparationMinutes
-        self.cookingMinutes = cookingMinutes
+        self.readyInMinutes = readyInMinutes
+        self.servings = servings
     }
     
 }

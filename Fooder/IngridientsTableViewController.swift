@@ -26,10 +26,6 @@ class IngridientsTableViewController: UITableViewController {
         
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -44,8 +40,7 @@ class IngridientsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "IngridientCell", for: indexPath)
 
         cell.textLabel?.text = ingridients[indexPath.row].name
-        cell.detailTextLabel?.text = String(ingridients[indexPath.row].amount)
-
+        cell.detailTextLabel?.text = String(ingridients[indexPath.row].amount) + " " + String(ingridients[indexPath.row].unit)
         return cell
     }
 
