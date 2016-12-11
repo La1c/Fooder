@@ -72,6 +72,7 @@ extension ExploreCollectionViewController{
                 vc.image = cell.imageView.image
                 vc.recipe = recipes[row]
             }
+        }
     }
 }
-}
+

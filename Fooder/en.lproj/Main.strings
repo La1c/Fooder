@@ -1,0 +1,36 @@
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "0hl-ND-5tx"; */
+"0hl-ND-5tx.text" = "Title";
+
+/* Class = "UILabel"; text = "Ingridients"; ObjectID = "8Ie-uN-dxI"; */
+"8Ie-uN-dxI.text" = "Ingridients";
+
+/* Class = "UINavigationItem"; title = "Explore"; ObjectID = "DCt-Ls-yvI"; */
+"DCt-Ls-yvI.title" = "Explore";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "DyF-eP-gZb"; */
+"DyF-eP-gZb.text" = "Detail";
+
+/* Class = "UITabBarItem"; title = "List"; ObjectID = "HZX-8E-RWf"; */
+"HZX-8E-RWf.title" = "List";
+
+/* Class = "UILabel"; text = "Meal Name"; ObjectID = "Jyd-PF-AWe"; */
+"Jyd-PF-AWe.text" = "Meal Name";
+
+/* Class = "UILabel"; text = "Instructions"; ObjectID = "KCn-ix-772"; */
+"KCn-ix-772.text" = "Instructions";
+
+/* Class = "UITabBarItem"; title = "Explore"; ObjectID = "Lhe-Fn-1iS"; */
+"Lhe-Fn-1iS.title" = "Explore";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "QUG-BS-cji"; */
+"QUG-BS-cji.text" = "Detail";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "j0s-CZ-WY6"; */
+"j0s-CZ-WY6.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UITabBarItem"; title = "Settings"; ObjectID = "mDy-ON-zyr"; */
+"mDy-ON-zyr.title" = "Settings";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "qTh-fx-E9w"; */
+"qTh-fx-E9w.text" = "Title";

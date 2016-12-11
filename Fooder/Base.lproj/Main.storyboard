@@ -14,7 +14,7 @@
         <scene sceneID="d4J-Kk-mCq">
             <objects>
                 <collectionViewController id="STB-k6-Exw" customClass="ExploreCollectionViewController" customModule="Fooder" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" misplaced="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" id="CcQ-3q-ytk">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" id="CcQ-3q-ytk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -83,7 +83,7 @@
             </objects>
             <point key="canvasLocation" x="2996" y="443"/>
         </scene>
-        <!--Details View Controller-->
+        <!--Recipe-->
         <scene sceneID="v16-BG-iqd">
             <objects>
                 <viewController id="dOq-uW-hRa" customClass="DetailsViewController" customModule="Fooder" customModuleProvider="target" sceneMemberID="viewController">
@@ -113,7 +113,7 @@
                                                     <constraint firstAttribute="height" constant="21" id="DlL-WQ-tk8"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" red="0.27450980392156865" green="0.38039215686274508" blue="0.14509803921568629" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j0s-CZ-WY6">
@@ -139,7 +139,7 @@
                                                     <constraint firstAttribute="height" constant="21" id="v9W-5R-iv7"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" red="0.27450980392156865" green="0.38039215686274508" blue="0.14509803921568629" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5TE-6b-PSC">
@@ -192,6 +192,7 @@
                             <constraint firstAttribute="trailing" secondItem="hJN-Wb-T2G" secondAttribute="trailing" id="Ne1-6s-VR7"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Recipe" id="2XR-Yl-B6L"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="900"/>
                     <connections>
@@ -212,10 +213,11 @@
         <scene sceneID="DWL-Cl-5P0">
             <objects>
                 <tableViewController id="e0D-lj-xss" customClass="IngridientsTableViewController" customModule="Fooder" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="0gI-2y-eDt">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="0gI-2y-eDt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="194"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" red="0.49411764705882355" green="0.61568627450980395" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="IngridientCell" textLabel="0hl-ND-5tx" detailTextLabel="QUG-BS-cji" style="IBUITableViewCellStyleValue1" id="MrP-XT-tbP">
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
@@ -256,7 +258,6 @@
         <!--List-->
         <scene sceneID="eMc-h4-uOP">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Q3a-8d-TS6" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="FzB-g4-bUz" customClass="GroceryListTableViewController" customModule="Fooder" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="CSm-Yl-AS5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
@@ -296,6 +297,7 @@
                     <tabBarItem key="tabBarItem" title="List" image="List" id="HZX-8E-RWf"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q3a-8d-TS6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2080" y="-991"/>
         </scene>
@@ -326,6 +328,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.49411764705882355" green="0.61568627450980395" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
                         <segue destination="ubc-sX-hBo" kind="relationship" relationship="viewControllers" id="G4J-fe-WCQ"/>
@@ -343,9 +350,13 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nUo-Ah-cTT" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Explore" image="Explore Icon" id="Lhe-Fn-1iS"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="J3w-nL-bKb">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="J3w-nL-bKb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <color key="textColor" red="0.49411764705882355" green="0.61568627450980395" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -363,4 +374,5 @@
         <image name="add" width="24" height="24"/>
         <image name="gear" width="25" height="25"/>
     </resources>
+    <color key="tintColor" red="0.46403196454048157" green="0.64173346757888794" blue="0.23268052935600281" alpha="1" colorSpace="calibratedRGB"/>
 </document>
