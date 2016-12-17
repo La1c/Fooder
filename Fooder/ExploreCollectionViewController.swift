@@ -37,7 +37,10 @@ class ExploreCollectionViewController: UICollectionViewController {
         // #warning Incomplete implementation, return the number of items
         return recipes.count
     }
-
+    
+    
+    
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
                                                       for: indexPath)

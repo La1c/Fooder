@@ -35,10 +35,9 @@ class GroceryListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemToBuy", for: indexPath)
-        cell.textLabel?.text = items[indexPath.row].name
-        cell.detailTextLabel?.text = String(items[indexPath.row].amount) + " " + items[indexPath.row].unit
-        cell.imageView?.imageFromUrl(urlString: items[indexPath.row].imageURL)
-        cell.imageView?.contentMode = .scaleAspectFit
+        if let cell = cell as? GroceryListTableViewCell{
+            cell.configureCell(for: items[indexPath.row])
+        }
         return cell
     }
 }

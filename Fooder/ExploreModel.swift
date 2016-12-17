@@ -20,7 +20,7 @@ class ExploreModel{
     let numberOfRecipesToGetEveryTime: Int
     weak var delegate: ExploreModelDelegate?
 
-    init(numberOfRecipes: Int = 10) {
+    init(numberOfRecipes: Int = 30) {
         self.numberOfRecipesToGetEveryTime = numberOfRecipes
     }
     
