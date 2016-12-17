@@ -37,27 +37,6 @@ class DetailsViewController: UIViewController {
         readyInLabel.text = readyInLabel.text! + " " + String(recipe.readyInMinutes) + " min"
     }
     
-    @IBAction func AddToGroceryListButonTapped(_ sender: Any) {
-        let newFromRecipe = RecipeRealm()
-        newFromRecipe.id = recipe.id
-        newFromRecipe.title = recipe.title
-        for item in recipe.ingridients{
-            
-            let newItemInList = GroceryListItem()
-            newItemInList.id = item.id
-            newItemInList.unit = item.unitShort
-            newItemInList.name = item.name
-            newItemInList.imageURL = item.imageURL
-            
-            try! realm.write {
-               let someItem = realm.create(GroceryListItem.self, value: newItemInList, update: true)
-                someItem.fromRecipes.append(newFromRecipe)
-                someItem.amount += item.amount
-            }
-        }
-
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         instructionsHeightConstrain.constant = instructionsTextField.intrinsicContentSize.height
@@ -83,5 +62,31 @@ extension DetailsViewController: IngridientsTableViewDelegate{
         ingridientsTableViewContainer.sizeToFit()
         //contentView.updateConstraintsIfNeeded()
     }
-    
 }
+
+
+//MARK: -add button pressed
+extension DetailsViewController{
+    @IBAction func AddToGroceryListButonTapped(_ sender: Any) {
+        let newFromRecipe = RecipeRealm()
+        newFromRecipe.id = recipe.id
+        newFromRecipe.title = recipe.title
+        for item in recipe.ingridients{
+            
+            let newItemInList = GroceryListItem()
+            newItemInList.id = item.id
+            newItemInList.unit = item.unitShort
+            newItemInList.name = item.name
+            newItemInList.imageURL = item.imageURL
+            
+            
+            try! realm.write {
+                let someItem = realm.create(GroceryListItem.self, value: newItemInList, update: true)
+                someItem.fromRecipes.append(newFromRecipe)
+                someItem.amount += item.amount
+            }
+        }
+        
+    }
+}
+

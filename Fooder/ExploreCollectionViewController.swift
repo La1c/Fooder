@@ -22,19 +22,13 @@ class ExploreCollectionViewController: UICollectionViewController {
         model.getData()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return recipes.count
     }
     
@@ -47,8 +41,6 @@ class ExploreCollectionViewController: UICollectionViewController {
         if let cell =  cell as? ExploreRecipeCell{
             cell.configureCell(for: recipes[indexPath.row])
         }
-        
-        // Configure the cell
     
         return cell
     }
