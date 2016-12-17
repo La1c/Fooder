@@ -1,2 +1,25 @@
 # Fooder
-Get grocery list from recipes
+
+Main project at VK University.
+
+Get a grocery list from recipes you like! 
+
+Current status:
+ * Details screen design is nearly finished
+ * You can add new groceries from recipes
+
+TO-DO:
+
+* Flexible search
+* Show recipes included in grocery list
+* Grocery list management
+* Make sure that measure units are correct, find a way to convert them
+* Make sure there are no repetitions in grocery list
+* A lot of different stuff to make this app better
+
+
+Screenshots:
+
+<img src="https://github.com/La1c/Fooder/blob/master/screenshot1.png?raw=true" width="320">
+<img src="https://github.com/La1c/Fooder/blob/master/screenshot2.png?raw=true" width="320">
+<img src="https://github.com/La1c/Fooder/blob/master/screenshot3.png?raw=true" width="320">
