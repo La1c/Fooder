@@ -39,30 +39,26 @@ class DetailsViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        if let subTableView = ingridientsTableViewContainer.subviews[0] as? UITableView{
+            subTableView.sizeToFit()
+            ingridientsTableViewContainer.frame.size.height = subTableView.contentSize.height
+            containerViewHeightConstrain.constant = subTableView.contentSize.height
+        }
+        
         instructionsHeightConstrain.constant = instructionsTextField.intrinsicContentSize.height
-      //  print("Big view did appear!")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EbededTableViewSegue"{
             if let tableVC = segue.destination as? IngridientsTableViewController{
                 tableVC.ingridients = recipe.ingridients
-                tableVC.delegate = self
             }
         }
         
     }
 }
 
-
-//MARK: -figure out how to show full table view
-extension DetailsViewController: IngridientsTableViewDelegate{
-    func didLayoutAllCells(sender: IngridientsTableViewController) {
-        containerViewHeightConstrain.constant = sender.tableView.intrinsicContentSize.height
-        ingridientsTableViewContainer.sizeToFit()
-        //contentView.updateConstraintsIfNeeded()
-    }
-}
 
 
 //MARK: -add button pressed

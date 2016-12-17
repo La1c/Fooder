@@ -9,23 +9,10 @@
 import UIKit
 
 
-protocol IngridientsTableViewDelegate: class {
-    func didLayoutAllCells(sender: IngridientsTableViewController)
-}
-
 class IngridientsTableViewController: UITableViewController {
     
     
     var ingridients:[Ingridient]!
-    weak var delegate:IngridientsTableViewDelegate?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-      //  self.tableView.isScrollEnabled = false
-        self.tableView.tableFooterView = UIView(frame: .zero)
-        
-    }
-
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -43,19 +30,4 @@ class IngridientsTableViewController: UITableViewController {
         cell.detailTextLabel?.text = String(ingridients[indexPath.row].amount) + " " + String(ingridients[indexPath.row].unit)
         return cell
     }
-
-    
-    
-    //FIX-ME: -figure out how to show full table view
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        //self.tableView.frame.size.height = self.tableView.contentSize.height
-       // print("Table view did appear")
-        //   delegate?.didLayoutAllCells(sender: self)
-        //self.tableView.frame.size.height = self.tableView.contentSize.height
-    }
-    
-    
-
-
 }

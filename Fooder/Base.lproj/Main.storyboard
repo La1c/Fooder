@@ -259,8 +259,8 @@
         <!--Ingridients Table View Controller-->
         <scene sceneID="DWL-Cl-5P0">
             <objects>
-                <tableViewController id="e0D-lj-xss" customClass="IngridientsTableViewController" customModule="Fooder" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="0gI-2y-eDt">
+                <tableViewController automaticallyAdjustsScrollViewInsets="NO" id="e0D-lj-xss" customClass="IngridientsTableViewController" customModule="Fooder" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="0gI-2y-eDt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="194"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -297,10 +297,11 @@
                             <outlet property="delegate" destination="e0D-lj-xss" id="oXg-iN-i60"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hV6-k4-LxB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4886.25" y="300"/>
+            <point key="canvasLocation" x="4763" y="313"/>
         </scene>
         <!--List-->
         <scene sceneID="eMc-h4-uOP">
