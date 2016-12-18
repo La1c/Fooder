@@ -37,4 +37,12 @@ class ExploreModel{
                                             self.delegate?.modelDidLoadNewData()
                                         }})
     }
+    
+    func searchRecipes(query: String){
+        foodService.recipeSearch(query: query, completion: {newData in
+            if let data = newData{
+                self.recipes = data
+                self.delegate?.modelDidLoadNewData()
+            }})
+    }
 }

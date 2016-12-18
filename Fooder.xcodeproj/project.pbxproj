@@ -10,6 +10,11 @@
 		D9C578B352CFFCCB158A20B2 /* Pods_Fooder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FECC26CF3440DD78E9A76F3C /* Pods_Fooder.framework */; };
 		E70D15171DFC264A00BA0A1A /* MasterTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70D15161DFC264A00BA0A1A /* MasterTabBarController.swift */; };
 		E70D151B1DFC4A6F00BA0A1A /* IngridientsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70D151A1DFC4A6F00BA0A1A /* IngridientsTableViewController.swift */; };
+		E71FD5AE1E0713A300C5B4AC /* CollectionViewWithHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71FD5AD1E0713A300C5B4AC /* CollectionViewWithHeader.swift */; };
+		E71FD5B01E072D8000C5B4AC /* Diets.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71FD5AF1E072D8000C5B4AC /* Diets.swift */; };
+		E71FD5B21E0732D800C5B4AC /* Cuisine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71FD5B11E0732D800C5B4AC /* Cuisine.swift */; };
+		E71FD5B41E07332700C5B4AC /* Intolerance.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71FD5B31E07332700C5B4AC /* Intolerance.swift */; };
+		E71FD5B61E07339C00C5B4AC /* FoodType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71FD5B51E07339C00C5B4AC /* FoodType.swift */; };
 		E75C14301E0579A300477A66 /* GroceryListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75C142F1E0579A300477A66 /* GroceryListTableViewCell.swift */; };
 		E78AB2571DE25B0700565CBF /* FoodNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78AB2561DE25B0700565CBF /* FoodNetworkService.swift */; };
 		E78AB25B1DE2E97300565CBF /* ExploreCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78AB25A1DE2E97300565CBF /* ExploreCollectionViewController.swift */; };
@@ -19,7 +24,7 @@
 		E78AB2631DE3041000565CBF /* ExploreRecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78AB2621DE3041000565CBF /* ExploreRecipeCell.swift */; };
 		E78AB2651DE30E9C00565CBF /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78AB2641DE30E9C00565CBF /* UIImageExtension.swift */; };
 		E78AB2671DE32A7A00565CBF /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78AB2661DE32A7A00565CBF /* DetailsViewController.swift */; };
-		E7B1C34D1E05F93A004E6FEE /* customSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B1C34C1E05F93A004E6FEE /* customSearchBar.swift */; };
+		E7B1C34F1E06A90B004E6FEE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B1C34E1E06A90B004E6FEE /* SearchViewController.swift */; };
 		E7BAF3B11DFCCCFA00E31120 /* GroceryListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BAF3B01DFCCCFA00E31120 /* GroceryListItem.swift */; };
 		E7BAF3B31DFCD1B000E31120 /* RecipeRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BAF3B21DFCD1B000E31120 /* RecipeRealmObject.swift */; };
 		E7BAF3B51DFCD96C00E31120 /* GroceryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BAF3B41DFCD96C00E31120 /* GroceryListTableViewController.swift */; };
@@ -53,6 +58,11 @@
 		A658DE6389F3CE6ED0B99361 /* Pods-Fooder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fooder.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fooder/Pods-Fooder.release.xcconfig"; sourceTree = "<group>"; };
 		E70D15161DFC264A00BA0A1A /* MasterTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterTabBarController.swift; sourceTree = "<group>"; };
 		E70D151A1DFC4A6F00BA0A1A /* IngridientsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngridientsTableViewController.swift; sourceTree = "<group>"; };
+		E71FD5AD1E0713A300C5B4AC /* CollectionViewWithHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewWithHeader.swift; sourceTree = "<group>"; };
+		E71FD5AF1E072D8000C5B4AC /* Diets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diets.swift; sourceTree = "<group>"; };
+		E71FD5B11E0732D800C5B4AC /* Cuisine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cuisine.swift; sourceTree = "<group>"; };
+		E71FD5B31E07332700C5B4AC /* Intolerance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Intolerance.swift; sourceTree = "<group>"; };
+		E71FD5B51E07339C00C5B4AC /* FoodType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodType.swift; sourceTree = "<group>"; };
 		E75C142F1E0579A300477A66 /* GroceryListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryListTableViewCell.swift; sourceTree = "<group>"; };
 		E78AB2561DE25B0700565CBF /* FoodNetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodNetworkService.swift; sourceTree = "<group>"; };
 		E78AB25A1DE2E97300565CBF /* ExploreCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreCollectionViewController.swift; sourceTree = "<group>"; };
@@ -62,7 +72,7 @@
 		E78AB2621DE3041000565CBF /* ExploreRecipeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreRecipeCell.swift; sourceTree = "<group>"; };
 		E78AB2641DE30E9C00565CBF /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		E78AB2661DE32A7A00565CBF /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
-		E7B1C34C1E05F93A004E6FEE /* customSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customSearchBar.swift; sourceTree = "<group>"; };
+		E7B1C34E1E06A90B004E6FEE /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		E7BAF3B01DFCCCFA00E31120 /* GroceryListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryListItem.swift; sourceTree = "<group>"; };
 		E7BAF3B21DFCD1B000E31120 /* RecipeRealmObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeRealmObject.swift; sourceTree = "<group>"; };
 		E7BAF3B41DFCD96C00E31120 /* GroceryListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryListTableViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +144,10 @@
 				E78AB2601DE2FA4F00565CBF /* ExploreModel.swift */,
 				E78AB2621DE3041000565CBF /* ExploreRecipeCell.swift */,
 				E75C142F1E0579A300477A66 /* GroceryListTableViewCell.swift */,
+				E71FD5AF1E072D8000C5B4AC /* Diets.swift */,
+				E71FD5B11E0732D800C5B4AC /* Cuisine.swift */,
+				E71FD5B31E07332700C5B4AC /* Intolerance.swift */,
+				E71FD5B51E07339C00C5B4AC /* FoodType.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -146,6 +160,7 @@
 				E70D151A1DFC4A6F00BA0A1A /* IngridientsTableViewController.swift */,
 				E7BAF3B41DFCD96C00E31120 /* GroceryListTableViewController.swift */,
 				E78AB25A1DE2E97300565CBF /* ExploreCollectionViewController.swift */,
+				E7B1C34E1E06A90B004E6FEE /* SearchViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -155,7 +170,6 @@
 			children = (
 				E78AB2561DE25B0700565CBF /* FoodNetworkService.swift */,
 				E78AB2641DE30E9C00565CBF /* UIImageExtension.swift */,
-				E7B1C34C1E05F93A004E6FEE /* customSearchBar.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -190,6 +204,7 @@
 				E70D15191DFC277700BA0A1A /* Models */,
 				E7DD8BEA1DE1DC1C00EA1584 /* AppDelegate.swift */,
 				E7DD8BEE1DE1DC1C00EA1584 /* Main.storyboard */,
+				E71FD5AD1E0713A300C5B4AC /* CollectionViewWithHeader.swift */,
 				E7DD8BF11DE1DC1C00EA1584 /* Assets.xcassets */,
 				E7DD8BF31DE1DC1C00EA1584 /* LaunchScreen.storyboard */,
 				E7DD8BF61DE1DC1C00EA1584 /* Info.plist */,
@@ -406,16 +421,21 @@
 				E7BAF3B31DFCD1B000E31120 /* RecipeRealmObject.swift in Sources */,
 				E70D151B1DFC4A6F00BA0A1A /* IngridientsTableViewController.swift in Sources */,
 				E78AB25F1DE2EEA500565CBF /* IngridientObject.swift in Sources */,
+				E7B1C34F1E06A90B004E6FEE /* SearchViewController.swift in Sources */,
 				E78AB2631DE3041000565CBF /* ExploreRecipeCell.swift in Sources */,
+				E71FD5B41E07332700C5B4AC /* Intolerance.swift in Sources */,
+				E71FD5AE1E0713A300C5B4AC /* CollectionViewWithHeader.swift in Sources */,
 				E70D15171DFC264A00BA0A1A /* MasterTabBarController.swift in Sources */,
 				E78AB25D1DE2EDB200565CBF /* RecipeObject.swift in Sources */,
-				E7B1C34D1E05F93A004E6FEE /* customSearchBar.swift in Sources */,
+				E71FD5B01E072D8000C5B4AC /* Diets.swift in Sources */,
 				E78AB2611DE2FA4F00565CBF /* ExploreModel.swift in Sources */,
 				E78AB2651DE30E9C00565CBF /* UIImageExtension.swift in Sources */,
 				E78AB2571DE25B0700565CBF /* FoodNetworkService.swift in Sources */,
 				E78AB25B1DE2E97300565CBF /* ExploreCollectionViewController.swift in Sources */,
+				E71FD5B61E07339C00C5B4AC /* FoodType.swift in Sources */,
 				E75C14301E0579A300477A66 /* GroceryListTableViewCell.swift in Sources */,
 				E7DD8BEB1DE1DC1C00EA1584 /* AppDelegate.swift in Sources */,
+				E71FD5B21E0732D800C5B4AC /* Cuisine.swift in Sources */,
 				E7BAF3B51DFCD96C00E31120 /* GroceryListTableViewController.swift in Sources */,
 				E7BAF3B11DFCCCFA00E31120 /* GroceryListItem.swift in Sources */,
 				E78AB2671DE32A7A00565CBF /* DetailsViewController.swift in Sources */,

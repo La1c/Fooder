@@ -11,10 +11,12 @@ import UIKit
 private let reuseIdentifier = "MealCell"
 
 class ExploreCollectionViewController: UICollectionViewController {
+
     @IBOutlet var searchBarButton: UIBarButtonItem!
+    @IBOutlet var searchCategoryView: UIView!
     
     let searchBar = UISearchBar()
-    var basicNavigationBar = UIView()
+    var basicNavigationBar = UINavigationItem()
 
     var recipes = [Recipe]()
     var model: ExploreModel!
@@ -29,6 +31,15 @@ class ExploreCollectionViewController: UICollectionViewController {
         
         searchBar.delegate = self
         searchBar.showsCancelButton = true
+        searchBar.searchBarStyle = .minimal
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let collectionView = collectionView as? CollectionViewWithHeader{
+            collectionView.fixedHeaderView = searchCategoryView
+        }
     }
 
 
@@ -55,6 +66,21 @@ class ExploreCollectionViewController: UICollectionViewController {
     
         return cell
     }
+    
+    @IBAction func searchButtonPressed(_ sender: Any) {
+        self.navigationItem.titleView?.addSubview(searchBar)
+        
+        if let collectionView = collectionView as? CollectionViewWithHeader{
+            collectionView.searchIsActive = true
+        }
+        
+       // searching = true
+        self.navigationItem.titleView = searchBar
+         self.navigationItem.rightBarButtonItem = nil
+          searchBar.becomeFirstResponder()
+    }
+    
+    
 }
 
 //MARK: -ExploreModelDelegate
@@ -73,7 +99,7 @@ extension ExploreCollectionViewController{
                 guard let row = collectionView?.indexPath(for: cell)?.row else{
                     return
                 }
-                
+
                 let vc = segue.destination as! DetailsViewController
                 vc.image = cell.imageView.image
                 vc.recipe = recipes[row]
@@ -82,25 +108,19 @@ extension ExploreCollectionViewController{
     }
 }
 
-//MARK: -Search
-extension ExploreCollectionViewController{
-    @IBAction func searchBarButtonPressed(_ sender: Any) {
-    
-        self.navigationItem.rightBarButtonItem = nil
-        searching = true
-        self.navigationItem.titleView = searchBar
-        searchBar.becomeFirstResponder()
-    }
-}
 
 
 extension ExploreCollectionViewController: UISearchBarDelegate{
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        self.navigationItem.titleView = nil
-        self.navigationItem.title = "Explore"
-        //self.navigationItem.rightBarButtonItem = searchBarButton
-        self.navigationController?.navigationItem.rightBarButtonItem = searchBarButton
-        
+       self.navigationItem.titleView = nil
+        self.navigationItem.rightBarButtonItem = searchBarButton
+    }
+    
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let query = searchBar.text!
+        model.searchRecipes(query: query)
     }
 }
+
 

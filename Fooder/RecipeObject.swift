@@ -11,17 +11,17 @@ import Foundation
 
 class Recipe{
     let id: Int
-    let vegeterian: Bool
-    let vegan: Bool
+    let vegeterian: Bool?
+    let vegan: Bool?
     let title: String
     let imageURL: String
-    let ingridients: [Ingridient]
-    let instructions: String
-    let readyInMinutes: Double
-    let servings: Int
+    let ingridients: [Ingridient]?
+    let instructions: String?
+    let readyInMinutes: Double?
+    let servings: Int?
     
     
-    init(id: Int, vegeterian: Bool, vegan: Bool, title: String, imageURL: String, ingridients: [Ingridient], instructions: String, readyInMinutes: Double, servings: Int) {
+    init(id: Int, vegeterian: Bool? = nil, vegan: Bool? = nil, title: String, imageURL: String, ingridients: [Ingridient]? = nil, instructions: String? = nil, readyInMinutes: Double? = nil, servings: Int? = nil) {
         
         self.id = id
         self.vegeterian = vegeterian

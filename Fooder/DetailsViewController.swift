@@ -33,13 +33,13 @@ class DetailsViewController: UIViewController {
         instructionsTextField.text = recipe.instructions
         recipeNameLabel.text = recipe.title
         
-        servingsLabel.text = servingsLabel.text! + " " + String(recipe.servings)
-        readyInLabel.text = readyInLabel.text! + " " + String(recipe.readyInMinutes) + " min"
+        servingsLabel.text = servingsLabel.text! + " " + String(recipe.servings!)
+        readyInLabel.text = readyInLabel.text! + " " + String(recipe.readyInMinutes!) + " min"
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         if let subTableView = ingridientsTableViewContainer.subviews[0] as? UITableView{
             subTableView.sizeToFit()
             ingridientsTableViewContainer.frame.size.height = subTableView.contentSize.height
@@ -67,7 +67,7 @@ extension DetailsViewController{
         let newFromRecipe = RecipeRealm()
         newFromRecipe.id = recipe.id
         newFromRecipe.title = recipe.title
-        for item in recipe.ingridients{
+        for item in recipe.ingridients!{
             
             let newItemInList = GroceryListItem()
             newItemInList.id = item.id
