@@ -20,27 +20,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="h1q-gY-e2x">
-                            <size key="itemSize" width="290" height="250"/>
+                            <size key="itemSize" width="324" height="250"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MealCell" id="BOl-iM-omh" customClass="ExploreRecipeCell" customModule="Fooder" customModuleProvider="target">
-                                <rect key="frame" x="15" y="0.0" width="290" height="250"/>
+                                <rect key="frame" x="-2" y="0.0" width="324" height="250"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="290" height="250"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="324" height="250"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4yx-lt-17h">
-                                            <rect key="frame" x="0.0" y="0.0" width="290" height="250"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="324" height="250"/>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qXz-5k-Osu">
-                                            <rect key="frame" x="0.0" y="187.5" width="290" height="62.5"/>
+                                            <rect key="frame" x="0.0" y="187.5" width="324" height="62.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal Name" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jyd-PF-AWe">
-                                                    <rect key="frame" x="8" y="0.0" width="274" height="63"/>
+                                                    <rect key="frame" x="8" y="0.0" width="308" height="63"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -80,11 +80,17 @@
                             <outlet property="delegate" destination="STB-k6-Exw" id="4jF-fW-xwx"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Explore" id="DCt-Ls-yvI"/>
+                    <navigationItem key="navigationItem" title="Explore" id="DCt-Ls-yvI">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="search" id="CST-S2-gpC">
+                            <connections>
+                                <action selector="searchBarButtonPressed:" destination="STB-k6-Exw" id="OgV-6z-MWE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pCn-eR-k8g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2996" y="443"/>
+            <point key="canvasLocation" x="2991.304347826087" y="441.03260869565219"/>
         </scene>
         <!--Recipe-->
         <scene sceneID="v16-BG-iqd">
@@ -160,7 +166,7 @@
                                                 <color key="textColor" red="0.27450980390000002" green="0.3803921569" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock1" translatesAutoresizingMaskIntoConstraints="NO" id="Mmv-pN-Ihn">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock1" translatesAutoresizingMaskIntoConstraints="NO" id="Mmv-pN-Ihn">
                                                 <rect key="frame" x="8" y="213" width="22" height="22"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="22" id="Ody-5Q-ViD"/>
@@ -173,7 +179,7 @@
                                                 <color key="textColor" red="0.4941176471" green="0.61568627450000002" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="users" translatesAutoresizingMaskIntoConstraints="NO" id="8C6-cM-Y1J">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="users" translatesAutoresizingMaskIntoConstraints="NO" id="8C6-cM-Y1J">
                                                 <rect key="frame" x="290" y="213" width="22" height="22"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Servings:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RRh-si-awA">
@@ -417,7 +423,7 @@
         <!--Explore-->
         <scene sceneID="rOc-p1-Bf1">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nUo-Ah-cTT" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnSwipe="YES" id="nUo-Ah-cTT" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Explore" image="Explore Icon" id="Lhe-Fn-1iS"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="J3w-nL-bKb">
@@ -429,6 +435,11 @@
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="tk5-9n-fcf">
+                        <rect key="frame" x="0.0" y="436" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.46274509803921571" green="0.64313725490196072" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
+                    </toolbar>
                     <connections>
                         <segue destination="STB-k6-Exw" kind="relationship" relationship="rootViewController" id="3JN-lJ-W1e"/>
                     </connections>
