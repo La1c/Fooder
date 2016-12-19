@@ -10,11 +10,13 @@ Current status:
 
 TO-DO:
 
-* Flexible search
+* Flexible search (search works, but I want make it "live" and enable food type change)
 * Show recipes included in grocery list
 * Grocery list management
 * Make sure that measure units are correct, find a way to convert them
 * Make sure there are no repetitions in grocery list
+* Better instructions layout
+* Favorites screen
 * A lot of different stuff to make this app better
 
 
