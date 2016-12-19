@@ -188,4 +188,25 @@ struct FoodService {
                  completion(responseRecipes)
             })
     }
+    
+    static func convertAmount(ingridientName:String, sourceAmount: Double, sourceUnit:String, targetUnit: String, completion:  @escaping ((convertedAmount: Double, convertedUnit: String)?) -> Void){
+        
+        Alamofire.request("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/convert",
+             parameters: ["ingridientName": ingridientName,
+                          "sourceAmount": sourceAmount,
+                          "sourceUnit": sourceUnit,
+                          "targetUnit": targetUnit],
+            headers: ["X-Mashape-Key" : APIkey,
+                      "Accept": "application/json"]
+            ).responseJSON(completionHandler: { response in
+                
+                guard response.result.isSuccess else{
+                    completion(nil)
+                    return
+                }
+                
+                let json = JSON(response.result.value!)
+                completion((convertedAmount: json["targetAmount"].doubleValue, convertedUnit: json["targetUnit"].stringValue))
+        })
+    }
 }
