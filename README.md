@@ -23,3 +23,9 @@ Screenshots:
 <img src="https://github.com/La1c/Fooder/blob/master/screenshot1.png?raw=true" width="320">
 <img src="https://github.com/La1c/Fooder/blob/master/screenshot2.png?raw=true" width="320">
 <img src="https://github.com/La1c/Fooder/blob/master/screenshot3.png?raw=true" width="320">
+
+
+Animated:
+
+![](https://github.com/La1c/Fooder/blob/master/out.gif)
+
