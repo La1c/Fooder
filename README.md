@@ -10,7 +10,7 @@ Current status:
 
 TO-DO:
 
-* Flexible search
+* Flexible search (search works, but I want make it "live" and enable food type change)
 * Show recipes included in grocery list
 * Grocery list management
 * Make sure that measure units are correct, find a way to convert them
