@@ -35,8 +35,11 @@ class DetailsViewController: UIViewController {
         
         servingsLabel.text = servingsLabel.text! + " " + String(recipe.servings!)
         readyInLabel.text = readyInLabel.text! + " " + String(recipe.readyInMinutes!) + " min"
-        
     }
+    
+    
+    
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

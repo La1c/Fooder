@@ -13,9 +13,9 @@ import SwiftyJSON
 
 
 struct FoodService {
-    let APIkey = FooderKeys().foodAPIKey()!
+    private static let APIkey = FooderKeys().foodAPIKey()!
     
-    func getRandomRecipes(number: Int, completion: @escaping ([Recipe]?) -> Void){
+    static func getRandomRecipes(number: Int, completion: @escaping ([Recipe]?) -> Void){
         Alamofire.request("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random",
                           parameters: ["limitLicense": true,
                                        "number": number],
@@ -61,7 +61,7 @@ struct FoodService {
             })
     }
     
-    func recipeSearch(cuisine: Cuisine? = nil, diet: Diet = .none, intolerances: [Intolerance]? = nil, query: String, type: FoodType = .mainCourse, completion: @escaping ([Recipe]?) -> Void){
+    static func recipeComplexSearch(cuisine: Cuisine? = nil, diet: Diet = .none, intolerances: [Intolerance]? = nil, query: String, type: FoodType = .mainCourse, completion: @escaping ([Recipe]?) -> Void){
         
         Alamofire.request("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/searchComplex",
                           parameters: ["limitLicense": true,
@@ -115,9 +115,9 @@ struct FoodService {
             })
     }
     
-    func getRecipeByID(id: Int, completion: @escaping ([Recipe]?) -> Void){
-        Alamofire.request("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random",
-                          parameters: ["id": id],
+    static func getRecipeByID(id: Int, completion: @escaping (Recipe?) -> Void){
+        Alamofire.request("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/\(id)/information",
+                         // parameters: ["id": id],
                           headers: ["X-Mashape-Key" : APIkey,
                                     "Accept": "application/json"]
             ).responseJSON(completionHandler: { response in
@@ -129,7 +129,6 @@ struct FoodService {
                 
                 let json = JSON(response.result.value!)
                 
-                var responseRecipes = [Recipe]()
                 var ingridients = [Ingridient]()
                     
                     for ingridient in json["extendedIngredients"].arrayValue{
@@ -151,10 +150,42 @@ struct FoodService {
                                            instructions: json["instructions"].stringValue,
                                            readyInMinutes: json["readyInMinutes"].doubleValue,
                                            servings: json["servings"].intValue)
-                    responseRecipes.append(newRecipe)
-                completion(responseRecipes)
+                print(newRecipe)
+                completion(newRecipe)
                 
             })
-
+    }
+    
+    static func recipeSearch(cuisine: Cuisine? = nil, diet: Diet = .none, intolerances: [Intolerance]? = nil, query: String, type: FoodType = .mainCourse, completion: @escaping ([Recipe]?) -> Void){
+        var responseRecipes = [Recipe]()
+        Alamofire.request("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search",
+                          parameters: ["limitLicense": true,
+                                       //   "cuisine": "", //enable later!
+                            "diet": diet.rawValue,
+                            "instructionsRequired": true,
+                            //   "intolerances":  "", //enable later!
+                            "query": query,
+                            "type": type.rawValue,
+                            "offset" : 0,
+                            "number": 30],
+                          headers: ["X-Mashape-Key" : APIkey,
+                                    "Accept": "application/json"]
+            ).responseJSON(completionHandler: { response in
+                guard response.result.isSuccess else{
+                    completion(nil)
+                    return
+                }
+                
+                let json = JSON(response.result.value!)["results"].arrayValue
+                
+                
+                for recipe in json{
+                    self.getRecipeByID(id: recipe["id"].intValue, completion: {newData in
+                        if let data = newData{
+                            responseRecipes.append(data)
+                        }})
+                }
+                 completion(responseRecipes)
+            })
     }
 }

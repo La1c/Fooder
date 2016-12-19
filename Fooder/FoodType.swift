@@ -20,4 +20,5 @@ enum FoodType: String{
     case beverage = "bevarage"
     case sauce = "sauce"
     case drink = "drink"
+    
 }

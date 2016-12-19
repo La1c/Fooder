@@ -67,6 +67,20 @@ class ExploreCollectionViewController: UICollectionViewController {
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            if recipes[indexPath.row].ingridients?.count == 0{
+                FoodService.getRecipeByID(id: recipes[indexPath.row].id, completion: {data in
+                    if let newRecipe = data{
+                        self.recipes[indexPath.row] = newRecipe
+                        self.performSegue(withIdentifier: "ShowDetails", sender: collectionView.cellForItem(at: indexPath))
+                    }
+                })
+            }else{
+                performSegue(withIdentifier: "ShowDetails", sender: collectionView.cellForItem(at: indexPath))
+        }
+        }
+    
+    
     @IBAction func searchButtonPressed(_ sender: Any) {
         self.navigationItem.titleView?.addSubview(searchBar)
         
@@ -93,6 +107,7 @@ extension ExploreCollectionViewController: ExploreModelDelegate{
 
 //MARK: -prepareForSegue
 extension ExploreCollectionViewController{
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowDetails"{
             if let cell = sender as? ExploreRecipeCell{

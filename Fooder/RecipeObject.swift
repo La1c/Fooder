@@ -33,5 +33,4 @@ class Recipe{
         self.readyInMinutes = readyInMinutes
         self.servings = servings
     }
-    
 }
