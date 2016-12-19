@@ -15,6 +15,8 @@ TO-DO:
 * Grocery list management
 * Make sure that measure units are correct, find a way to convert them
 * Make sure there are no repetitions in grocery list
+* Better instructions layout
+* Favorites screen
 * A lot of different stuff to make this app better
 
 
