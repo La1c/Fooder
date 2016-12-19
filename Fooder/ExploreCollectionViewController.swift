@@ -28,7 +28,6 @@ class ExploreCollectionViewController: UICollectionViewController {
         model = ExploreModel.sharedInstance
         model.delegate = self
         model.getData()
-        
         searchBar.delegate = self
         searchBar.showsCancelButton = true
         searchBar.searchBarStyle = .minimal
