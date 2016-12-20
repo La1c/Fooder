@@ -16,12 +16,9 @@ class ExploreCollectionViewController: UICollectionViewController {
     @IBOutlet var searchCategoryView: UIView!
     
     let searchBar = UISearchBar()
-    var basicNavigationBar = UINavigationItem()
 
     var recipes = [Recipe]()
     var model: ExploreModel!
-    
-    var searching = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +36,11 @@ class ExploreCollectionViewController: UICollectionViewController {
         if let collectionView = collectionView as? CollectionViewWithHeader{
             collectionView.fixedHeaderView = searchCategoryView
         }
+        
+        let statusBarBlur = UIBlurEffect(style: .extraLight)
+        let statusBarBlurView = UIVisualEffectView(effect: statusBarBlur)
+        statusBarBlurView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 20)
+        view.addSubview(statusBarBlurView)
     }
 
 
@@ -87,7 +89,6 @@ class ExploreCollectionViewController: UICollectionViewController {
             collectionView.searchIsActive = true
         }
         
-       // searching = true
         self.navigationItem.titleView = searchBar
          self.navigationItem.rightBarButtonItem = nil
           searchBar.becomeFirstResponder()

@@ -24,6 +24,7 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var recipeNameLabel: UILabel!
     @IBOutlet weak var servingsLabel: UILabel!
     @IBOutlet weak var readyInLabel: UILabel!
+    
     var recipe: Recipe!
     var image: UIImage!
     
@@ -50,6 +51,11 @@ class DetailsViewController: UIViewController {
         }
         
         instructionsHeightConstrain.constant = instructionsTextField.intrinsicContentSize.height
+        
+        let statusBarBlur = UIBlurEffect(style: .extraLight)
+        let statusBarBlurView = UIVisualEffectView(effect: statusBarBlur)
+        statusBarBlurView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 20)
+        view.addSubview(statusBarBlurView)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -78,11 +84,25 @@ extension DetailsViewController{
             newItemInList.name = item.name
             newItemInList.imageURL = item.imageURL
             
-            
             try! realm.write {
                 let someItem = realm.create(GroceryListItem.self, value: newItemInList, update: true)
-                someItem.fromRecipes.append(newFromRecipe)
-                someItem.amount += item.amount
+                if !someItem.fromRecipes.contains(newFromRecipe){
+                    someItem.fromRecipes.append(newFromRecipe)
+                    
+                    if(someItem.unit == item.unit){
+                        someItem.amount += item.amount
+                    }else{
+                        FoodService.convertAmount(ingridientName: item.name, sourceAmount: item.amount, sourceUnit: item.unit, targetUnit: someItem.unit, completion: { data in
+                            if let converted = data{
+                                try! realm.write {
+                                    someItem.amount += converted.convertedAmount
+                                }
+                               
+                            }
+                        })
+                    }
+                    
+                }
             }
         }
         
