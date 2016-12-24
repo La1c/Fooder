@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		D9C578B352CFFCCB158A20B2 /* Pods_Fooder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FECC26CF3440DD78E9A76F3C /* Pods_Fooder.framework */; };
 		E70D15171DFC264A00BA0A1A /* MasterTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70D15161DFC264A00BA0A1A /* MasterTabBarController.swift */; };
-		E70D151B1DFC4A6F00BA0A1A /* IngridientsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70D151A1DFC4A6F00BA0A1A /* IngridientsTableViewController.swift */; };
 		E71FD5AE1E0713A300C5B4AC /* CollectionViewWithHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71FD5AD1E0713A300C5B4AC /* CollectionViewWithHeader.swift */; };
 		E71FD5B01E072D8000C5B4AC /* Diets.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71FD5AF1E072D8000C5B4AC /* Diets.swift */; };
 		E71FD5B21E0732D800C5B4AC /* Cuisine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71FD5B11E0732D800C5B4AC /* Cuisine.swift */; };
@@ -57,7 +56,6 @@
 		75A655281EFC3A141CD9D546 /* Pods-Fooder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fooder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fooder/Pods-Fooder.debug.xcconfig"; sourceTree = "<group>"; };
 		A658DE6389F3CE6ED0B99361 /* Pods-Fooder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fooder.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fooder/Pods-Fooder.release.xcconfig"; sourceTree = "<group>"; };
 		E70D15161DFC264A00BA0A1A /* MasterTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterTabBarController.swift; sourceTree = "<group>"; };
-		E70D151A1DFC4A6F00BA0A1A /* IngridientsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngridientsTableViewController.swift; sourceTree = "<group>"; };
 		E71FD5AD1E0713A300C5B4AC /* CollectionViewWithHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewWithHeader.swift; sourceTree = "<group>"; };
 		E71FD5AF1E072D8000C5B4AC /* Diets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diets.swift; sourceTree = "<group>"; };
 		E71FD5B11E0732D800C5B4AC /* Cuisine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cuisine.swift; sourceTree = "<group>"; };
@@ -157,7 +155,6 @@
 			children = (
 				E78AB2661DE32A7A00565CBF /* DetailsViewController.swift */,
 				E70D15161DFC264A00BA0A1A /* MasterTabBarController.swift */,
-				E70D151A1DFC4A6F00BA0A1A /* IngridientsTableViewController.swift */,
 				E7BAF3B41DFCD96C00E31120 /* GroceryListTableViewController.swift */,
 				E78AB25A1DE2E97300565CBF /* ExploreCollectionViewController.swift */,
 				E7B1C34E1E06A90B004E6FEE /* SearchViewController.swift */,
@@ -419,7 +416,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7BAF3B31DFCD1B000E31120 /* RecipeRealmObject.swift in Sources */,
-				E70D151B1DFC4A6F00BA0A1A /* IngridientsTableViewController.swift in Sources */,
 				E78AB25F1DE2EEA500565CBF /* IngridientObject.swift in Sources */,
 				E7B1C34F1E06A90B004E6FEE /* SearchViewController.swift in Sources */,
 				E78AB2631DE3041000565CBF /* ExploreRecipeCell.swift in Sources */,

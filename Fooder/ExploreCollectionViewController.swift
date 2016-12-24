@@ -69,16 +69,17 @@ class ExploreCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            if recipes[indexPath.row].ingridients?.count == 0{
-                FoodService.getRecipeByID(id: recipes[indexPath.row].id, completion: {data in
-                    if let newRecipe = data{
-                        self.recipes[indexPath.row] = newRecipe
-                        self.performSegue(withIdentifier: "ShowDetails", sender: collectionView.cellForItem(at: indexPath))
-                    }
-                })
-            }else{
-                performSegue(withIdentifier: "ShowDetails", sender: collectionView.cellForItem(at: indexPath))
-        }
+//            if recipes[indexPath.row].ingridients?.count == 0{
+//                FoodService.getRecipeByID(id: recipes[indexPath.row].id, completion: {data in
+//                    if let newRecipe = data{
+//                        self.recipes[indexPath.row] = newRecipe
+//                        self.performSegue(withIdentifier: "ShowDetails", sender: collectionView.cellForItem(at: indexPath))
+//                    }
+//                })
+//            }else{
+//                performSegue(withIdentifier: "ShowDetails", sender: collectionView.cellForItem(at: indexPath))
+//        }
+        performSegue(withIdentifier: "ShowDetails", sender: collectionView.cellForItem(at: indexPath))
         }
     
     

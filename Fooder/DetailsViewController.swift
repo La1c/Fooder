@@ -14,12 +14,12 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var imgeView: UIImageView!
     
     @IBOutlet weak var instructionsTextField: UITextView!
+    @IBOutlet var ingridientsTableView: UITableView!
+    @IBOutlet var tableViewHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var instructionsHeightConstrain: NSLayoutConstraint!
-    @IBOutlet weak var ingridientsTableViewContainer: UIView!
-    @IBOutlet weak var containerViewHeightConstrain: NSLayoutConstraint!
     
     @IBOutlet weak var recipeNameLabel: UILabel!
     @IBOutlet weak var servingsLabel: UILabel!
@@ -30,41 +30,41 @@ class DetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ingridientsTableView.delegate = self
+        ingridientsTableView.dataSource = self
         imgeView.image = image
         instructionsTextField.text = recipe.instructions
         recipeNameLabel.text = recipe.title
         
         servingsLabel.text = servingsLabel.text! + " " + String(recipe.servings!)
         readyInLabel.text = readyInLabel.text! + " " + String(recipe.readyInMinutes!) + " min"
+        
+        
+        if recipe.ingridients?.count == 0{
+            FoodService.getRecipeByID(id: recipe.id, completion: {data in
+                                if let newRecipe = data{
+                                    self.recipe = newRecipe
+                                    self.updateUI()
+                                }
+                            })
+        }
+
     }
-    
-    
-    
-    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if let subTableView = ingridientsTableViewContainer.subviews[0] as? UITableView{
-            subTableView.sizeToFit()
-            ingridientsTableViewContainer.frame.size.height = subTableView.contentSize.height
-            containerViewHeightConstrain.constant = subTableView.contentSize.height
-        }
-        
-        instructionsHeightConstrain.constant = instructionsTextField.intrinsicContentSize.height
-        
+        setGoodConstrains()
         let statusBarBlur = UIBlurEffect(style: .extraLight)
         let statusBarBlurView = UIVisualEffectView(effect: statusBarBlur)
         statusBarBlurView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 20)
         view.addSubview(statusBarBlurView)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "EbededTableViewSegue"{
-            if let tableVC = segue.destination as? IngridientsTableViewController{
-                tableVC.ingridients = recipe.ingridients
-            }
-        }
-        
+    
+    func setGoodConstrains(){
+        ingridientsTableView.sizeToFit()
+        tableViewHeightConstraint.constant = ingridientsTableView.contentSize.height
+        instructionsHeightConstrain.constant = instructionsTextField.intrinsicContentSize.height
     }
 }
 
@@ -106,6 +106,36 @@ extension DetailsViewController{
             }
         }
         
+    }
+}
+
+extension DetailsViewController{
+    func updateUI(){
+        instructionsTextField.text = recipe.instructions
+        recipeNameLabel.text = recipe.title
+        servingsLabel.text = "Servings: " + String(recipe.servings!)
+        readyInLabel.text = "Ready in: " + String(recipe.readyInMinutes!) + " min"
+        ingridientsTableView.reloadData()
+        setGoodConstrains()
+    }
+}
+
+extension DetailsViewController: UITableViewDelegate, UITableViewDataSource{
+     func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return recipe.ingridients!.count
+    }
+    
+    
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "IngridientCell", for: indexPath)
+        
+        cell.textLabel?.text = recipe.ingridients![indexPath.row].name
+        cell.detailTextLabel?.text = String(recipe.ingridients![indexPath.row].amount) + " " + String(recipe.ingridients![indexPath.row].unit)
+        return cell
     }
 }
 
