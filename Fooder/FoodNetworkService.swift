@@ -32,32 +32,9 @@ struct FoodService {
                 
                 var responseRecipes = [Recipe]()
                 for recipe in json{
-                    var ingridients = [Ingridient]()
-                    
-                    for ingridient in recipe["extendedIngredients"].arrayValue{
-                        let newIngridient = Ingridient(id: ingridient["id"].intValue,
-                                                       amount: ingridient["amount"].doubleValue,
-                                                       unit: ingridient["unit"].stringValue,
-                                                       unitShort: ingridient["unitShort"].stringValue,
-                                                       name: ingridient["name"].stringValue,
-                                                       imageURL: ingridient["image"].stringValue)
-                        ingridients.append(newIngridient)
-                    }
-                    
-                    let newRecipe = Recipe(id: recipe["id"].intValue,
-                                           vegeterian: recipe["vegeterian"].boolValue,
-                                           vegan: recipe["vegan"].boolValue,
-                                           title: recipe["title"].stringValue,
-                                           imageURL: recipe["image"].stringValue,
-                                           ingridients: ingridients,
-                                           instructions: recipe["instructions"].stringValue,
-                                           readyInMinutes: recipe["readyInMinutes"].doubleValue,
-                                           servings: recipe["servings"].intValue)
-                    responseRecipes.append(newRecipe)
+                    responseRecipes.append(Recipe(data: recipe))
                 }
-                
                 completion(responseRecipes)
-               
             })
     }
     
@@ -87,28 +64,7 @@ struct FoodService {
                 var responseRecipes = [Recipe]()
                 
                 for recipe in json{
-                    var ingridients = [Ingridient]()
-                    
-                    for ingridient in recipe["extendedIngredients"].arrayValue{
-                        let newIngridient = Ingridient(id: ingridient["id"].intValue,
-                                                       amount: ingridient["amount"].doubleValue,
-                                                       unit: ingridient["unit"].stringValue,
-                                                       unitShort: ingridient["unitShort"].stringValue,
-                                                       name: ingridient["name"].stringValue,
-                                                       imageURL: ingridient["image"].stringValue)
-                        ingridients.append(newIngridient)
-                    }
-                    
-                    let newRecipe = Recipe(id: recipe["id"].intValue,
-                                           vegeterian: recipe["vegeterian"].boolValue,
-                                           vegan: recipe["vegan"].boolValue,
-                                           title: recipe["title"].stringValue,
-                                           imageURL: recipe["image"].stringValue,
-                                           ingridients: ingridients,
-                                           instructions: recipe["instructions"].stringValue,
-                                           readyInMinutes: recipe["readyInMinutes"].doubleValue,
-                                           servings: recipe["servings"].intValue)
-                    responseRecipes.append(newRecipe)
+                    responseRecipes.append(Recipe(data: recipe))
                 }
             print(responseRecipes)
             completion(responseRecipes)
@@ -128,31 +84,7 @@ struct FoodService {
                 }
                 
                 let json = JSON(response.result.value!)
-                
-                var ingridients = [Ingridient]()
-                    
-                    for ingridient in json["extendedIngredients"].arrayValue{
-                        let newIngridient = Ingridient(id: ingridient["id"].intValue,
-                                                       amount: ingridient["amount"].doubleValue,
-                                                       unit: ingridient["unit"].stringValue,
-                                                       unitShort: ingridient["unitShort"].stringValue,
-                                                       name: ingridient["name"].stringValue,
-                                                       imageURL: ingridient["image"].stringValue)
-                        ingridients.append(newIngridient)
-                    }
-                    
-                    let newRecipe = Recipe(id: json["id"].intValue,
-                                           vegeterian: json["vegeterian"].boolValue,
-                                           vegan: json["vegan"].boolValue,
-                                           title: json["title"].stringValue,
-                                           imageURL: json["image"].stringValue,
-                                           ingridients: ingridients,
-                                           instructions: json["instructions"].stringValue,
-                                           readyInMinutes: json["readyInMinutes"].doubleValue,
-                                           servings: json["servings"].intValue)
-                print(newRecipe)
-                completion(newRecipe)
-                
+                completion(Recipe(data: json))
             })
     }
     

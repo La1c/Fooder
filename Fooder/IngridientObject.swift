@@ -6,7 +6,7 @@
 //  Copyright © 2016 Vladimir Ageev. All rights reserved.
 //
 
-import Foundation
+import SwiftyJSON
 
 class Ingridient{
     let id: Int
@@ -23,5 +23,14 @@ class Ingridient{
         self.unitShort = unitShort
         self.name = name
         self.imageURL = imageURL
+    }
+    
+    init(data: JSON){
+        self.id = data["id"].intValue
+        self.amount = data["amount"].doubleValue
+        self.unit = data["unit"].stringValue
+        self.unitShort = data["unitShort"].stringValue
+        self.name = data["name"].stringValue
+        self.imageURL = data["image"].stringValue
     }
 }

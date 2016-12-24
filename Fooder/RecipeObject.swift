@@ -6,8 +6,7 @@
 //  Copyright © 2016 Vladimir Ageev. All rights reserved.
 //
 
-import Foundation
-
+import SwiftyJSON
 
 class Recipe{
     let id: Int
@@ -32,5 +31,23 @@ class Recipe{
         self.instructions = instructions
         self.readyInMinutes = readyInMinutes
         self.servings = servings
+    }
+    
+    init(data: JSON){
+        var ingridients = [Ingridient]()
+        
+        for ingridient in data["extendedIngredients"].arrayValue{
+            ingridients.append(Ingridient(data: ingridient))
+        }
+        
+        self.id = data["id"].intValue
+        self.vegeterian = data["vegeterian"].boolValue
+        self.vegan = data["vegan"].boolValue
+        self.title = data["title"].stringValue
+        self.imageURL = data["image"].stringValue
+        self.ingridients = ingridients
+        self.instructions = data["instructions"].stringValue
+        self.readyInMinutes = data["readyInMinutes"].doubleValue
+        self.servings = data["servings"].intValue
     }
 }
