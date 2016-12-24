@@ -14,16 +14,15 @@
 		E71FD5B21E0732D800C5B4AC /* Cuisine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71FD5B11E0732D800C5B4AC /* Cuisine.swift */; };
 		E71FD5B41E07332700C5B4AC /* Intolerance.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71FD5B31E07332700C5B4AC /* Intolerance.swift */; };
 		E71FD5B61E07339C00C5B4AC /* FoodType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71FD5B51E07339C00C5B4AC /* FoodType.swift */; };
+		E756E1F41E0F334500501B0C /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E756E1F31E0F334500501B0C /* ExploreViewController.swift */; };
 		E75C14301E0579A300477A66 /* GroceryListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75C142F1E0579A300477A66 /* GroceryListTableViewCell.swift */; };
 		E78AB2571DE25B0700565CBF /* FoodNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78AB2561DE25B0700565CBF /* FoodNetworkService.swift */; };
-		E78AB25B1DE2E97300565CBF /* ExploreCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78AB25A1DE2E97300565CBF /* ExploreCollectionViewController.swift */; };
 		E78AB25D1DE2EDB200565CBF /* RecipeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78AB25C1DE2EDB200565CBF /* RecipeObject.swift */; };
 		E78AB25F1DE2EEA500565CBF /* IngridientObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78AB25E1DE2EEA500565CBF /* IngridientObject.swift */; };
 		E78AB2611DE2FA4F00565CBF /* ExploreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78AB2601DE2FA4F00565CBF /* ExploreModel.swift */; };
 		E78AB2631DE3041000565CBF /* ExploreRecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78AB2621DE3041000565CBF /* ExploreRecipeCell.swift */; };
 		E78AB2651DE30E9C00565CBF /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78AB2641DE30E9C00565CBF /* UIImageExtension.swift */; };
 		E78AB2671DE32A7A00565CBF /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78AB2661DE32A7A00565CBF /* DetailsViewController.swift */; };
-		E7B1C34F1E06A90B004E6FEE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B1C34E1E06A90B004E6FEE /* SearchViewController.swift */; };
 		E7BAF3B11DFCCCFA00E31120 /* GroceryListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BAF3B01DFCCCFA00E31120 /* GroceryListItem.swift */; };
 		E7BAF3B31DFCD1B000E31120 /* RecipeRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BAF3B21DFCD1B000E31120 /* RecipeRealmObject.swift */; };
 		E7BAF3B51DFCD96C00E31120 /* GroceryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BAF3B41DFCD96C00E31120 /* GroceryListTableViewController.swift */; };
@@ -61,16 +60,15 @@
 		E71FD5B11E0732D800C5B4AC /* Cuisine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cuisine.swift; sourceTree = "<group>"; };
 		E71FD5B31E07332700C5B4AC /* Intolerance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Intolerance.swift; sourceTree = "<group>"; };
 		E71FD5B51E07339C00C5B4AC /* FoodType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodType.swift; sourceTree = "<group>"; };
+		E756E1F31E0F334500501B0C /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		E75C142F1E0579A300477A66 /* GroceryListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryListTableViewCell.swift; sourceTree = "<group>"; };
 		E78AB2561DE25B0700565CBF /* FoodNetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodNetworkService.swift; sourceTree = "<group>"; };
-		E78AB25A1DE2E97300565CBF /* ExploreCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreCollectionViewController.swift; sourceTree = "<group>"; };
 		E78AB25C1DE2EDB200565CBF /* RecipeObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeObject.swift; sourceTree = "<group>"; };
 		E78AB25E1DE2EEA500565CBF /* IngridientObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngridientObject.swift; sourceTree = "<group>"; };
 		E78AB2601DE2FA4F00565CBF /* ExploreModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreModel.swift; sourceTree = "<group>"; };
 		E78AB2621DE3041000565CBF /* ExploreRecipeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreRecipeCell.swift; sourceTree = "<group>"; };
 		E78AB2641DE30E9C00565CBF /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		E78AB2661DE32A7A00565CBF /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
-		E7B1C34E1E06A90B004E6FEE /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		E7BAF3B01DFCCCFA00E31120 /* GroceryListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryListItem.swift; sourceTree = "<group>"; };
 		E7BAF3B21DFCD1B000E31120 /* RecipeRealmObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeRealmObject.swift; sourceTree = "<group>"; };
 		E7BAF3B41DFCD96C00E31120 /* GroceryListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryListTableViewController.swift; sourceTree = "<group>"; };
@@ -156,8 +154,7 @@
 				E78AB2661DE32A7A00565CBF /* DetailsViewController.swift */,
 				E70D15161DFC264A00BA0A1A /* MasterTabBarController.swift */,
 				E7BAF3B41DFCD96C00E31120 /* GroceryListTableViewController.swift */,
-				E78AB25A1DE2E97300565CBF /* ExploreCollectionViewController.swift */,
-				E7B1C34E1E06A90B004E6FEE /* SearchViewController.swift */,
+				E756E1F31E0F334500501B0C /* ExploreViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -417,9 +414,9 @@
 			files = (
 				E7BAF3B31DFCD1B000E31120 /* RecipeRealmObject.swift in Sources */,
 				E78AB25F1DE2EEA500565CBF /* IngridientObject.swift in Sources */,
-				E7B1C34F1E06A90B004E6FEE /* SearchViewController.swift in Sources */,
 				E78AB2631DE3041000565CBF /* ExploreRecipeCell.swift in Sources */,
 				E71FD5B41E07332700C5B4AC /* Intolerance.swift in Sources */,
+				E756E1F41E0F334500501B0C /* ExploreViewController.swift in Sources */,
 				E71FD5AE1E0713A300C5B4AC /* CollectionViewWithHeader.swift in Sources */,
 				E70D15171DFC264A00BA0A1A /* MasterTabBarController.swift in Sources */,
 				E78AB25D1DE2EDB200565CBF /* RecipeObject.swift in Sources */,
@@ -427,7 +424,6 @@
 				E78AB2611DE2FA4F00565CBF /* ExploreModel.swift in Sources */,
 				E78AB2651DE30E9C00565CBF /* UIImageExtension.swift in Sources */,
 				E78AB2571DE25B0700565CBF /* FoodNetworkService.swift in Sources */,
-				E78AB25B1DE2E97300565CBF /* ExploreCollectionViewController.swift in Sources */,
 				E71FD5B61E07339C00C5B4AC /* FoodType.swift in Sources */,
 				E75C14301E0579A300477A66 /* GroceryListTableViewCell.swift in Sources */,
 				E7DD8BEB1DE1DC1C00EA1584 /* AppDelegate.swift in Sources */,

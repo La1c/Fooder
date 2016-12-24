@@ -1,0 +1,115 @@
+//
+//  ExploreViewController.swift
+//  Fooder
+//
+//  Created by Vladimir on 25.12.16.
+//  Copyright © 2016 Vladimir Ageev. All rights reserved.
+//
+
+import UIKit
+
+class ExploreViewController: UIViewController {
+
+    @IBOutlet var searchButton: UIBarButtonItem!
+    @IBOutlet var collectionView: UICollectionView!
+    let searchBar = UISearchBar()
+    
+    var recipes = [Recipe]()
+    var model: ExploreModel!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        model = ExploreModel.sharedInstance
+        model.delegate = self
+        model.getData()
+        searchBar.delegate = self
+        searchBar.showsCancelButton = true
+        searchBar.searchBarStyle = .minimal
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let statusBarBlur = UIBlurEffect(style: .extraLight)
+        let statusBarBlurView = UIVisualEffectView(effect: statusBarBlur)
+        statusBarBlurView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 20)
+        view.addSubview(statusBarBlurView)
+    }
+    
+    @IBAction func searchButtonPressed(_ sender: Any) {
+        self.navigationItem.titleView?.addSubview(searchBar)
+        
+        if let collectionView = collectionView as? CollectionViewWithHeader{
+            collectionView.searchIsActive = true
+        }
+        
+        self.navigationItem.titleView = searchBar
+        self.navigationItem.rightBarButtonItem = nil
+        searchBar.becomeFirstResponder()
+    }
+}
+
+
+extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+     func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return recipes.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MealCell",
+                                                      for: indexPath)
+        cell.sizeThatFits(CGSize(width: view.frame.width, height: cell.frame.height))
+        if let cell =  cell as? ExploreRecipeCell{
+            cell.configureCell(for: recipes[indexPath.row])
+        }
+        
+        return cell
+    }
+}
+
+
+extension ExploreViewController: UISearchBarDelegate{
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.navigationItem.titleView = nil
+        self.navigationItem.rightBarButtonItem = searchButton
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let query = searchBar.text!
+        model.searchRecipes(query: query)
+    }
+}
+
+//MARK: -ExploreModelDelegate
+extension ExploreViewController: ExploreModelDelegate{
+    func modelDidLoadNewData() {
+        recipes = model.recipes
+        collectionView.reloadData()
+    }
+}
+
+//MARK: -prepareForSegue
+extension ExploreViewController{
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDetails"{
+            if let cell = sender as? ExploreRecipeCell{
+                guard let row = collectionView?.indexPath(for: cell)?.row else{
+                    return
+                }
+                
+                let vc = segue.destination as! DetailsViewController
+                vc.image = cell.imageView.image
+                vc.recipe = recipes[row]
+            }
+        }
+    }
+}
+

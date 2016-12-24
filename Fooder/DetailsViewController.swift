@@ -45,10 +45,8 @@ class DetailsViewController: UIViewController {
                                 if let newRecipe = data{
                                     self.recipe = newRecipe
                                     self.updateUI()
-                                }
-                            })
+                                }})
         }
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -97,7 +95,6 @@ extension DetailsViewController{
                                 try! realm.write {
                                     someItem.amount += converted.convertedAmount
                                 }
-                               
                             }
                         })
                     }
@@ -109,6 +106,8 @@ extension DetailsViewController{
     }
 }
 
+
+//MARK: -Update UI
 extension DetailsViewController{
     func updateUI(){
         instructionsTextField.text = recipe.instructions
@@ -120,6 +119,7 @@ extension DetailsViewController{
     }
 }
 
+//MARK: -Table View
 extension DetailsViewController: UITableViewDelegate, UITableViewDataSource{
      func numberOfSections(in tableView: UITableView) -> Int {
         return 1
