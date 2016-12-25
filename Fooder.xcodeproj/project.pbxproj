@@ -23,6 +23,8 @@
 		E78AB2631DE3041000565CBF /* ExploreRecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78AB2621DE3041000565CBF /* ExploreRecipeCell.swift */; };
 		E78AB2651DE30E9C00565CBF /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78AB2641DE30E9C00565CBF /* UIImageExtension.swift */; };
 		E78AB2671DE32A7A00565CBF /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78AB2661DE32A7A00565CBF /* DetailsViewController.swift */; };
+		E7B1C41C1E100BAC00A5B71D /* IntolerancesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B1C41B1E100BAC00A5B71D /* IntolerancesTableViewController.swift */; };
+		E7B1C41E1E100CC700A5B71D /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B1C41D1E100CC700A5B71D /* SettingsTableViewController.swift */; };
 		E7BAF3B11DFCCCFA00E31120 /* GroceryListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BAF3B01DFCCCFA00E31120 /* GroceryListItem.swift */; };
 		E7BAF3B31DFCD1B000E31120 /* RecipeRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BAF3B21DFCD1B000E31120 /* RecipeRealmObject.swift */; };
 		E7BAF3B51DFCD96C00E31120 /* GroceryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BAF3B41DFCD96C00E31120 /* GroceryListTableViewController.swift */; };
@@ -69,6 +71,8 @@
 		E78AB2621DE3041000565CBF /* ExploreRecipeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreRecipeCell.swift; sourceTree = "<group>"; };
 		E78AB2641DE30E9C00565CBF /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		E78AB2661DE32A7A00565CBF /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		E7B1C41B1E100BAC00A5B71D /* IntolerancesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntolerancesTableViewController.swift; sourceTree = "<group>"; };
+		E7B1C41D1E100CC700A5B71D /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		E7BAF3B01DFCCCFA00E31120 /* GroceryListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryListItem.swift; sourceTree = "<group>"; };
 		E7BAF3B21DFCD1B000E31120 /* RecipeRealmObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeRealmObject.swift; sourceTree = "<group>"; };
 		E7BAF3B41DFCD96C00E31120 /* GroceryListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryListTableViewController.swift; sourceTree = "<group>"; };
@@ -155,6 +159,8 @@
 				E70D15161DFC264A00BA0A1A /* MasterTabBarController.swift */,
 				E7BAF3B41DFCD96C00E31120 /* GroceryListTableViewController.swift */,
 				E756E1F31E0F334500501B0C /* ExploreViewController.swift */,
+				E7B1C41B1E100BAC00A5B71D /* IntolerancesTableViewController.swift */,
+				E7B1C41D1E100CC700A5B71D /* SettingsTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -430,7 +436,9 @@
 				E71FD5B21E0732D800C5B4AC /* Cuisine.swift in Sources */,
 				E7BAF3B51DFCD96C00E31120 /* GroceryListTableViewController.swift in Sources */,
 				E7BAF3B11DFCCCFA00E31120 /* GroceryListItem.swift in Sources */,
+				E7B1C41C1E100BAC00A5B71D /* IntolerancesTableViewController.swift in Sources */,
 				E78AB2671DE32A7A00565CBF /* DetailsViewController.swift in Sources */,
+				E7B1C41E1E100CC700A5B71D /* SettingsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
