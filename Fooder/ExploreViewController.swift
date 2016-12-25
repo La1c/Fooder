@@ -10,6 +10,8 @@ import UIKit
 
 class ExploreViewController: UIViewController {
 
+    @IBOutlet var foodTypeSegmentControl: UISegmentedControl!
+    @IBOutlet var foodTypeScrollView: UIScrollView!
     @IBOutlet var searchButton: UIBarButtonItem!
     @IBOutlet var collectionView: UICollectionView!
     let searchBar = UISearchBar()
@@ -37,6 +39,8 @@ class ExploreViewController: UIViewController {
         let statusBarBlurView = UIVisualEffectView(effect: statusBarBlur)
         statusBarBlurView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 20)
         view.addSubview(statusBarBlurView)
+        
+        foodTypeScrollView.isHidden = true
     }
     
     @IBAction func searchButtonPressed(_ sender: Any) {
@@ -48,6 +52,7 @@ class ExploreViewController: UIViewController {
         
         self.navigationItem.titleView = searchBar
         self.navigationItem.rightBarButtonItem = nil
+        foodTypeScrollView.isHidden = false
         searchBar.becomeFirstResponder()
     }
 }
@@ -79,6 +84,7 @@ extension ExploreViewController: UISearchBarDelegate{
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         self.navigationItem.titleView = nil
         self.navigationItem.rightBarButtonItem = searchButton
+        foodTypeScrollView.isHidden = true
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

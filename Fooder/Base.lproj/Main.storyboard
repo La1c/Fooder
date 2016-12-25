@@ -358,7 +358,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CcQ-3q-ytk">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CcQ-3q-ytk">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="h1q-gY-e2x">
@@ -418,12 +418,60 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hxq-f8-avs">
+                                <rect key="frame" x="0.0" y="64" width="320" height="30"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kTD-wJ-g2C">
+                                        <rect key="frame" x="0.0" y="0.0" width="1000" height="30"/>
+                                        <subviews>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9Zk-wc-CN2">
+                                                <rect key="frame" x="0.0" y="0.0" width="1000" height="31"/>
+                                                <segments>
+                                                    <segment title="Main Course"/>
+                                                    <segment title="Side Dish"/>
+                                                    <segment title="Dessert"/>
+                                                    <segment title="Appetizer"/>
+                                                    <segment title="Salad"/>
+                                                    <segment title="Bread"/>
+                                                    <segment title="Breakfast"/>
+                                                    <segment title="Soup"/>
+                                                    <segment title="Beverage"/>
+                                                    <segment title="Sauce"/>
+                                                    <segment title="Drink"/>
+                                                </segments>
+                                            </segmentedControl>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="9Zk-wc-CN2" secondAttribute="trailing" id="5VB-ip-XA3"/>
+                                            <constraint firstAttribute="width" constant="1000" id="DyH-K4-A2P"/>
+                                            <constraint firstAttribute="bottom" secondItem="9Zk-wc-CN2" secondAttribute="bottom" id="JPn-sH-v4T"/>
+                                            <constraint firstItem="9Zk-wc-CN2" firstAttribute="top" secondItem="kTD-wJ-g2C" secondAttribute="top" id="VBR-yT-pPo"/>
+                                            <constraint firstItem="9Zk-wc-CN2" firstAttribute="height" secondItem="kTD-wJ-g2C" secondAttribute="height" id="cVV-4q-n6E"/>
+                                            <constraint firstItem="9Zk-wc-CN2" firstAttribute="width" secondItem="kTD-wJ-g2C" secondAttribute="width" id="dfb-GH-n1N"/>
+                                            <constraint firstItem="9Zk-wc-CN2" firstAttribute="leading" secondItem="kTD-wJ-g2C" secondAttribute="leading" id="qzh-ui-r39"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="kTD-wJ-g2C" secondAttribute="bottom" id="Gyl-2o-uIm"/>
+                                    <constraint firstItem="kTD-wJ-g2C" firstAttribute="top" secondItem="Hxq-f8-avs" secondAttribute="top" id="kuL-dO-iwJ"/>
+                                    <constraint firstItem="kTD-wJ-g2C" firstAttribute="height" secondItem="Hxq-f8-avs" secondAttribute="height" id="lXc-O9-q72"/>
+                                    <constraint firstAttribute="trailing" secondItem="kTD-wJ-g2C" secondAttribute="trailing" id="vVs-pz-Hjf"/>
+                                    <constraint firstItem="kTD-wJ-g2C" firstAttribute="leading" secondItem="Hxq-f8-avs" secondAttribute="leading" id="xGG-6l-hWz"/>
+                                    <constraint firstAttribute="height" constant="30" id="xyc-I4-73z"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="CcQ-3q-ytk" secondAttribute="trailing" id="B8R-Z9-IMG"/>
+                            <constraint firstAttribute="trailing" secondItem="Hxq-f8-avs" secondAttribute="trailing" id="aBK-Ys-3Ym"/>
+                            <constraint firstItem="Hxq-f8-avs" firstAttribute="top" secondItem="Xov-8o-OBC" secondAttribute="bottom" id="bBJ-Nd-M1L"/>
                             <constraint firstItem="CcQ-3q-ytk" firstAttribute="leading" secondItem="f7g-BM-Z4D" secondAttribute="leading" id="bcZ-tq-fuI"/>
                             <constraint firstAttribute="bottom" secondItem="CcQ-3q-ytk" secondAttribute="bottom" id="mX5-NX-DgP"/>
+                            <constraint firstItem="Hxq-f8-avs" firstAttribute="width" secondItem="f7g-BM-Z4D" secondAttribute="width" id="qYJ-IH-I53"/>
+                            <constraint firstItem="Hxq-f8-avs" firstAttribute="leading" secondItem="f7g-BM-Z4D" secondAttribute="leading" id="uqg-wf-opz"/>
                             <constraint firstItem="CcQ-3q-ytk" firstAttribute="top" secondItem="f7g-BM-Z4D" secondAttribute="top" id="yNA-oO-oDY"/>
                         </constraints>
                     </view>
@@ -436,6 +484,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="CcQ-3q-ytk" id="cqq-xl-29U"/>
+                        <outlet property="foodTypeScrollView" destination="Hxq-f8-avs" id="fpR-GS-fKz"/>
+                        <outlet property="foodTypeSegmentControl" destination="9Zk-wc-CN2" id="AWs-Hq-uSb"/>
                         <outlet property="searchButton" destination="n6y-iz-LAk" id="yJy-fN-ro2"/>
                     </connections>
                 </viewController>
