@@ -9,6 +9,7 @@
 import Foundation
 
 enum FoodType: String{
+    case all = ""
     case mainCourse = "main course"
     case sideDish = "side dish"
     case dessert = "dessert"

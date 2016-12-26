@@ -84,22 +84,22 @@ extension DetailsViewController{
             
             try! realm.write {
                 let someItem = realm.create(GroceryListItem.self, value: newItemInList, update: true)
-                if !someItem.fromRecipes.contains(newFromRecipe){
+                //if !someItem.fromRecipes.contains(newFromRecipe){
                     someItem.fromRecipes.append(newFromRecipe)
                     
-                    if(someItem.unit == item.unit){
+                //    if(someItem.unit == item.unit){
                         someItem.amount += item.amount
-                    }else{
-                        FoodService.convertAmount(ingridientName: item.name, sourceAmount: item.amount, sourceUnit: item.unit, targetUnit: someItem.unit, completion: { data in
-                            if let converted = data{
-                                try! realm.write {
-                                    someItem.amount += converted.convertedAmount
-                                }
-                            }
-                        })
-                    }
+                  //  }else{
+                 //       FoodService.convertAmount(ingridientName: item.name, sourceAmount: item.amount, sourceUnit: item.unit, targetUnit: someItem.unit, completion: { data in
+                 //           if let converted = data{
+                  //              try! realm.write {
+                  //                  someItem.amount += converted.convertedAmount
+                    //            }
+                   //         }
+                 //       })
+                 //   }
                     
-                }
+                //}
             }
         }
         

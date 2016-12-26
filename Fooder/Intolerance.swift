@@ -6,8 +6,12 @@
 //  Copyright © 2016 Vladimir Ageev. All rights reserved.
 //
 
-import Foundation
-
-enum Intolerance{
+import RealmSwift
+class Intolerance: Object {
+    dynamic var name = ""
+    dynamic var status = false
     
+    override static func primaryKey() -> String? {
+        return "name"
+    }
 }

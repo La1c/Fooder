@@ -6,7 +6,7 @@
 //  Copyright © 2016 Vladimir Ageev. All rights reserved.
 //
 
-import Foundation
+import RealmSwift
 
 
 protocol ExploreModelDelegate: class{
@@ -16,12 +16,19 @@ protocol ExploreModelDelegate: class{
 class ExploreModel{
     
     var recipes = [Recipe]()
+    var intolerances:Results<Intolerance>!
     let foodService = FoodService()
     let numberOfRecipesToGetEveryTime: Int
     weak var delegate: ExploreModelDelegate?
 
     init(numberOfRecipes: Int = 30) {
         self.numberOfRecipesToGetEveryTime = numberOfRecipes
+        intolerances = realm.objects(Intolerance.self)
+        
+        if intolerances.count == 0{
+            createDefaults()
+            intolerances = realm.objects(Intolerance.self)
+        }
     }
     
     static let sharedInstance: ExploreModel = {
@@ -39,10 +46,38 @@ class ExploreModel{
     }
     
     func searchRecipes(query: String){
-        FoodService.recipeComplexSearch(query: query, completion: {newData in
+        
+        let intolerancesList = realm.objects(Intolerance.self)
+        var namesArray = [String]()
+        for intolerance in intolerancesList{
+            namesArray.append(intolerance.name)
+        }
+        
+        
+        
+        FoodService.recipeSearch(intolerances: namesArray.joined(separator: ","), query: query, completion: {newData in
             if let data = newData{
                 self.recipes = data
                 self.delegate?.modelDidLoadNewData()
             }})
+    }
+    
+    func createDefaults(){
+        try! realm.write {
+            let defaultIntolerancesList = [
+                Intolerance(value:["dairy", false]),
+                Intolerance(value:["egg", false]),
+                Intolerance(value:["gluten", false]),
+                Intolerance(value:["peanut", false]),
+                Intolerance(value:["sesame", false]),
+                Intolerance(value:["seafood", false]),
+                Intolerance(value:["shellfish", false]),
+                Intolerance(value:["soy", false]),
+                Intolerance(value:["sulfite", false]),
+                Intolerance(value:["wheat", false]),
+                Intolerance(value:["tree nut", false])
+            ]
+            realm.add(defaultIntolerancesList)
+        }
     }
 }

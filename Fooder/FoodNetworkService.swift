@@ -88,14 +88,14 @@ struct FoodService {
             })
     }
     
-    static func recipeSearch(cuisine: Cuisine? = nil, diet: Diet = .none, intolerances: [Intolerance]? = nil, query: String, type: FoodType = .mainCourse, completion: @escaping ([Recipe]?) -> Void){
+    static func recipeSearch(cuisine: Cuisine? = nil, diet: Diet = .none, intolerances: String = "", query: String, type: FoodType = .all, completion: @escaping ([Recipe]?) -> Void){
         var responseRecipes = [Recipe]()
         Alamofire.request("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search",
                           parameters: ["limitLicense": true,
                                        //   "cuisine": "", //enable later!
                             "diet": diet.rawValue,
                             "instructionsRequired": true,
-                            //   "intolerances":  "", //enable later!
+                            "intolerances":  intolerances,
                             "query": query,
                             "type": type.rawValue,
                             "offset" : 0,
@@ -109,13 +109,11 @@ struct FoodService {
                 }
                 
                 let json = JSON(response.result.value!)["results"].arrayValue
-                
-                
-                for recipe in json{
-                    self.getRecipeByID(id: recipe["id"].intValue, completion: {newData in
-                        if let data = newData{
-                            responseRecipes.append(data)
-                        }})
+                let baseURI = JSON(response.result.value!)["baseUri"].stringValue
+                for var recipe in json{
+                    //Due to api response JSON structure, I have to do this
+                    recipe["image"] = JSON(baseURI + recipe["image"].stringValue)
+                    responseRecipes.append(Recipe(data: recipe))
                 }
                  completion(responseRecipes)
             })
