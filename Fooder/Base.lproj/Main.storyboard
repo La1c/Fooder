@@ -558,6 +558,9 @@
                                                     <segment title="Drink"/>
                                                     <segment title="Side Dish"/>
                                                 </segments>
+                                                <connections>
+                                                    <action selector="segmentControlValueChanged:" destination="dpD-SA-3Tk" eventType="valueChanged" id="uh7-fp-VO6"/>
+                                                </connections>
                                             </segmentedControl>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

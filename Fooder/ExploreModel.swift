@@ -45,7 +45,7 @@ class ExploreModel{
                                         }})
     }
     
-    func searchRecipes(query: String){
+    func searchRecipes(query: String, type: FoodType = .all){
         
         let intolerancesList = realm.objects(Intolerance.self)
         var namesArray = [String]()
@@ -55,7 +55,7 @@ class ExploreModel{
         
         
         
-        FoodService.recipeSearch(intolerances: namesArray.joined(separator: ","), query: query, completion: {newData in
+        FoodService.recipeSearch(intolerances: namesArray.joined(separator: ","), query: query, type: type, completion: {newData in
             if let data = newData{
                 self.recipes = data
                 self.delegate?.modelDidLoadNewData()

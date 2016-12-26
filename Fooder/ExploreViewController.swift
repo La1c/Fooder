@@ -55,6 +55,13 @@ class ExploreViewController: UIViewController {
         foodTypeScrollView.isHidden = false
         searchBar.becomeFirstResponder()
     }
+    @IBAction func segmentControlValueChanged(_ sender: Any) {
+        let foodType =   foodTypeSegmentControl.titleForSegment(at: foodTypeSegmentControl.selectedSegmentIndex)!.lowercased()
+        let foodTypeEnum = FoodType(rawValue: foodType) ?? .all
+        let query = searchBar.text!
+        
+        model.searchRecipes(query: query, type: foodTypeEnum)
+    }
 }
 
 
@@ -88,8 +95,11 @@ extension ExploreViewController: UISearchBarDelegate{
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let foodType =   foodTypeSegmentControl.titleForSegment(at: foodTypeSegmentControl.selectedSegmentIndex)!.lowercased()
+        let foodTypeEnum = FoodType(rawValue: foodType) ?? .all
         let query = searchBar.text!
-        model.searchRecipes(query: query)
+        
+        model.searchRecipes(query: query, type: foodTypeEnum)
     }
 }
 
@@ -118,4 +128,6 @@ extension ExploreViewController{
         }
     }
 }
+
+
 
