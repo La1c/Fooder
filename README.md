@@ -30,5 +30,5 @@ Screenshots:
 
 Animated:
 
-![](https://github.com/La1c/Fooder/blob/master/out.gif)
+![](https://github.com/La1c/Fooder/blob/master/screengif.gif)
 
