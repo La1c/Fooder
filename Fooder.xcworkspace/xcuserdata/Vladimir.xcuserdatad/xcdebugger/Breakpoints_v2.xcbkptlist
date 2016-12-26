@@ -383,6 +383,98 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "10"
             endingLineNumber = "10">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Fooder.IntolerancesTableViewController.__deallocating_deinit"
+                  moduleName = "Fooder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Vladimir/Dropbox/ios@VK/Fooder/Fooder/IntolerancesTableViewController.swift"
+                  timestampString = "504452442.942493"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Fooder.IntolerancesTableViewController.__allocating_init (style : __C.UITableViewStyle) -&gt; Fooder.IntolerancesTableViewController"
+                  moduleName = "Fooder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Vladimir/Dropbox/ios@VK/Fooder/Fooder/IntolerancesTableViewController.swift"
+                  timestampString = "504452442.947556"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Fooder.IntolerancesTableViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Fooder.IntolerancesTableViewController"
+                  moduleName = "Fooder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Vladimir/Dropbox/ios@VK/Fooder/Fooder/IntolerancesTableViewController.swift"
+                  timestampString = "504452442.949942"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "84">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Fooder.IntolerancesTableViewController.__allocating_init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Fooder.IntolerancesTableViewController"
+                  moduleName = "Fooder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Vladimir/Dropbox/ios@VK/Fooder/Fooder/IntolerancesTableViewController.swift"
+                  timestampString = "504452442.952614"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "23">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Fooder.IntolerancesTableViewController.__allocating_init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Fooder.IntolerancesTableViewController&gt;"
+                  moduleName = "Fooder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Vladimir/Dropbox/ios@VK/Fooder/Fooder/IntolerancesTableViewController.swift"
+                  timestampString = "504452442.955207"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Fooder.IntolerancesTableViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Fooder.IntolerancesTableViewController&gt;"
+                  moduleName = "Fooder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Vladimir/Dropbox/ios@VK/Fooder/Fooder/IntolerancesTableViewController.swift"
+                  timestampString = "504452442.958072"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "43">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -414,6 +506,22 @@
             startingLineNumber = "43"
             endingLineNumber = "43"
             landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fooder/GroceryListTableViewController.swift"
+            timestampString = "504452005.765162"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "tableView(_:commit:forRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

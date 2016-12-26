@@ -46,4 +46,16 @@ class GroceryListTableViewController: UITableViewController {
         }
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        let id = items[indexPath.row].id
+        let product = realm.objects(GroceryListItem.self).filter("id == %@", id)[0]
+        try! realm.write{
+            realm.delete(product)
+        }
+        
+        let indexPaths = [indexPath]
+        
+        tableView.deleteRows(at: indexPaths, with: .automatic)
+    }
 }

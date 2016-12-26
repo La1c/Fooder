@@ -542,7 +542,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kTD-wJ-g2C">
                                         <rect key="frame" x="0.0" y="0.0" width="1000" height="30"/>
                                         <subviews>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9Zk-wc-CN2">
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9Zk-wc-CN2" customClass="FoodTypeSegmentedControl" customModule="Fooder" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="1000" height="31"/>
                                                 <segments>
                                                     <segment title="All"/>
@@ -558,6 +558,11 @@
                                                     <segment title="Drink"/>
                                                     <segment title="Side Dish"/>
                                                 </segments>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="segmentControlValueChanged:" destination="dpD-SA-3Tk" eventType="valueChanged" id="uh7-fp-VO6"/>
                                                 </connections>
