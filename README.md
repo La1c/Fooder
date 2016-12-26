@@ -7,6 +7,7 @@ Get a grocery list from recipes you like!
 Current status:
  * Details screen design is nearly finished
  * You can add new groceries from recipes
+ * User can choose intolerances in settings (e.g. one has peanut allergy), recipes with such products will be omited from search results
 
 TO-DO:
 
