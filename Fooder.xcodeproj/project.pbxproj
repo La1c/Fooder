@@ -27,8 +27,6 @@
 		E7B1C41E1E100CC700A5B71D /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B1C41D1E100CC700A5B71D /* SettingsTableViewController.swift */; };
 		E7B1C4201E11291800A5B71D /* IntoleranceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B1C41F1E11291800A5B71D /* IntoleranceTableViewCell.swift */; };
 		E7B1C4221E11502200A5B71D /* FoodTypeSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B1C4211E11502200A5B71D /* FoodTypeSegmentedControl.swift */; };
-		E7BAF3B11DFCCCFA00E31120 /* GroceryListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BAF3B01DFCCCFA00E31120 /* GroceryListItem.swift */; };
-		E7BAF3B31DFCD1B000E31120 /* RecipeRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BAF3B21DFCD1B000E31120 /* RecipeRealmObject.swift */; };
 		E7BAF3B51DFCD96C00E31120 /* GroceryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BAF3B41DFCD96C00E31120 /* GroceryListTableViewController.swift */; };
 		E7DD8BEB1DE1DC1C00EA1584 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DD8BEA1DE1DC1C00EA1584 /* AppDelegate.swift */; };
 		E7DD8BF01DE1DC1C00EA1584 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7DD8BEE1DE1DC1C00EA1584 /* Main.storyboard */; };
@@ -77,8 +75,6 @@
 		E7B1C41D1E100CC700A5B71D /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		E7B1C41F1E11291800A5B71D /* IntoleranceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntoleranceTableViewCell.swift; sourceTree = "<group>"; };
 		E7B1C4211E11502200A5B71D /* FoodTypeSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodTypeSegmentedControl.swift; sourceTree = "<group>"; };
-		E7BAF3B01DFCCCFA00E31120 /* GroceryListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryListItem.swift; sourceTree = "<group>"; };
-		E7BAF3B21DFCD1B000E31120 /* RecipeRealmObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeRealmObject.swift; sourceTree = "<group>"; };
 		E7BAF3B41DFCD96C00E31120 /* GroceryListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryListTableViewController.swift; sourceTree = "<group>"; };
 		E7DD8BE71DE1DC1C00EA1584 /* Fooder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fooder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7DD8BEA1DE1DC1C00EA1584 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -143,8 +139,6 @@
 			children = (
 				E78AB25E1DE2EEA500565CBF /* IngridientObject.swift */,
 				E78AB25C1DE2EDB200565CBF /* RecipeObject.swift */,
-				E7BAF3B01DFCCCFA00E31120 /* GroceryListItem.swift */,
-				E7BAF3B21DFCD1B000E31120 /* RecipeRealmObject.swift */,
 				E78AB2601DE2FA4F00565CBF /* ExploreModel.swift */,
 				E78AB2621DE3041000565CBF /* ExploreRecipeCell.swift */,
 				E75C142F1E0579A300477A66 /* GroceryListTableViewCell.swift */,
@@ -425,7 +419,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7B1C4201E11291800A5B71D /* IntoleranceTableViewCell.swift in Sources */,
-				E7BAF3B31DFCD1B000E31120 /* RecipeRealmObject.swift in Sources */,
 				E78AB25F1DE2EEA500565CBF /* IngridientObject.swift in Sources */,
 				E78AB2631DE3041000565CBF /* ExploreRecipeCell.swift in Sources */,
 				E71FD5B41E07332700C5B4AC /* Intolerance.swift in Sources */,
@@ -443,7 +436,6 @@
 				E7DD8BEB1DE1DC1C00EA1584 /* AppDelegate.swift in Sources */,
 				E71FD5B21E0732D800C5B4AC /* Cuisine.swift in Sources */,
 				E7BAF3B51DFCD96C00E31120 /* GroceryListTableViewController.swift in Sources */,
-				E7BAF3B11DFCCCFA00E31120 /* GroceryListItem.swift in Sources */,
 				E7B1C41C1E100BAC00A5B71D /* IntolerancesTableViewController.swift in Sources */,
 				E78AB2671DE32A7A00565CBF /* DetailsViewController.swift in Sources */,
 				E7B1C41E1E100CC700A5B71D /* SettingsTableViewController.swift in Sources */,

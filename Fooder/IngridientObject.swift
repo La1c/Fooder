@@ -7,30 +7,29 @@
 //
 
 import SwiftyJSON
+import RealmSwift
 
-class Ingridient{
-    let id: Int
-    let amount: Double
-    let unit: String
-    let unitShort: String
-    let name: String
-    let imageURL: String
+class Ingridient:Object{
+    dynamic var id: Int = 0
+    dynamic var amount: Double = 0
+    dynamic var unit: String = ""
+    dynamic var unitShort: String = ""
+    dynamic var name: String = ""
+    dynamic var imageURL: String = ""
+    dynamic var inGroceryList: Bool = false
+    let fromRecipes = LinkingObjects(fromType: Recipe.self, property: "ingridients")
     
-    init(id: Int, amount: Double, unit: String, unitShort: String, name: String, imageURL:String) {
-        self.id = id
-        self.amount = amount
-        self.unit = unit
-        self.unitShort = unitShort
-        self.name = name
-        self.imageURL = imageURL
-    }
-    
-    init(data: JSON){
+    convenience init(data: JSON){
+        self.init()
         self.id = data["id"].intValue
         self.amount = data["amount"].doubleValue
         self.unit = data["unit"].stringValue
         self.unitShort = data["unitShort"].stringValue
         self.name = data["name"].stringValue
         self.imageURL = data["image"].stringValue
+    }
+    
+    override static func primaryKey() -> String? {
+        return "id"
     }
 }

@@ -36,11 +36,11 @@ class DetailsViewController: UIViewController {
         instructionsTextField.text = recipe.instructions
         recipeNameLabel.text = recipe.title
         
-        servingsLabel.text = servingsLabel.text! + " " + String(recipe.servings!)
-        readyInLabel.text = readyInLabel.text! + " " + String(recipe.readyInMinutes!) + " min"
+        servingsLabel.text = servingsLabel.text! + " " + String(recipe.servings)
+        readyInLabel.text = readyInLabel.text! + " " + String(recipe.readyInMinutes) + " min"
         
         
-        if recipe.ingridients?.count == 0{
+        if recipe.ingridients.count == 0{
             FoodService.getRecipeByID(id: recipe.id, completion: {data in
                                 if let newRecipe = data{
                                     self.recipe = newRecipe
@@ -71,24 +71,30 @@ class DetailsViewController: UIViewController {
 //MARK: -add button pressed
 extension DetailsViewController{
     @IBAction func AddToGroceryListButonTapped(_ sender: Any) {
-        let newFromRecipe = RecipeRealm()
-        newFromRecipe.id = recipe.id
-        newFromRecipe.title = recipe.title
-        for item in recipe.ingridients!{
+//        let newFromRecipe = RecipeRealm()
+//        newFromRecipe.id = recipe.id
+//        newFromRecipe.title = recipe.title
+        try! realm.write {
+        for item in recipe.ingridients{
             
-            let newItemInList = GroceryListItem()
-            newItemInList.id = item.id
-            newItemInList.unit = item.unitShort
-            newItemInList.name = item.name
-            newItemInList.imageURL = item.imageURL
-            
-            try! realm.write {
-                let someItem = realm.create(GroceryListItem.self, value: newItemInList, update: true)
+           // let newItemInList = GroceryListItem()
+           // newItemInList.id = item.id
+           // newItemInList.unit = item.unitShort
+           // newItemInList.name = item.name
+            //newItemInList.imageURL = item.imageURL
+                item.inGroceryList = true
+                realm.add(item, update: true)
+                realm.add(recipe, update: true)
+                
+               // let someItem = realm.create(GroceryListItem.self, value: newItemInList, update: true)
                 //if !someItem.fromRecipes.contains(newFromRecipe){
-                    someItem.fromRecipes.append(newFromRecipe)
+               // if !someItem.fromRecipes.contains(newFromRecipe.self){
+              //      someItem.fromRecipes.append(newFromRecipe)
+              //  }
+                
                     
                 //    if(someItem.unit == item.unit){
-                        someItem.amount += item.amount
+                //        someItem.amount += item.amount
                   //  }else{
                  //       FoodService.convertAmount(ingridientName: item.name, sourceAmount: item.amount, sourceUnit: item.unit, targetUnit: someItem.unit, completion: { data in
                  //           if let converted = data{
@@ -112,8 +118,8 @@ extension DetailsViewController{
     func updateUI(){
         instructionsTextField.text = recipe.instructions
         recipeNameLabel.text = recipe.title
-        servingsLabel.text = "Servings: " + String(recipe.servings!)
-        readyInLabel.text = "Ready in: " + String(recipe.readyInMinutes!) + " min"
+        servingsLabel.text = "Servings: " + String(recipe.servings)
+        readyInLabel.text = "Ready in: " + String(recipe.readyInMinutes) + " min"
         ingridientsTableView.reloadData()
         setGoodConstrains()
     }
@@ -126,15 +132,15 @@ extension DetailsViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recipe.ingridients!.count
+        return recipe.ingridients.count
     }
     
     
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "IngridientCell", for: indexPath)
         
-        cell.textLabel?.text = recipe.ingridients![indexPath.row].name
-        cell.detailTextLabel?.text = String(recipe.ingridients![indexPath.row].amount) + " " + String(recipe.ingridients![indexPath.row].unit)
+        cell.textLabel?.text = recipe.ingridients[indexPath.row].name
+        cell.detailTextLabel?.text = String(recipe.ingridients[indexPath.row].amount) + " " + String(recipe.ingridients[indexPath.row].unit)
         return cell
     }
 }

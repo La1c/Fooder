@@ -11,16 +11,16 @@ import RealmSwift
 
 class GroceryListTableViewController: UITableViewController {
     
-    var items: Results<GroceryListItem>!
+    var items: Results<Ingridient>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        items = realm.objects(GroceryListItem.self)
+        items = realm.objects(Ingridient.self).filter("inGroceryList == true")
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        items = realm.objects(GroceryListItem.self)
+        items = realm.objects(Ingridient.self).filter("inGroceryList == true")
         tableView.reloadData()
     }
 
@@ -49,7 +49,7 @@ class GroceryListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         let id = items[indexPath.row].id
-        let product = realm.objects(GroceryListItem.self).filter("id == %@", id)[0]
+        let product = realm.objects(Ingridient.self).filter("id == %@", id)[0]
         try! realm.write{
             realm.delete(product)
         }
