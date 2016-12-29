@@ -158,6 +158,7 @@ extension DetailsViewController: UITableViewDelegate, UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "instructionCell", for: indexPath)
             
             cell.textLabel?.text = recipe.extendedInstructions[indexPath.row]
+            cell.imageView?.image = UIImage(named: String(indexPath.row + 1))
             return cell
         }
         return UITableViewCell()
