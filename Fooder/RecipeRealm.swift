@@ -19,7 +19,17 @@ class RecipeRealm: Object{
    dynamic var instructions: String?
    dynamic var readyInMinutes: Double = 0
    dynamic var servings: Int = 0
+   var extendedInstructions: [String]{
+        get{
+            return backupStrings.map { $0.stringValue }
+        }
+        set{
+            backupStrings.removeAll()
+            backupStrings.append(objectsIn: newValue.map({ RealmString(value: [$0]) }))
+        }
+    }
     
+    private let backupStrings = List<RealmString>()
     convenience init(data: Recipe){
         self.init()
         
@@ -41,9 +51,19 @@ class RecipeRealm: Object{
         self.instructions = data.instructions
         self.readyInMinutes = data.readyInMinutes
         self.servings = data.servings
+        self.extendedInstructions = data.extendedInstructions
     }
     
     override static func primaryKey() -> String? {
         return "id"
     }
+    
+    override static func ignoredProperties() -> [String] {
+        return ["extendedInstructions"]
+    }
+}
+
+
+class RealmString: Object {
+    dynamic var stringValue = ""
 }

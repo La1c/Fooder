@@ -12,14 +12,14 @@ import RealmSwift
 class DetailsViewController: UIViewController {
 
     @IBOutlet weak var imgeView: UIImageView!
+    @IBOutlet var instructionsTableView: UITableView!
     
-    @IBOutlet weak var instructionsTextField: UITextView!
+    @IBOutlet var instructionsTableViewHeightConstrain: NSLayoutConstraint!
     @IBOutlet var ingridientsTableView: UITableView!
     @IBOutlet var tableViewHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var instructionsHeightConstrain: NSLayoutConstraint!
     
     @IBOutlet weak var recipeNameLabel: UILabel!
     @IBOutlet weak var servingsLabel: UILabel!
@@ -32,8 +32,14 @@ class DetailsViewController: UIViewController {
         super.viewDidLoad()
         ingridientsTableView.delegate = self
         ingridientsTableView.dataSource = self
+        
+        instructionsTableView.delegate = self
+        instructionsTableView.dataSource = self
+        instructionsTableView.rowHeight = UITableViewAutomaticDimension
+        instructionsTableView.estimatedRowHeight = 140
+        
+        
         imgeView.image = image
-        instructionsTextField.text = recipe.instructions
         recipeNameLabel.text = recipe.title
         
         servingsLabel.text = servingsLabel.text! + " " + String(recipe.servings)
@@ -62,7 +68,9 @@ class DetailsViewController: UIViewController {
     func setGoodConstrains(){
         ingridientsTableView.sizeToFit()
         tableViewHeightConstraint.constant = ingridientsTableView.contentSize.height
-        instructionsHeightConstrain.constant = instructionsTextField.intrinsicContentSize.height
+        
+        instructionsTableView.sizeToFit()
+        instructionsTableViewHeightConstrain.constant = instructionsTableView.contentSize.height
     }
 }
 
@@ -106,11 +114,11 @@ extension DetailsViewController{
 //MARK: -Update UI
 extension DetailsViewController{
     func updateUI(){
-        instructionsTextField.text = recipe.instructions
         recipeNameLabel.text = recipe.title
         servingsLabel.text = "Servings: " + String(recipe.servings)
         readyInLabel.text = "Ready in: " + String(recipe.readyInMinutes) + " min"
         ingridientsTableView.reloadData()
+        instructionsTableView.reloadData()
         setGoodConstrains()
     }
 }
@@ -122,16 +130,37 @@ extension DetailsViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recipe.ingridients.count
+        if tableView.restorationIdentifier! == "ingridientsTableView"{
+            return recipe.ingridients.count
+        }
+        
+        if tableView.restorationIdentifier! == "instructionsTableView"{
+             return recipe.extendedInstructions.count
+        }
+        
+        return 0
     }
     
     
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "IngridientCell", for: indexPath)
         
-        cell.textLabel?.text = recipe.ingridients[indexPath.row].name
-        cell.detailTextLabel?.text = String(recipe.ingridients[indexPath.row].amount) + " " + String(recipe.ingridients[indexPath.row].unit)
-        return cell
+        if tableView.restorationIdentifier! == "ingridientsTableView"{
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "IngridientCell", for: indexPath)
+            
+            cell.textLabel?.text = recipe.ingridients[indexPath.row].name
+            cell.detailTextLabel?.text = String(recipe.ingridients[indexPath.row].amount) + " " + String(recipe.ingridients[indexPath.row].unit)
+            return cell
+
+        }
+        
+        if tableView.restorationIdentifier! == "instructionsTableView"{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "instructionCell", for: indexPath)
+            
+            cell.textLabel?.text = recipe.extendedInstructions[indexPath.row]
+            return cell
+        }
+        return UITableViewCell()
     }
 }
 
