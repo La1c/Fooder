@@ -15,7 +15,7 @@ class GroceryListTableViewCell: UITableViewCell {
     @IBOutlet weak var amountLabel: UILabel!
     
     
-    func configureCell(for item: Ingridient){
+    func configureCell(for item: IngridientRealm){
         igridientNameLabel.text = item.name
         amountLabel.text = String(item.amount) + " " + item.unit
         ingridientImageView.imageFromUrl(urlString: item.imageURL)

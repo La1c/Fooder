@@ -1,5 +1,5 @@
 //
-//  IngridientObject.swift
+//  IngridientRealm.swift
 //  Fooder
 //
 //  Created by Vladimir on 21.11.16.
@@ -9,7 +9,7 @@
 import SwiftyJSON
 import RealmSwift
 
-class Ingridient:Object{
+class IngridientRealm:Object{
     dynamic var id: Int = 0
     dynamic var amount: Double = 0
     dynamic var unit: String = ""
@@ -17,16 +17,17 @@ class Ingridient:Object{
     dynamic var name: String = ""
     dynamic var imageURL: String = ""
     dynamic var inGroceryList: Bool = false
-    let fromRecipes = LinkingObjects(fromType: Recipe.self, property: "ingridients")
+    let fromRecipes = LinkingObjects(fromType: RecipeRealm.self, property: "ingridients")
     
-    convenience init(data: JSON){
+    convenience init(data: Ingridient, isInList: Bool = false){
         self.init()
-        self.id = data["id"].intValue
-        self.amount = data["amount"].doubleValue
-        self.unit = data["unit"].stringValue
-        self.unitShort = data["unitShort"].stringValue
-        self.name = data["name"].stringValue
-        self.imageURL = data["image"].stringValue
+        self.id = data.id
+        self.amount = data.amount
+        self.unit = data.unit
+        self.unitShort = data.unitShort
+        self.name = data.name
+        self.imageURL = data.imageURL
+        self.inGroceryList = isInList
     }
     
     override static func primaryKey() -> String? {

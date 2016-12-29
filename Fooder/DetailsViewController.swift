@@ -71,44 +71,34 @@ class DetailsViewController: UIViewController {
 //MARK: -add button pressed
 extension DetailsViewController{
     @IBAction func AddToGroceryListButonTapped(_ sender: Any) {
-//        let newFromRecipe = RecipeRealm()
-//        newFromRecipe.id = recipe.id
-//        newFromRecipe.title = recipe.title
+        let ingridientsList = List<IngridientRealm>()
         try! realm.write {
         for item in recipe.ingridients{
-            
-           // let newItemInList = GroceryListItem()
-           // newItemInList.id = item.id
-           // newItemInList.unit = item.unitShort
-           // newItemInList.name = item.name
-            //newItemInList.imageURL = item.imageURL
-                item.inGroceryList = true
-                realm.add(item, update: true)
-                realm.add(recipe, update: true)
+
+            if let itemAlreadyInList = realm.object(ofType: IngridientRealm.self, forPrimaryKey: item.id) {
+                     itemAlreadyInList.inGroceryList = true
+                     itemAlreadyInList.amount += item.amount
                 
-               // let someItem = realm.create(GroceryListItem.self, value: newItemInList, update: true)
-                //if !someItem.fromRecipes.contains(newFromRecipe){
-               // if !someItem.fromRecipes.contains(newFromRecipe.self){
-              //      someItem.fromRecipes.append(newFromRecipe)
-              //  }
-                
-                    
-                //    if(someItem.unit == item.unit){
-                //        someItem.amount += item.amount
-                  //  }else{
-                 //       FoodService.convertAmount(ingridientName: item.name, sourceAmount: item.amount, sourceUnit: item.unit, targetUnit: someItem.unit, completion: { data in
-                 //           if let converted = data{
-                  //              try! realm.write {
-                  //                  someItem.amount += converted.convertedAmount
-                    //            }
-                   //         }
-                 //       })
-                 //   }
-                    
-                //}
+                ingridientsList.append(itemAlreadyInList)
             }
+            else{
+                let newItem = IngridientRealm(data: item, isInList: true)
+                realm.add(newItem)
+                ingridientsList.append(newItem)
+                }
+            }
+                let newRecipe = RecipeRealm()
+                newRecipe.id = recipe.id
+                newRecipe.imageURL = recipe.imageURL
+                newRecipe.ingridients = ingridientsList
+                newRecipe.instructions = recipe.instructions
+                newRecipe.readyInMinutes = recipe.readyInMinutes
+                newRecipe.servings = recipe.servings
+                newRecipe.title = recipe.title
+                newRecipe.vegan = recipe.vegan
+                newRecipe.vegeterian = recipe.vegeterian
+                realm.add(newRecipe, update: true)
         }
-        
     }
 }
 
