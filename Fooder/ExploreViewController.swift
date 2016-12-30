@@ -94,7 +94,6 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
         else{
             self.foodTypeScrollView.isHidden = false
         }
-        
         self.lastOffset = scrollView.contentOffset.y
         
     }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class SettingsTableViewController: UITableViewController {
 
@@ -17,13 +18,37 @@ class SettingsTableViewController: UITableViewController {
                     destinationVC.delegate = self
             }
         }
-        
     }
     
+    func configureSubtitleText(with: Results<Intolerance>){
+        let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 1))
+        
+        var subtitleText:String
+        switch with.count {
+        case 0:
+            subtitleText = "No Intolerances"
+        case 1:
+            subtitleText = with[0].name
+        case 2:
+            subtitleText = with[0].name + ", " + with[1].name
+        default:
+            subtitleText = with[0].name + ", " + with[1].name + " and \(with.count - 2) more"
+        }
+        cell?.detailTextLabel?.text = subtitleText
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        configureSubtitleText(with: realm.objects(Intolerance.self).filter("status == true"))
+    }
 }
 
+
+
+
 extension SettingsTableViewController: IntolerancesTableViewControllerDelegate{
-    func userFinishedChoosingIntolerances() {
+    func userFinishedChoosingIntolerances(chosen: Results<Intolerance>) {
+        configureSubtitleText(with: chosen)
         dismiss(animated: true, completion: nil)
     }
 }

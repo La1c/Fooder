@@ -170,12 +170,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Fooder/SettingsTableViewController.swift"
-            timestampString = "504395688.529376"
+            timestampString = "504794404.040468"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "userFinishedChoosingIntolerances()"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "userFinishedChoosingIntolerances(chosen:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Fooder/SettingsTableViewController.swift"
-            timestampString = "504395688.529376"
+            timestampString = "504793833.433537"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Fooder/IntolerancesTableViewController.swift"
-            timestampString = "504442191.124132"
+            timestampString = "504793833.433537"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "doneButtonPressed(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -218,7 +218,23 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Fooder/SettingsTableViewController.swift"
-            timestampString = "504395168.622999"
+            timestampString = "504793833.433537"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "prepare(for:sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fooder/SettingsTableViewController.swift"
+            timestampString = "504793833.433537"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "14"
@@ -234,43 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Fooder/SettingsTableViewController.swift"
-            timestampString = "504395283.413869"
+            timestampString = "504793833.433537"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13"
-            endingLineNumber = "13"
-            landmarkName = "prepare(for:sender:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Fooder/SettingsTableViewController.swift"
-            timestampString = "504395688.529376"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "userFinishedChoosingIntolerances()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Fooder/SettingsTableViewController.swift"
-            timestampString = "504395688.529376"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>

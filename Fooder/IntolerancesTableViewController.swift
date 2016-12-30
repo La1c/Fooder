@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 
 protocol IntolerancesTableViewControllerDelegate: class{
-    func userFinishedChoosingIntolerances()
+    func userFinishedChoosingIntolerances(chosen intolerances: Results<Intolerance>)
 }
 
 class IntolerancesTableViewController: UITableViewController {
@@ -33,7 +33,7 @@ class IntolerancesTableViewController: UITableViewController {
     
 
     @IBAction func doneButtonPressed(_ sender: Any) {
-        delegate?.userFinishedChoosingIntolerances()   
+        delegate?.userFinishedChoosingIntolerances(chosen: realm.objects(Intolerance.self).filter("status == true"))
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
