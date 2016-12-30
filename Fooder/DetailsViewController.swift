@@ -36,7 +36,12 @@ class DetailsViewController: UIViewController {
         instructionsTableView.delegate = self
         instructionsTableView.dataSource = self
         instructionsTableView.rowHeight = UITableViewAutomaticDimension
-        instructionsTableView.estimatedRowHeight = 140
+        instructionsTableView.estimatedRowHeight = 500
+        instructionsTableView.tableFooterView = UIView(frame: CGRect.zero)
+        
+        
+//        instructionsTableView.setNeedsLayout()
+//        instructionsTableView.layoutIfNeeded()
         
         
         imgeView.image = image
@@ -71,6 +76,8 @@ class DetailsViewController: UIViewController {
         
         instructionsTableView.sizeToFit()
         instructionsTableViewHeightConstrain.constant = instructionsTableView.contentSize.height
+        
+       // instructionsTableView.layoutIfNeeded()
     }
 }
 
@@ -156,10 +163,11 @@ extension DetailsViewController: UITableViewDelegate, UITableViewDataSource{
         
         if tableView.restorationIdentifier! == "instructionsTableView"{
             let cell = tableView.dequeueReusableCell(withIdentifier: "instructionCell", for: indexPath)
-            
             cell.textLabel?.text = recipe.extendedInstructions[indexPath.row]
             cell.imageView?.image = UIImage(named: String(indexPath.row + 1))
+            
             return cell
+            
         }
         return UITableViewCell()
     }

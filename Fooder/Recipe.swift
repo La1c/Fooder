@@ -30,7 +30,10 @@ class Recipe{
         if  let goodInstructions = data["analyzedInstructions"].array{
             if goodInstructions.count > 0{
                 for step in goodInstructions[0]["steps"].arrayValue{
-                    self.extendedInstructions.append(step["step"].stringValue)
+                    let stepDescription = step["step"].stringValue as NSString
+                    if stepDescription.length > 1{
+                        self.extendedInstructions.append(step["step"].stringValue)
+                    }
                 }
             }
         }
@@ -44,7 +47,5 @@ class Recipe{
         self.instructions = data["instructions"].stringValue
         self.readyInMinutes = data["readyInMinutes"].doubleValue
         self.servings = data["servings"].intValue
-        
-        print(extendedInstructions)
     }
 }

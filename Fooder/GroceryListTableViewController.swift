@@ -11,11 +11,12 @@ import RealmSwift
 
 class GroceryListTableViewController: UITableViewController {
     
-    var items: Results<IngridientRealm>!
+    var items: Results<IngridientRealm>? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        items = realm.objects(IngridientRealm.self).filter("inGroceryList == true")
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 40
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -35,27 +36,30 @@ class GroceryListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return items?.count ?? 0
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemToBuy", for: indexPath)
-        if let cell = cell as? GroceryListTableViewCell{
+        if let cell = cell as? GroceryListTableViewCell,
+            let items = items{
             cell.configureCell(for: items[indexPath.row])
         }
         return cell
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        let id = items[indexPath.row].id
-        let product = realm.objects(IngridientRealm.self).filter("id == %@", id)[0]
-        try! realm.write{
-            realm.delete(product)
+        if let items = items{
+            let id = items[indexPath.row].id
+            let product = realm.objects(IngridientRealm.self).filter("id == %@", id)[0]
+            try! realm.write{
+                realm.delete(product)
+            }
+        
+            let indexPaths = [indexPath]
+        
+            tableView.deleteRows(at: indexPaths, with: .automatic)
         }
-        
-        let indexPaths = [indexPath]
-        
-        tableView.deleteRows(at: indexPaths, with: .automatic)
     }
 }
