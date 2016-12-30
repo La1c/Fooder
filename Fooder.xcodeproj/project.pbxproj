@@ -29,7 +29,7 @@
 		E7B1C41E1E100CC700A5B71D /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B1C41D1E100CC700A5B71D /* SettingsTableViewController.swift */; };
 		E7B1C4201E11291800A5B71D /* IntoleranceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B1C41F1E11291800A5B71D /* IntoleranceTableViewCell.swift */; };
 		E7B1C4221E11502200A5B71D /* FoodTypeSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B1C4211E11502200A5B71D /* FoodTypeSegmentedControl.swift */; };
-		E7BAF3B51DFCD96C00E31120 /* GroceryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BAF3B41DFCD96C00E31120 /* GroceryListTableViewController.swift */; };
+		E7BAF3B51DFCD96C00E31120 /* GroceryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BAF3B41DFCD96C00E31120 /* GroceryListViewController.swift */; };
 		E7DD8BEB1DE1DC1C00EA1584 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DD8BEA1DE1DC1C00EA1584 /* AppDelegate.swift */; };
 		E7DD8BF01DE1DC1C00EA1584 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7DD8BEE1DE1DC1C00EA1584 /* Main.storyboard */; };
 		E7DD8BF21DE1DC1C00EA1584 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7DD8BF11DE1DC1C00EA1584 /* Assets.xcassets */; };
@@ -79,7 +79,7 @@
 		E7B1C41D1E100CC700A5B71D /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		E7B1C41F1E11291800A5B71D /* IntoleranceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntoleranceTableViewCell.swift; sourceTree = "<group>"; };
 		E7B1C4211E11502200A5B71D /* FoodTypeSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodTypeSegmentedControl.swift; sourceTree = "<group>"; };
-		E7BAF3B41DFCD96C00E31120 /* GroceryListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryListTableViewController.swift; sourceTree = "<group>"; };
+		E7BAF3B41DFCD96C00E31120 /* GroceryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryListViewController.swift; sourceTree = "<group>"; };
 		E7DD8BE71DE1DC1C00EA1584 /* Fooder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fooder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7DD8BEA1DE1DC1C00EA1584 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7DD8BEF1DE1DC1C00EA1584 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -162,7 +162,7 @@
 			children = (
 				E78AB2661DE32A7A00565CBF /* DetailsViewController.swift */,
 				E70D15161DFC264A00BA0A1A /* MasterTabBarController.swift */,
-				E7BAF3B41DFCD96C00E31120 /* GroceryListTableViewController.swift */,
+				E7BAF3B41DFCD96C00E31120 /* GroceryListViewController.swift */,
 				E756E1F31E0F334500501B0C /* ExploreViewController.swift */,
 				E7B1C41B1E100BAC00A5B71D /* IntolerancesTableViewController.swift */,
 				E7B1C41D1E100CC700A5B71D /* SettingsTableViewController.swift */,
@@ -443,7 +443,7 @@
 				E75C14301E0579A300477A66 /* GroceryListTableViewCell.swift in Sources */,
 				E7DD8BEB1DE1DC1C00EA1584 /* AppDelegate.swift in Sources */,
 				E71FD5B21E0732D800C5B4AC /* Cuisine.swift in Sources */,
-				E7BAF3B51DFCD96C00E31120 /* GroceryListTableViewController.swift in Sources */,
+				E7BAF3B51DFCD96C00E31120 /* GroceryListViewController.swift in Sources */,
 				E7B1C41C1E100BAC00A5B71D /* IntolerancesTableViewController.swift in Sources */,
 				E78AB2671DE32A7A00565CBF /* DetailsViewController.swift in Sources */,
 				E7B1C41E1E100CC700A5B71D /* SettingsTableViewController.swift in Sources */,

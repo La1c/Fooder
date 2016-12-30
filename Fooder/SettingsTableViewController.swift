@@ -43,9 +43,6 @@ class SettingsTableViewController: UITableViewController {
     }
 }
 
-
-
-
 extension SettingsTableViewController: IntolerancesTableViewControllerDelegate{
     func userFinishedChoosingIntolerances(chosen: Results<Intolerance>) {
         configureSubtitleText(with: chosen)
