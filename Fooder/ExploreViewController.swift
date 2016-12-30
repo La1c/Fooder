@@ -15,6 +15,7 @@ class ExploreViewController: UIViewController {
     @IBOutlet var searchButton: UIBarButtonItem!
     @IBOutlet var collectionView: UICollectionView!
     let searchBar = UISearchBar()
+    var lastOffset: CGFloat = 0
     
     var recipes = [Recipe]()
     var model: ExploreModel!
@@ -39,8 +40,9 @@ class ExploreViewController: UIViewController {
         let statusBarBlurView = UIVisualEffectView(effect: statusBarBlur)
         statusBarBlurView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 20)
         view.addSubview(statusBarBlurView)
+        lastOffset = self.collectionView.contentOffset.y
+        foodTypeScrollView.isHidden = self.navigationItem.titleView != searchBar
         
-        foodTypeScrollView.isHidden = true
     }
     
     @IBAction func searchButtonPressed(_ sender: Any) {
@@ -83,6 +85,18 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
         }
         
         return cell
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y >= self.lastOffset || self.navigationItem.titleView != self.searchBar{
+            self.foodTypeScrollView.isHidden = true
+        }
+        else{
+            self.foodTypeScrollView.isHidden = false
+        }
+        
+        self.lastOffset = scrollView.contentOffset.y
+        
     }
 }
 
@@ -128,6 +142,7 @@ extension ExploreViewController{
         }
     }
 }
+
 
 
 
