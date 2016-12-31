@@ -38,10 +38,8 @@ class DetailsViewController: UIViewController {
         instructionsTableView.rowHeight = UITableViewAutomaticDimension
         instructionsTableView.estimatedRowHeight = 500
         instructionsTableView.tableFooterView = UIView(frame: CGRect.zero)
-        
-        
-//        instructionsTableView.setNeedsLayout()
-//        instructionsTableView.layoutIfNeeded()
+        instructionsTableView.setNeedsLayout()
+        instructionsTableView.layoutIfNeeded()
         
         
         imgeView.image = image

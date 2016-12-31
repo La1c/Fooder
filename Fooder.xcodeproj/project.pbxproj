@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		D9C578B352CFFCCB158A20B2 /* Pods_Fooder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FECC26CF3440DD78E9A76F3C /* Pods_Fooder.framework */; };
 		E70D15171DFC264A00BA0A1A /* MasterTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70D15161DFC264A00BA0A1A /* MasterTabBarController.swift */; };
-		E71FD5AE1E0713A300C5B4AC /* CollectionViewWithHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71FD5AD1E0713A300C5B4AC /* CollectionViewWithHeader.swift */; };
 		E71FD5B01E072D8000C5B4AC /* Diets.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71FD5AF1E072D8000C5B4AC /* Diets.swift */; };
 		E71FD5B21E0732D800C5B4AC /* Cuisine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71FD5B11E0732D800C5B4AC /* Cuisine.swift */; };
 		E71FD5B41E07332700C5B4AC /* Intolerance.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71FD5B31E07332700C5B4AC /* Intolerance.swift */; };
@@ -59,7 +58,6 @@
 		75A655281EFC3A141CD9D546 /* Pods-Fooder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fooder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fooder/Pods-Fooder.debug.xcconfig"; sourceTree = "<group>"; };
 		A658DE6389F3CE6ED0B99361 /* Pods-Fooder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fooder.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fooder/Pods-Fooder.release.xcconfig"; sourceTree = "<group>"; };
 		E70D15161DFC264A00BA0A1A /* MasterTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterTabBarController.swift; sourceTree = "<group>"; };
-		E71FD5AD1E0713A300C5B4AC /* CollectionViewWithHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewWithHeader.swift; sourceTree = "<group>"; };
 		E71FD5AF1E072D8000C5B4AC /* Diets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diets.swift; sourceTree = "<group>"; };
 		E71FD5B11E0732D800C5B4AC /* Cuisine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cuisine.swift; sourceTree = "<group>"; };
 		E71FD5B31E07332700C5B4AC /* Intolerance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Intolerance.swift; sourceTree = "<group>"; };
@@ -145,12 +143,10 @@
 				E78AB25C1DE2EDB200565CBF /* RecipeRealm.swift */,
 				E78AB2601DE2FA4F00565CBF /* ExploreModel.swift */,
 				E78AB2621DE3041000565CBF /* ExploreRecipeCell.swift */,
-				E75C142F1E0579A300477A66 /* GroceryListTableViewCell.swift */,
 				E71FD5AF1E072D8000C5B4AC /* Diets.swift */,
 				E71FD5B11E0732D800C5B4AC /* Cuisine.swift */,
 				E71FD5B31E07332700C5B4AC /* Intolerance.swift */,
 				E71FD5B51E07339C00C5B4AC /* FoodType.swift */,
-				E7B1C41F1E11291800A5B71D /* IntoleranceTableViewCell.swift */,
 				E749DE0B1E143B8600E286BE /* Ingridient.swift */,
 				E749DE0D1E143B9200E286BE /* Recipe.swift */,
 			);
@@ -178,6 +174,15 @@
 				E7B1C4211E11502200A5B71D /* FoodTypeSegmentedControl.swift */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		E765CA971E16942F00822330 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E75C142F1E0579A300477A66 /* GroceryListTableViewCell.swift */,
+				E7B1C41F1E11291800A5B71D /* IntoleranceTableViewCell.swift */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		E7DD8BDE1DE1DC1C00EA1584 = {
@@ -208,9 +213,9 @@
 				E75C142E1E056DB300477A66 /* Helpers */,
 				E75C142D1E056D7000477A66 /* Controllers */,
 				E70D15191DFC277700BA0A1A /* Models */,
+				E765CA971E16942F00822330 /* Cells */,
 				E7DD8BEA1DE1DC1C00EA1584 /* AppDelegate.swift */,
 				E7DD8BEE1DE1DC1C00EA1584 /* Main.storyboard */,
-				E71FD5AD1E0713A300C5B4AC /* CollectionViewWithHeader.swift */,
 				E7DD8BF11DE1DC1C00EA1584 /* Assets.xcassets */,
 				E7DD8BF31DE1DC1C00EA1584 /* LaunchScreen.storyboard */,
 				E7DD8BF61DE1DC1C00EA1584 /* Info.plist */,
@@ -430,7 +435,6 @@
 				E78AB2631DE3041000565CBF /* ExploreRecipeCell.swift in Sources */,
 				E71FD5B41E07332700C5B4AC /* Intolerance.swift in Sources */,
 				E756E1F41E0F334500501B0C /* ExploreViewController.swift in Sources */,
-				E71FD5AE1E0713A300C5B4AC /* CollectionViewWithHeader.swift in Sources */,
 				E70D15171DFC264A00BA0A1A /* MasterTabBarController.swift in Sources */,
 				E78AB25D1DE2EDB200565CBF /* RecipeRealm.swift in Sources */,
 				E71FD5B01E072D8000C5B4AC /* Diets.swift in Sources */,

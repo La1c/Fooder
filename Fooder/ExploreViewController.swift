@@ -48,10 +48,6 @@ class ExploreViewController: UIViewController {
     @IBAction func searchButtonPressed(_ sender: Any) {
         self.navigationItem.titleView?.addSubview(searchBar)
         
-        if let collectionView = collectionView as? CollectionViewWithHeader{
-            collectionView.searchIsActive = true
-        }
-        
         self.navigationItem.titleView = searchBar
         self.navigationItem.rightBarButtonItem = nil
         foodTypeScrollView.isHidden = false
