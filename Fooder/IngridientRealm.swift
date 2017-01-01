@@ -17,6 +17,7 @@ class IngridientRealm:Object{
     dynamic var name: String = ""
     dynamic var imageURL: String = ""
     dynamic var inGroceryList: Bool = false
+    dynamic var inBag: Bool = false
     let fromRecipes = LinkingObjects(fromType: RecipeRealm.self, property: "ingridients")
     
     convenience init(data: Ingridient, isInList: Bool = false){
