@@ -110,12 +110,12 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
         
         checkAction.backgroundColor = view.tintColor
         
-        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete", handler:{ self.deleteItem(action: $0, from: $1)})
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete", handler:{ self.deleteItem(action: $0, from: $1, tableView: tableView)})
         
         deleteAction.backgroundColor = UIColor.red
         
         if tableView.restorationIdentifier == "listTableView"{
-           return [deleteAction,checkAction]
+           return [deleteAction, checkAction]
         }
         
         return [deleteAction]
@@ -142,11 +142,19 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
-    func deleteItem(action:  UITableViewRowAction, from: IndexPath){
+    func deleteItem(action:  UITableViewRowAction, from: IndexPath, tableView: UITableView){
+    
+        let list:Results<IngridientRealm>?
+        if tableView.restorationIdentifier == "listTableView"{
+            list = items
+        } else if tableView.restorationIdentifier == "bagTableView"{
+            list = bag
+        }else{
+            list = nil
+        }
         
-       // if action.title == "Delete"{
-            if let items = items{
-            let id = items[from.row].id
+        if let list = list{
+            let id = list[from.row].id
             let product = realm.objects(IngridientRealm.self).filter("id == %@", id)[0]
             try! realm.write{
                 realm.delete(product)
@@ -154,8 +162,10 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
             
             let indexPaths = [from]
             
-            groceryListTableView.deleteRows(at: indexPaths, with: .automatic)
-            }
-        //}
+            tableView.deleteRows(at: indexPaths, with: .automatic)
+            
+            setGoodConstrains(for: bagTableView, withContstraint: bagTableViewHeightConstraint)
+            setGoodConstrains(for: groceryListTableView, withContstraint: listTableViewHeightConstraint)
+        }
     }
 }
