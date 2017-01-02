@@ -36,7 +36,6 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func setGoodConstrains(for tableView: UITableView, withContstraint: NSLayoutConstraint){
-        tableView.layoutIfNeeded()
         tableView.sizeToFit()
         let contentSize = tableView.visibleCells.reduce(Double(0), { result, cell in
             result + Double(cell.frame.height)
@@ -144,6 +143,7 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func deleteItem(action:  UITableViewRowAction, from: IndexPath){
+        
        // if action.title == "Delete"{
             if let items = items{
             let id = items[from.row].id
