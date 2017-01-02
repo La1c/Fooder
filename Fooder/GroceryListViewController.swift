@@ -11,6 +11,7 @@ import RealmSwift
 
 class GroceryListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet var contentView: UIView!
     @IBOutlet var bagTableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet var bagTableView: UITableView!
     @IBOutlet var bagLabel: UILabel!
@@ -22,24 +23,25 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         groceryListTableView.rowHeight = UITableViewAutomaticDimension
-        groceryListTableView.estimatedRowHeight = 40
+        groceryListTableView.tableFooterView = UIView(frame: CGRect.zero)
+        groceryListTableView.estimatedRowHeight = 100
         groceryListTableView.delegate = self
         groceryListTableView.dataSource = self
         
         bagTableView.rowHeight = UITableViewAutomaticDimension
-        bagTableView.estimatedRowHeight = 40
+        bagTableView.tableFooterView = UIView(frame: CGRect.zero)
+        bagTableView.estimatedRowHeight = 100
         bagTableView.delegate = self
         bagTableView.dataSource = self
-        
-        
     }
     
-    func setGoodConstrains(){
-        groceryListTableView.sizeToFit()
-        listTableViewHeightConstraint.constant = groceryListTableView.contentSize.height
-        
-        bagTableView.sizeToFit()
-        bagTableViewHeightConstraint.constant = bagTableView.contentSize.height
+    func setGoodConstrains(for tableView: UITableView, withContstraint: NSLayoutConstraint){
+        tableView.layoutIfNeeded()
+        tableView.sizeToFit()
+        let contentSize = tableView.visibleCells.reduce(Double(0), { result, cell in
+            result + Double(cell.frame.height)
+        })
+        withContstraint.constant = CGFloat(contentSize)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -47,14 +49,15 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
         items = realm.objects(IngridientRealm.self).filter("inGroceryList == true AND inBag == false")
         bag = realm.objects(IngridientRealm.self).filter("inGroceryList == true AND inBag == true")
         
-        bagLabel.isHidden = (bag?.count)! < 1
+        bagLabel.isHidden = (bag?.count)! == 0
         bagTableView.isHidden = bagLabel.isHidden
         
         
         groceryListTableView.reloadData()
         bagTableView.reloadData()
         
-        setGoodConstrains()
+        setGoodConstrains(for: groceryListTableView, withContstraint: listTableViewHeightConstraint)
+        setGoodConstrains(for: bagTableView, withContstraint: bagTableViewHeightConstraint)
         let statusBarBlur = UIBlurEffect(style: .extraLight)
         let statusBarBlurView = UIVisualEffectView(effect: statusBarBlur)
         statusBarBlurView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 20)
@@ -79,7 +82,6 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
         }
         
         return 0
-        
     }
     
     
@@ -113,7 +115,12 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
         
         deleteAction.backgroundColor = UIColor.red
         
-        return [deleteAction,checkAction]
+        if tableView.restorationIdentifier == "listTableView"{
+           return [deleteAction,checkAction]
+        }
+        
+        return [deleteAction]
+        
     }
     
     func checkItem(action: UITableViewRowAction, from: IndexPath){
@@ -131,7 +138,8 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
             bagLabel.isHidden = false
             bagTableView.isHidden = false
             bagTableView.reloadData()
-            setGoodConstrains()
+            setGoodConstrains(for: bagTableView, withContstraint: bagTableViewHeightConstraint)
+            setGoodConstrains(for: groceryListTableView, withContstraint: listTableViewHeightConstraint)
         }
     }
     

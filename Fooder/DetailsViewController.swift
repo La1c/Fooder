@@ -73,9 +73,11 @@ class DetailsViewController: UIViewController {
         tableViewHeightConstraint.constant = ingridientsTableView.contentSize.height
         
         instructionsTableView.sizeToFit()
-        instructionsTableViewHeightConstrain.constant = instructionsTableView.contentSize.height
         
-       // instructionsTableView.layoutIfNeeded()
+        let contentSize = instructionsTableView.visibleCells.reduce(Double(0), { result, cell in
+            result + Double(cell.frame.height)
+        })
+        instructionsTableViewHeightConstrain.constant = CGFloat(contentSize)
     }
 }
 
