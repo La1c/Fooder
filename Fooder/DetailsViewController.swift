@@ -45,8 +45,12 @@ class DetailsViewController: UIViewController {
         imgeView.image = image
         recipeNameLabel.text = recipe.title
         
-        servingsLabel.text = servingsLabel.text! + " " + String(recipe.servings)
-        readyInLabel.text = readyInLabel.text! + " " + String(recipe.readyInMinutes) + " min"
+        let formatter = NumberFormatter()
+        formatter.maximumFractionDigits = 1
+        
+        
+        servingsLabel.text = servingsLabel.text! + " " +  formatter.string(from: recipe.servings as NSNumber)!
+        readyInLabel.text = readyInLabel.text! + " " + formatter.string(from: recipe.readyInMinutes as NSNumber)! + " min"
         
         
         if recipe.ingridients.count == 0{
@@ -122,8 +126,12 @@ extension DetailsViewController{
 extension DetailsViewController{
     func updateUI(){
         recipeNameLabel.text = recipe.title
-        servingsLabel.text = "Servings: " + String(recipe.servings)
-        readyInLabel.text = "Ready in: " + String(recipe.readyInMinutes) + " min"
+        
+        let formatter = NumberFormatter()
+        formatter.maximumFractionDigits = 1
+        
+        servingsLabel.text = "Servings: " + formatter.string(from: recipe.servings as NSNumber)!
+        readyInLabel.text = "Ready in: " + formatter.string(from: recipe.readyInMinutes as NSNumber)! + " min"
         ingridientsTableView.reloadData()
         instructionsTableView.reloadData()
         setGoodConstrains()
@@ -155,8 +163,12 @@ extension DetailsViewController: UITableViewDelegate, UITableViewDataSource{
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "IngridientCell", for: indexPath)
             
+            let formatter = NumberFormatter()
+            formatter.maximumFractionDigits = 1
+            let amountString = formatter.string(from: recipe.ingridients[indexPath.row].amount as NSNumber)!
+            
             cell.textLabel?.text = recipe.ingridients[indexPath.row].name
-            cell.detailTextLabel?.text = String(recipe.ingridients[indexPath.row].amount) + " " + String(recipe.ingridients[indexPath.row].unit)
+            cell.detailTextLabel?.text = amountString + " " + String(recipe.ingridients[indexPath.row].unit)
             return cell
 
         }

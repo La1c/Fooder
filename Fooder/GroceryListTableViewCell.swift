@@ -16,8 +16,12 @@ class GroceryListTableViewCell: UITableViewCell {
     
     
     func configureCell(for item: IngridientRealm){
+        
+        let formatter = NumberFormatter()
+        formatter.maximumFractionDigits = 1
+        
         igridientNameLabel.text = item.name
-        amountLabel.text = String(item.amount) + " " + item.unit
+        amountLabel.text = formatter.string(from: item.amount as NSNumber)! + " " + item.unit
         ingridientImageView.imageFromUrl(urlString: item.imageURL)
     }
 
