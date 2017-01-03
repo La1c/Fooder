@@ -24,23 +24,33 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         groceryListTableView.rowHeight = UITableViewAutomaticDimension
         groceryListTableView.tableFooterView = UIView(frame: CGRect.zero)
-        groceryListTableView.estimatedRowHeight = 100
+        groceryListTableView.estimatedRowHeight = 60
         groceryListTableView.delegate = self
         groceryListTableView.dataSource = self
         
         bagTableView.rowHeight = UITableViewAutomaticDimension
         bagTableView.tableFooterView = UIView(frame: CGRect.zero)
-        bagTableView.estimatedRowHeight = 100
+        bagTableView.estimatedRowHeight = 60
         bagTableView.delegate = self
         bagTableView.dataSource = self
     }
     
-    func setGoodConstrains(for tableView: UITableView, withContstraint: NSLayoutConstraint){
+    func setGoodConstrains(for tableView: UITableView, withContstraint: NSLayoutConstraint, list: Results<IngridientRealm>){
         tableView.sizeToFit()
-        let contentSize = tableView.visibleCells.reduce(Double(0), { result, cell in
-            result + Double(cell.frame.height)
-        })
-        withContstraint.constant = CGFloat(contentSize)
+        withContstraint.constant = tableView.contentSize.height
+        tableView.frame.size.height = tableView.contentSize.height
+        tableView.layoutIfNeeded()
+        let lastRowFrame = tableView.rectForRow(at: IndexPath(row: list.count - 1, section: 0))
+
+        
+        withContstraint.constant = (lastRowFrame.origin.y + lastRowFrame.height)
+        tableView.frame.size.height = (lastRowFrame.origin.y + lastRowFrame.height)
+        tableView.updateConstraints()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        print(groceryListTableView.contentSize.height)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -55,8 +65,8 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
         groceryListTableView.reloadData()
         bagTableView.reloadData()
         
-        setGoodConstrains(for: groceryListTableView, withContstraint: listTableViewHeightConstraint)
-        setGoodConstrains(for: bagTableView, withContstraint: bagTableViewHeightConstraint)
+        setGoodConstrains(for: groceryListTableView, withContstraint: listTableViewHeightConstraint, list: items!)
+        setGoodConstrains(for: bagTableView, withContstraint: bagTableViewHeightConstraint,list: bag!)
         let statusBarBlur = UIBlurEffect(style: .extraLight)
         let statusBarBlurView = UIVisualEffectView(effect: statusBarBlur)
         statusBarBlurView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 20)
@@ -137,8 +147,8 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
             bagLabel.isHidden = false
             bagTableView.isHidden = false
             bagTableView.reloadData()
-            setGoodConstrains(for: bagTableView, withContstraint: bagTableViewHeightConstraint)
-            setGoodConstrains(for: groceryListTableView, withContstraint: listTableViewHeightConstraint)
+            setGoodConstrains(for: groceryListTableView, withContstraint: listTableViewHeightConstraint, list: items)
+            setGoodConstrains(for: bagTableView, withContstraint: bagTableViewHeightConstraint,list: bag!)
         }
     }
     
@@ -164,8 +174,10 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
             
             tableView.deleteRows(at: indexPaths, with: .automatic)
             
-            setGoodConstrains(for: bagTableView, withContstraint: bagTableViewHeightConstraint)
-            setGoodConstrains(for: groceryListTableView, withContstraint: listTableViewHeightConstraint)
+            setGoodConstrains(for: groceryListTableView, withContstraint: listTableViewHeightConstraint, list: items!)
+            setGoodConstrains(for: bagTableView, withContstraint: bagTableViewHeightConstraint,list: bag!)
         }
     }
 }
+
+
