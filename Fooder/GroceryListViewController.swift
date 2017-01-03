@@ -48,11 +48,6 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.updateConstraints()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        print(groceryListTableView.contentSize.height)
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         items = realm.objects(IngridientRealm.self).filter("inGroceryList == true AND inBag == false")
