@@ -25,12 +25,17 @@ TO-DO:
 
 Screenshots:
 
-<img src="https://github.com/La1c/Fooder/blob/master/screenshot1.png?raw=true" width="320">
-<img src="https://github.com/La1c/Fooder/blob/master/screenshot2.png?raw=true" width="320">
-<img src="https://github.com/La1c/Fooder/blob/master/screenshot3.png?raw=true" width="320">
+
+<img src="https://github.com/La1c/Fooder/blob/master/screenshot1.png?raw=true" width="260">
+<img src="https://github.com/La1c/Fooder/blob/master/screenshot2.png?raw=true" width="260">
+<img src="https://github.com/La1c/Fooder/blob/master/screenshot3.png?raw=true" width="260">
+<img src="https://github.com/La1c/Fooder/blob/master/screenshot4.png?raw=true" width="260">
+<img src="https://github.com/La1c/Fooder/blob/master/screenshot5.png?raw=true" width="260">
+<img src="https://github.com/La1c/Fooder/blob/master/screenshot6.png?raw=true" width="260">
+<img src="https://github.com/La1c/Fooder/blob/master/screenshot7.png?raw=true" width="260">
 
 
-Animated:
+Animated (outdated):
 
 ![](https://github.com/La1c/Fooder/blob/master/screengif.gif)
 
