@@ -36,16 +36,7 @@ class ExploreModel{
         return instance
     }()
     
-    func getData(){
-        FoodService.getRandomRecipes(number: numberOfRecipesToGetEveryTime,
-                                     completion:{newData in
-                                        if let data = newData{
-                                            self.recipes = self.recipes + data
-                                            self.delegate?.modelDidLoadNewData()
-                                        }})
-    }
-    
-    func searchRecipes(query: String, type: FoodType = .all){
+    func searchRecipes(query: String = "", type: FoodType = .all, offset: Int = 0, more: Bool = false){
         
         let intolerancesList = realm.objects(Intolerance.self)
         var namesArray = [String]()
@@ -55,9 +46,14 @@ class ExploreModel{
         
         
         
-        FoodService.recipeSearch(intolerances: namesArray.joined(separator: ","), query: query, type: type, completion: {newData in
+        FoodService.recipeSearch(intolerances: namesArray.joined(separator: ","), query: query, type: type, offset: offset, completion: {newData in
             if let data = newData{
-                self.recipes = data
+                if more{
+                    self.recipes += data
+                }else{
+                    self.recipes = data
+                }
+                
                 self.delegate?.modelDidLoadNewData()
             }})
     }

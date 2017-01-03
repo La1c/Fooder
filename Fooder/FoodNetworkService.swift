@@ -66,7 +66,6 @@ struct FoodService {
                 for recipe in json{
                     responseRecipes.append(Recipe(data: recipe))
                 }
-            print(responseRecipes)
             completion(responseRecipes)
             })
     }
@@ -88,7 +87,7 @@ struct FoodService {
             })
     }
     
-    static func recipeSearch(cuisine: Cuisine? = nil, diet: Diet = .none, intolerances: String = "", query: String, type: FoodType = .all, completion: @escaping ([Recipe]?) -> Void){
+    static func recipeSearch(cuisine: Cuisine? = nil, diet: Diet = .none, intolerances: String = "", query: String = "", type: FoodType = .all, offset: Int = 0, completion: @escaping ([Recipe]?) -> Void){
         var responseRecipes = [Recipe]()
         Alamofire.request("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search",
                           parameters: ["limitLicense": true,
@@ -98,7 +97,7 @@ struct FoodService {
                             "intolerances":  intolerances,
                             "query": query,
                             "type": type.rawValue,
-                            "offset" : 0,
+                            "offset" : offset,
                             "number": 30],
                           headers: ["X-Mashape-Key" : APIkey,
                                     "Accept": "application/json"]

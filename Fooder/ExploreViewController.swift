@@ -16,6 +16,7 @@ class ExploreViewController: UIViewController {
     @IBOutlet var collectionView: UICollectionView!
     let searchBar = UISearchBar()
     var lastOffset: CGFloat = 0
+    var loadingMore = false
     
     var recipes = [Recipe]()
     var model: ExploreModel!
@@ -27,7 +28,7 @@ class ExploreViewController: UIViewController {
         
         model = ExploreModel.sharedInstance
         model.delegate = self
-        model.getData()
+        model.searchRecipes()
         searchBar.delegate = self
         searchBar.showsCancelButton = true
         searchBar.searchBarStyle = .minimal
@@ -53,12 +54,19 @@ class ExploreViewController: UIViewController {
         foodTypeScrollView.isHidden = false
         searchBar.becomeFirstResponder()
     }
+    
+    
     @IBAction func segmentControlValueChanged(_ sender: Any) {
+        search()
+        collectionView.scrollToItem(at: IndexPath(row:0, section: 0), at: .top, animated: true)
+    }
+    
+    func search(offset: Int = 0, more: Bool = false){
         let foodType =   foodTypeSegmentControl.titleForSegment(at: foodTypeSegmentControl.selectedSegmentIndex)!.lowercased()
         let foodTypeEnum = FoodType(rawValue: foodType) ?? .all
         let query = searchBar.text!
-        
-        model.searchRecipes(query: query, type: foodTypeEnum)
+        loadingMore = true
+        model.searchRecipes(query: query, type: foodTypeEnum, offset:offset, more: more)
     }
 }
 
@@ -92,6 +100,16 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
         }
         self.lastOffset = scrollView.contentOffset.y
         
+        
+        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
+        let deltaOffset = maximumOffset - self.lastOffset
+        
+        if deltaOffset <= 0 {
+            if(!loadingMore){
+                search(offset: recipes.count, more: true)
+            }
+        }
+        
     }
 }
 
@@ -104,11 +122,8 @@ extension ExploreViewController: UISearchBarDelegate{
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        let foodType =   foodTypeSegmentControl.titleForSegment(at: foodTypeSegmentControl.selectedSegmentIndex)!.lowercased()
-        let foodTypeEnum = FoodType(rawValue: foodType) ?? .all
-        let query = searchBar.text!
-        
-        model.searchRecipes(query: query, type: foodTypeEnum)
+       search()
+       collectionView.scrollToItem(at: IndexPath(row:0, section: 0), at: .top, animated: true)
     }
 }
 
@@ -116,6 +131,7 @@ extension ExploreViewController: UISearchBarDelegate{
 extension ExploreViewController: ExploreModelDelegate{
     func modelDidLoadNewData() {
         recipes = model.recipes
+        loadingMore = false
         collectionView.reloadData()
     }
 }
