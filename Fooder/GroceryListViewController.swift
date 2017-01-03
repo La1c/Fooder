@@ -190,20 +190,27 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
             list = nil
         }
         
-        if let list = list{
-            let id = list[from.row].id
-            let product = realm.objects(IngridientRealm.self).filter("id == %@", id)[0]
-            try! realm.write{
-                realm.delete(product)
+        if tableView.restorationIdentifier == "cookTableView"{
+            if let cook = cook{
+                try! realm.write {
+                    realm.delete(cook[from.row])
+                }
             }
-            
-            let indexPaths = [from]
-            
-            tableView.deleteRows(at: indexPaths, with: .automatic)
-            
-            setGoodConstrains(for: groceryListTableView, withContstraint: listTableViewHeightConstraint, list: items!)
-            setGoodConstrains(for: bagTableView, withContstraint: bagTableViewHeightConstraint,list: bag!)
+        }else{
+            if let list = list{
+                let id = list[from.row].id
+                let product = realm.objects(IngridientRealm.self).filter("id == %@", id)[0]
+                try! realm.write{
+                    realm.delete(product)
+                }
+            }
         }
+        let indexPaths = [from]
+        tableView.deleteRows(at: indexPaths, with: .automatic)
+        
+        setGoodConstrains(for: groceryListTableView, withContstraint: listTableViewHeightConstraint, list: items!)
+        setGoodConstrains(for: bagTableView, withContstraint: bagTableViewHeightConstraint,list: bag!)
+        setGoodConstrains(for: cookTableView, withContstraint: cookTableViewHeightConstraint, list: cook!)
     }
 }
 
