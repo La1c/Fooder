@@ -11,6 +11,8 @@ import RealmSwift
 
 class GroceryListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet var cookTableViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var cookTableView: UITableView!
     @IBOutlet var contentView: UIView!
     @IBOutlet var bagTableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet var bagTableView: UITableView!
@@ -19,23 +21,29 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet var groceryListTableView: UITableView!
     var items: Results<IngridientRealm>? = nil
     var bag: Results<IngridientRealm>? = nil
+    var cook: Results<RecipeRealm>? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        groceryListTableView.rowHeight = UITableViewAutomaticDimension
-        groceryListTableView.tableFooterView = UIView(frame: CGRect.zero)
-        groceryListTableView.estimatedRowHeight = 60
-        groceryListTableView.delegate = self
-        groceryListTableView.dataSource = self
         
-        bagTableView.rowHeight = UITableViewAutomaticDimension
-        bagTableView.tableFooterView = UIView(frame: CGRect.zero)
-        bagTableView.estimatedRowHeight = 60
-        bagTableView.delegate = self
-        bagTableView.dataSource = self
+        configureTableView(tableView: groceryListTableView)
+        configureTableView(tableView: bagTableView)
+        
+        cookTableView.delegate = self
+        cookTableView.dataSource = self
+        cookTableView.tableFooterView = UIView(frame: CGRect.zero)
+        cookTableView.rowHeight = 80
     }
     
-    func setGoodConstrains(for tableView: UITableView, withContstraint: NSLayoutConstraint, list: Results<IngridientRealm>){
+    func configureTableView(tableView: UITableView){
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
+        tableView.estimatedRowHeight = 60
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
+    func setGoodConstrains<T: Object>(for tableView: UITableView, withContstraint: NSLayoutConstraint, list: Results<T>){
         tableView.sizeToFit()
         withContstraint.constant = tableView.contentSize.height
         if  list.count > 0{
@@ -54,6 +62,7 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidAppear(animated)
         items = realm.objects(IngridientRealm.self).filter("inGroceryList == true AND inBag == false")
         bag = realm.objects(IngridientRealm.self).filter("inGroceryList == true AND inBag == true")
+        cook = realm.objects(RecipeRealm.self)
         
         bagLabel.isHidden = (bag?.count)! == 0
         bagTableView.isHidden = bagLabel.isHidden
@@ -61,10 +70,12 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
         
         groceryListTableView.reloadData()
         bagTableView.reloadData()
+        cookTableView.reloadData()
         
         
         setGoodConstrains(for: groceryListTableView, withContstraint: listTableViewHeightConstraint, list: items!)
         setGoodConstrains(for: bagTableView, withContstraint: bagTableViewHeightConstraint,list: bag!)
+        setGoodConstrains(for: cookTableView, withContstraint: cookTableViewHeightConstraint, list: cook!)
         let statusBarBlur = UIBlurEffect(style: .extraLight)
         let statusBarBlurView = UIVisualEffectView(effect: statusBarBlur)
         statusBarBlurView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 20)
@@ -88,12 +99,23 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
             return bag?.count ?? 0
         }
         
+        if tableView.restorationIdentifier == "cookTableView"{
+            return cook?.count ?? 0
+        }
+        
         return 0
     }
     
     
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemToBuy", for: indexPath)
+        let cell: UITableViewCell
+        
+        if tableView.restorationIdentifier == "cookTableView"{
+            cell = tableView.dequeueReusableCell(withIdentifier: "RecipeToCook", for: indexPath)
+        }else{
+            cell = tableView.dequeueReusableCell(withIdentifier: "ItemToBuy", for: indexPath)
+        }
+        
         if tableView.restorationIdentifier == "listTableView"{
             if let cell = cell as? GroceryListTableViewCell,
                 let items = items{
@@ -105,6 +127,13 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
             if let cell = cell as? GroceryListTableViewCell,
                 let bag = bag{
                 cell.configureCell(for: bag[indexPath.row])
+            }
+        }
+        
+        if tableView.restorationIdentifier == "cookTableView"{
+            if let cell = cell as? CookTableViewCell,
+                let cook = cook{
+                cell.configureCell(for: cook[indexPath.row])
             }
         }
         return cell
@@ -174,6 +203,27 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
             
             setGoodConstrains(for: groceryListTableView, withContstraint: listTableViewHeightConstraint, list: items!)
             setGoodConstrains(for: bagTableView, withContstraint: bagTableViewHeightConstraint,list: bag!)
+        }
+    }
+}
+
+
+//MARK: -prepareForSegue
+extension GroceryListViewController{
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDetails"{
+            if let cell = sender as? CookTableViewCell{
+                guard let row = cookTableView?.indexPath(for: cell)?.row,
+                let recipe = cook?[row] else{
+                    return
+                }
+                
+                let vc = segue.destination as! DetailsViewController
+                vc.image = cell.mealUIImageView.image
+                vc.recipe = Recipe(id: recipe.id, title: recipe.title, imageURL: recipe.imageURL)
+                vc.hideAddButton = true
+            }
         }
     }
 }

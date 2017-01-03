@@ -11,7 +11,7 @@ import SwiftyJSON
 class Recipe{
     let id: Int
     let vegeterian: Bool
-    let  vegan: Bool
+    let vegan: Bool
     let title: String
     let imageURL: String
     var ingridients :[Ingridient]
@@ -47,5 +47,17 @@ class Recipe{
         self.instructions = data["instructions"].stringValue
         self.readyInMinutes = data["readyInMinutes"].doubleValue
         self.servings = data["servings"].intValue
+    }
+    
+    init(id: Int, title: String, imageURL: String){
+        self.id = id
+        self.vegeterian = false
+        self.vegan = false
+        self.title = title
+        self.imageURL = imageURL
+        self.ingridients = [Ingridient]()
+        self.instructions = ""
+        self.readyInMinutes = 0
+        self.servings = 0
     }
 }

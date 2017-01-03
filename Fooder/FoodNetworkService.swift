@@ -38,38 +38,6 @@ struct FoodService {
             })
     }
     
-    static func recipeComplexSearch(cuisine: Cuisine? = nil, diet: Diet = .none, intolerances: [Intolerance]? = nil, query: String, type: FoodType = .mainCourse, completion: @escaping ([Recipe]?) -> Void){
-        
-        Alamofire.request("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/searchComplex",
-                          parameters: ["limitLicense": true,
-                                       "addRecipeInformation" : true,
-                                    //   "cuisine": "", //enable later!
-                                       "diet": diet.rawValue,
-                                       "instructionsRequired": true,
-                                    //   "intolerances":  "", //enable later!
-                                       "query": query,
-                                       "type": type.rawValue,
-                                       "ranking": 1,
-                                       "offset" : 0,
-                                       "number": 30],
-                          headers: ["X-Mashape-Key" : APIkey,
-                                    "Accept": "application/json"]
-            ).responseJSON(completionHandler: { response in
-                guard response.result.isSuccess else{
-                    completion(nil)
-                    return
-                }
-                
-                 let json = JSON(response.result.value!)["results"].arrayValue
-                var responseRecipes = [Recipe]()
-                
-                for recipe in json{
-                    responseRecipes.append(Recipe(data: recipe))
-                }
-            completion(responseRecipes)
-            })
-    }
-    
     static func getRecipeByID(id: Int, completion: @escaping (Recipe?) -> Void){
         Alamofire.request("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/\(id)/information",
                           headers: ["X-Mashape-Key" : APIkey,

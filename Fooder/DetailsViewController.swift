@@ -25,8 +25,10 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var servingsLabel: UILabel!
     @IBOutlet weak var readyInLabel: UILabel!
     
+    @IBOutlet var addToListButton: UIButton!
     var recipe: Recipe!
     var image: UIImage!
+    var hideAddButton = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +42,8 @@ class DetailsViewController: UIViewController {
         instructionsTableView.tableFooterView = UIView(frame: CGRect.zero)
         instructionsTableView.setNeedsLayout()
         instructionsTableView.layoutIfNeeded()
+        
+        addToListButton.isHidden = hideAddButton
         
         
         imgeView.image = image
