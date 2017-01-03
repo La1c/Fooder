@@ -13,6 +13,7 @@ class Ingridient{
     let amount: Double
     let unit: String
     let unitShort: String
+    let unitLong: String
     let name: String
     let imageURL: String
 
@@ -22,6 +23,7 @@ class Ingridient{
         self.amount = data["amount"].doubleValue
         self.unit = data["unit"].stringValue
         self.unitShort = data["unitShort"].stringValue
+        self.unitLong = data["unitLong"].stringValue
         self.name = data["name"].stringValue
         self.imageURL = data["image"].stringValue
     }

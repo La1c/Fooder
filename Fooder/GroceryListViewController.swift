@@ -38,13 +38,15 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
     func setGoodConstrains(for tableView: UITableView, withContstraint: NSLayoutConstraint, list: Results<IngridientRealm>){
         tableView.sizeToFit()
         withContstraint.constant = tableView.contentSize.height
-        tableView.frame.size.height = tableView.contentSize.height
-        tableView.layoutIfNeeded()
-        let lastRowFrame = tableView.rectForRow(at: IndexPath(row: list.count - 1, section: 0))
-
-        
-        withContstraint.constant = (lastRowFrame.origin.y + lastRowFrame.height)
-        tableView.frame.size.height = (lastRowFrame.origin.y + lastRowFrame.height)
+        if  list.count > 0{
+            tableView.frame.size.height = tableView.contentSize.height
+            tableView.layoutIfNeeded()
+            let lastRowFrame = tableView.rectForRow(at: IndexPath(row: list.count - 1, section: 0))
+            
+            
+            withContstraint.constant = (lastRowFrame.origin.y + lastRowFrame.height)
+            tableView.frame.size.height = (lastRowFrame.origin.y + lastRowFrame.height)
+        }
         tableView.updateConstraints()
     }
     
@@ -59,6 +61,7 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
         
         groceryListTableView.reloadData()
         bagTableView.reloadData()
+        
         
         setGoodConstrains(for: groceryListTableView, withContstraint: listTableViewHeightConstraint, list: items!)
         setGoodConstrains(for: bagTableView, withContstraint: bagTableViewHeightConstraint,list: bag!)

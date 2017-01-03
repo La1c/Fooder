@@ -58,7 +58,9 @@ class ExploreViewController: UIViewController {
     
     @IBAction func segmentControlValueChanged(_ sender: Any) {
         search()
-        collectionView.scrollToItem(at: IndexPath(row:0, section: 0), at: .top, animated: true)
+        if !collectionView.visibleCells.isEmpty{
+            collectionView.scrollToItem(at: IndexPath(row:0, section: 0), at: .top, animated: true)
+        }
     }
     
     func search(offset: Int = 0, more: Bool = false){
@@ -123,7 +125,10 @@ extension ExploreViewController: UISearchBarDelegate{
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
        search()
-       collectionView.scrollToItem(at: IndexPath(row:0, section: 0), at: .top, animated: true)
+        if !collectionView.visibleCells.isEmpty{
+            collectionView.scrollToItem(at: IndexPath(row:0, section: 0), at: .top, animated: true)
+        }
+        searchBar.resignFirstResponder()
     }
 }
 

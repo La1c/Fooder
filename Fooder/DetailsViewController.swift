@@ -77,11 +77,19 @@ class DetailsViewController: UIViewController {
         tableViewHeightConstraint.constant = ingridientsTableView.contentSize.height
         
         instructionsTableView.sizeToFit()
+        instructionsTableViewHeightConstrain.constant = instructionsTableView.contentSize.height
+        instructionsTableView.frame.size.height = instructionsTableView.contentSize.height
+        instructionsTableView.layoutIfNeeded()
         
-        let contentSize = instructionsTableView.visibleCells.reduce(Double(0), { result, cell in
-            result + Double(cell.frame.height)
-        })
-        instructionsTableViewHeightConstrain.constant = CGFloat(contentSize)
+        if recipe.extendedInstructions.count > 0{
+            let lastRowFrame = instructionsTableView.rectForRow(at: IndexPath(row: recipe.extendedInstructions.count - 1, section: 0))
+            
+            
+            instructionsTableViewHeightConstrain.constant = (lastRowFrame.origin.y + lastRowFrame.height)
+            instructionsTableView.frame.size.height = (lastRowFrame.origin.y + lastRowFrame.height)
+        }
+        
+        instructionsTableView.updateConstraints()
     }
 }
 
@@ -96,7 +104,18 @@ extension DetailsViewController{
 
             if let itemAlreadyInList = realm.object(ofType: IngridientRealm.self, forPrimaryKey: item.id) {
                      itemAlreadyInList.inGroceryList = true
+//                if itemAlreadyInList.unitLong == item.unitLong{
                      itemAlreadyInList.amount += item.amount
+//                }else{
+//                    let unit = itemAlreadyInList.unitLong
+//                    print(unit)
+//                   FoodService.convertAmount(ingridientName: item.name, sourceAmount: item.amount, sourceUnit: item.unitLong, targetUnit: unit,
+//                                              completion: { converted in
+//                                               try! realm.write {
+//                                                     itemAlreadyInList.amount += converted?.convertedAmount ?? 0
+//                                                }
+//                   })
+//                }
                 
                 ingridientsList.append(itemAlreadyInList)
             }

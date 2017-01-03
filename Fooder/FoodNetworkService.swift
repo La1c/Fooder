@@ -72,7 +72,6 @@ struct FoodService {
     
     static func getRecipeByID(id: Int, completion: @escaping (Recipe?) -> Void){
         Alamofire.request("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/\(id)/information",
-                         // parameters: ["id": id],
                           headers: ["X-Mashape-Key" : APIkey,
                                     "Accept": "application/json"]
             ).responseJSON(completionHandler: { response in
@@ -135,6 +134,7 @@ struct FoodService {
                 }
                 
                 let json = JSON(response.result.value!)
+                print(json)
                 completion((convertedAmount: json["targetAmount"].doubleValue, convertedUnit: json["targetUnit"].stringValue))
         })
     }

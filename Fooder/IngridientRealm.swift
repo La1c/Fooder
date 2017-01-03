@@ -14,6 +14,7 @@ class IngridientRealm:Object{
     dynamic var amount: Double = 0
     dynamic var unit: String = ""
     dynamic var unitShort: String = ""
+    dynamic var unitLong: String = ""
     dynamic var name: String = ""
     dynamic var imageURL: String = ""
     dynamic var inGroceryList: Bool = false
@@ -26,6 +27,7 @@ class IngridientRealm:Object{
         self.amount = data.amount
         self.unit = data.unit
         self.unitShort = data.unitShort
+        self.unitLong = data.unitLong
         self.name = data.name
         self.imageURL = data.imageURL
         self.inGroceryList = isInList
