@@ -104,18 +104,23 @@ extension DetailsViewController{
 
             if let itemAlreadyInList = realm.object(ofType: IngridientRealm.self, forPrimaryKey: item.id) {
                      itemAlreadyInList.inGroceryList = true
-//                if itemAlreadyInList.unitLong == item.unitLong{
+                     let unitInList = itemAlreadyInList.unitLong
+                     let unitOfItem = item.unitLong
+                     let preffix = unitInList.commonPrefix(with: unitOfItem, options: .caseInsensitive)
+                if preffix == unitOfItem || preffix == unitInList{
                      itemAlreadyInList.amount += item.amount
-//                }else{
-//                    let unit = itemAlreadyInList.unitLong
-//                    print(unit)
-//                   FoodService.convertAmount(ingridientName: item.name, sourceAmount: item.amount, sourceUnit: item.unitLong, targetUnit: unit,
-//                                              completion: { converted in
-//                                               try! realm.write {
-//                                                     itemAlreadyInList.amount += converted?.convertedAmount ?? 0
-//                                                }
-//                   })
-//                }
+                }else{
+                   FoodService.convertAmount(ingridientName: item.name, sourceAmount: item.amount, sourceUnit: item.unitLong, targetUnit: unitInList,
+                                              completion: { converted in
+                                                if let converted = converted{
+                                                    try! realm.write {
+                                                        itemAlreadyInList.amount += converted.convertedAmount
+                                                    }
+                                                }else{
+                                                    print(item.name, item.unitLong, unitInList)
+                                                }
+                   })
+                }
                 
                 ingridientsList.append(itemAlreadyInList)
             }

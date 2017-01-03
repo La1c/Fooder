@@ -120,7 +120,7 @@ struct FoodService {
     static func convertAmount(ingridientName:String, sourceAmount: Double, sourceUnit:String, targetUnit: String, completion:  @escaping ((convertedAmount: Double, convertedUnit: String)?) -> Void){
         
         Alamofire.request("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/convert",
-             parameters: ["ingridientName": ingridientName,
+             parameters: ["ingredientName": ingridientName,
                           "sourceAmount": sourceAmount,
                           "sourceUnit": sourceUnit,
                           "targetUnit": targetUnit],
@@ -134,7 +134,6 @@ struct FoodService {
                 }
                 
                 let json = JSON(response.result.value!)
-                print(json)
                 completion((convertedAmount: json["targetAmount"].doubleValue, convertedUnit: json["targetUnit"].stringValue))
         })
     }
