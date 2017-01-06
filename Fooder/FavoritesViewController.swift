@@ -7,33 +7,71 @@
 //
 
 import UIKit
-
+import RealmSwift
 class FavoritesViewController: UIViewController {
 
 
-    @IBOutlet var recipesTableView: UITableView!
+    var recipes: Results<RecipeRealm>?
+    
+    @IBOutlet weak var recipesTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        recipesTableView.delegate = self
+        recipesTableView.dataSource = self
+        recipes = realm.objects(RecipeRealm.self).filter("isFavorite == true")
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func segmentedControlValueChanged(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0{
+            recipes = realm.objects(RecipeRealm.self).filter("isFavorite == true")
+        }else{
+            recipes = realm.objects(RecipeRealm.self).filter("isCooked == true")
+        }
+        
+        recipesTableView.reloadData()
+    }
+}
+
+
+extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource{
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     
-    @IBAction func segmentControlValueChanged(_ sender: Any) {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return recipes?.count ?? 0
     }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeToCook", for: indexPath)
+        
+        if let cell = cell as? CookTableViewCell, let recipes = recipes{
+            cell.configureCell(for: recipes[indexPath.row])
+        }
+        
+        return cell
+    }
+}
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+//MARK: -prepareForSegue
+extension FavoritesViewController{
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ShowDetails"{
+            if let cell = sender as? CookTableViewCell{
+                guard let row = recipesTableView?.indexPath(for: cell)?.row,
+                    let recipe = recipes?[row] else{
+                        return
+                }
+                
+                let vc = segue.destination as! DetailsViewController
+                vc.image = cell.mealUIImageView.image
+                vc.recipe = Recipe(id: recipe.id, title: recipe.title, imageURL: recipe.imageURL)
+            }
+        }
     }
-    */
-
 }

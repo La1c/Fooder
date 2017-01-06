@@ -19,6 +19,10 @@ class RecipeRealm: Object{
    dynamic var instructions: String?
    dynamic var readyInMinutes: Double = 0
    dynamic var servings: Int = 0
+   dynamic var isFavorite = false
+   dynamic var isCooked = false
+   dynamic var isInList = false
+    
    var extendedInstructions: [String]{
         get{
             return backupStrings.map { $0.stringValue }

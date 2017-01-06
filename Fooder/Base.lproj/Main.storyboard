@@ -152,6 +152,24 @@
                                                     </tableViewCell>
                                                 </prototypes>
                                             </tableView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ltq-YN-bBO">
+                                                <rect key="frame" x="32" y="482" width="24" height="24"/>
+                                                <state key="normal" backgroundImage="accept"/>
+                                                <state key="selected" backgroundImage="accept copy"/>
+                                                <state key="highlighted" backgroundImage="accept copy"/>
+                                                <connections>
+                                                    <action selector="cookedButtonPressed:" destination="dOq-uW-hRa" eventType="touchUpInside" id="bSv-QX-FcX"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="in3-zf-Ry8">
+                                                <rect key="frame" x="264" y="482" width="24" height="24"/>
+                                                <state key="normal" backgroundImage="star"/>
+                                                <state key="selected" backgroundImage="star copy"/>
+                                                <state key="highlighted" backgroundImage="star copy"/>
+                                                <connections>
+                                                    <action selector="favoritesButtonPressed:" destination="dOq-uW-hRa" eventType="touchUpInside" id="1qk-Hi-AkD"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -169,11 +187,17 @@
                                             <constraint firstItem="iLG-Tg-fax" firstAttribute="top" secondItem="kEv-Rv-zrL" secondAttribute="bottom" constant="8" id="JBQ-At-P8Z"/>
                                             <constraint firstItem="kEv-Rv-zrL" firstAttribute="top" secondItem="yhX-cG-kze" secondAttribute="top" id="MeW-2F-D5A"/>
                                             <constraint firstItem="KCn-ix-772" firstAttribute="top" secondItem="DQO-Nr-A1U" secondAttribute="bottom" constant="8" id="Q6D-Lr-ix5"/>
+                                            <constraint firstItem="KCn-ix-772" firstAttribute="top" secondItem="in3-zf-Ry8" secondAttribute="bottom" constant="8" id="T2H-hB-w3e"/>
                                             <constraint firstItem="8C6-cM-Y1J" firstAttribute="width" secondItem="Mmv-pN-Ihn" secondAttribute="width" id="V8R-M8-hSe"/>
                                             <constraint firstItem="Mmv-pN-Ihn" firstAttribute="top" secondItem="iLG-Tg-fax" secondAttribute="bottom" constant="16" id="Vmq-ra-V9n"/>
+                                            <constraint firstItem="in3-zf-Ry8" firstAttribute="top" secondItem="jYc-IT-tta" secondAttribute="bottom" constant="8" id="WUX-fc-V5H"/>
+                                            <constraint firstItem="ltq-YN-bBO" firstAttribute="top" secondItem="jYc-IT-tta" secondAttribute="bottom" constant="8" id="ZsM-DE-AiV"/>
                                             <constraint firstItem="8Ie-uN-dxI" firstAttribute="top" secondItem="Mmv-pN-Ihn" secondAttribute="bottom" constant="16" id="aJu-u6-cWR"/>
                                             <constraint firstAttribute="trailing" secondItem="kEv-Rv-zrL" secondAttribute="trailing" id="f28-cM-Xep"/>
+                                            <constraint firstItem="KCn-ix-772" firstAttribute="top" secondItem="ltq-YN-bBO" secondAttribute="bottom" constant="8" id="f39-pD-TBi"/>
+                                            <constraint firstAttribute="trailing" secondItem="in3-zf-Ry8" secondAttribute="trailing" constant="32" id="gRg-CC-Zat"/>
                                             <constraint firstItem="DQO-Nr-A1U" firstAttribute="top" secondItem="jYc-IT-tta" secondAttribute="bottom" constant="8" id="hV4-Nc-XWg"/>
+                                            <constraint firstItem="ltq-YN-bBO" firstAttribute="leading" secondItem="yhX-cG-kze" secondAttribute="leading" constant="32" id="jNc-VC-tJH"/>
                                             <constraint firstItem="8Ie-uN-dxI" firstAttribute="centerX" secondItem="yhX-cG-kze" secondAttribute="centerX" id="kEc-JF-TcG"/>
                                             <constraint firstItem="jYc-IT-tta" firstAttribute="leading" secondItem="yhX-cG-kze" secondAttribute="leading" id="mxc-rM-803"/>
                                             <constraint firstItem="Mmv-pN-Ihn" firstAttribute="leading" secondItem="yhX-cG-kze" secondAttribute="leading" constant="8" id="qeV-v3-76A"/>
@@ -215,6 +239,8 @@
                     <connections>
                         <outlet property="addToListButton" destination="DQO-Nr-A1U" id="xLo-z0-lXx"/>
                         <outlet property="contentView" destination="yhX-cG-kze" id="FJe-pL-p3s"/>
+                        <outlet property="cookedButton" destination="ltq-YN-bBO" id="YEX-Xi-OBC"/>
+                        <outlet property="favoritesButton" destination="in3-zf-Ry8" id="OTb-pZ-FPn"/>
                         <outlet property="imgeView" destination="kEv-Rv-zrL" id="SNC-X3-Ltt"/>
                         <outlet property="ingridientsTableView" destination="jYc-IT-tta" id="mjc-W1-X3w"/>
                         <outlet property="instructionsTableView" destination="Ym6-jf-NPM" id="lXF-Rk-jjV"/>
@@ -261,7 +287,7 @@
                                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="adg-SS-v5b" id="BO0-X5-SfW">
-                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a6F-En-Nxq">
@@ -329,7 +355,7 @@
                                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Sxr-0j-GpQ" id="sNr-er-0oQ">
-                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cTc-U5-jn4">
@@ -396,7 +422,7 @@
                                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3AJ-tS-ufq" id="Rpo-8j-gf0">
-                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eEG-5V-7RM">
@@ -594,7 +620,7 @@
                                 <color key="separatorColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeToCook" id="XW1-GU-TLD" customClass="CookTableViewCell" customModule="Fooder" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="RecipeToCook" id="XW1-GU-TLD" customClass="CookTableViewCell" customModule="Fooder" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XW1-GU-TLD" id="pPe-lO-VGB">
@@ -628,6 +654,7 @@
                                         <connections>
                                             <outlet property="mealNameLabel" destination="K6a-Bm-Gzg" id="oie-m4-rvy"/>
                                             <outlet property="mealUIImageView" destination="OlQ-0s-YRX" id="3ar-kY-8yz"/>
+                                            <segue destination="dOq-uW-hRa" kind="show" identifier="ShowDetails" id="12g-qB-zuD"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -647,11 +674,11 @@
                             <rect key="frame" x="8" y="7" width="304" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
-                                <segment title="Favorite"/>
+                                <segment title="Favourite"/>
                                 <segment title="Cooked"/>
                             </segments>
                             <connections>
-                                <action selector="segmentControlValueChanged:" destination="V7c-Yj-5rN" eventType="valueChanged" id="M9X-tg-VCb"/>
+                                <action selector="segmentedControlValueChanged:" destination="V7c-Yj-5rN" eventType="valueChanged" id="Yh1-Fw-cN1"/>
                             </connections>
                         </segmentedControl>
                     </navigationItem>
@@ -661,7 +688,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MKV-B9-Unj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1903.125" y="1313.0281690140846"/>
+            <point key="canvasLocation" x="3283" y="1443"/>
         </scene>
         <!--Intolerances-->
         <scene sceneID="Bxv-kl-6Wk">
@@ -991,7 +1018,7 @@
         <scene sceneID="mlR-7Q-2YX">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dUD-0J-0z6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="You Liked" id="8mf-ct-nXS"/>
+                    <tabBarItem key="tabBarItem" title="You Liked" image="star" id="8mf-ct-nXS"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2uO-bV-yQw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1014,13 +1041,17 @@
     <resources>
         <image name="Explore Icon" width="24" height="24"/>
         <image name="List" width="26" height="26"/>
+        <image name="accept" width="24" height="24"/>
+        <image name="accept copy" width="24" height="24"/>
         <image name="add" width="24" height="24"/>
         <image name="clock1" width="24" height="24"/>
         <image name="gear" width="25" height="25"/>
+        <image name="star" width="24" height="24"/>
+        <image name="star copy" width="24" height="24"/>
         <image name="users" width="30" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hRw-xU-FSC"/>
+        <segue reference="12g-qB-zuD"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.46274509803921571" green="0.64313725490196072" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
 </document>

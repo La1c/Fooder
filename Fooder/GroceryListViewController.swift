@@ -62,7 +62,7 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidAppear(animated)
         items = realm.objects(IngridientRealm.self).filter("inGroceryList == true AND inBag == false")
         bag = realm.objects(IngridientRealm.self).filter("inGroceryList == true AND inBag == true")
-        cook = realm.objects(RecipeRealm.self)
+        cook = realm.objects(RecipeRealm.self).filter("isInList == true")
         
         bagLabel.isHidden = (bag?.count)! == 0
         bagTableView.isHidden = bagLabel.isHidden
@@ -193,7 +193,11 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
         if tableView.restorationIdentifier == "cookTableView"{
             if let cook = cook{
                 try! realm.write {
-                    realm.delete(cook[from.row])
+                    if cook[from.row].isCooked || cook[from.row].isFavorite{
+                        cook[from.row].isInList = false
+                    }else{
+                        realm.delete(cook[from.row])
+                    }
                 }
             }
         }else{

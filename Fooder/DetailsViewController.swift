@@ -12,11 +12,13 @@ import RealmSwift
 class DetailsViewController: UIViewController {
 
     @IBOutlet weak var imgeView: UIImageView!
-    @IBOutlet var instructionsTableView: UITableView!
+    @IBOutlet weak var instructionsTableView: UITableView!
     
-    @IBOutlet var instructionsTableViewHeightConstrain: NSLayoutConstraint!
-    @IBOutlet var ingridientsTableView: UITableView!
-    @IBOutlet var tableViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var favoritesButton: UIButton!
+    @IBOutlet weak var cookedButton: UIButton!
+    @IBOutlet weak var instructionsTableViewHeightConstrain: NSLayoutConstraint!
+    @IBOutlet weak var ingridientsTableView: UITableView!
+    @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
@@ -25,7 +27,7 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var servingsLabel: UILabel!
     @IBOutlet weak var readyInLabel: UILabel!
     
-    @IBOutlet var addToListButton: UIButton!
+    @IBOutlet weak var addToListButton: UIButton!
     var recipe: Recipe!
     var image: UIImage!
     var hideAddButton = false
@@ -64,6 +66,9 @@ class DetailsViewController: UIViewController {
                                     self.updateUI()
                                 }})
         }
+        
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -73,8 +78,23 @@ class DetailsViewController: UIViewController {
         let statusBarBlurView = UIVisualEffectView(effect: statusBarBlur)
         statusBarBlurView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 20)
         view.addSubview(statusBarBlurView)
+        
+        checkFavoritesAndCooked()
     }
     
+    
+    
+    func checkFavoritesAndCooked(){
+        if let recipeInRealm = realm.object(ofType: RecipeRealm.self, forPrimaryKey: recipe.id){
+            if recipeInRealm.isCooked{
+                cookedButton.isSelected = true
+            }
+            
+            if recipeInRealm.isFavorite{
+                favoritesButton.isSelected = true
+            }
+        }
+    }
     
     func setGoodConstrains(){
         ingridientsTableView.sizeToFit()
@@ -94,6 +114,30 @@ class DetailsViewController: UIViewController {
         }
         
         instructionsTableView.updateConstraints()
+    }
+    @IBAction func cookedButtonPressed(_ sender: Any) {
+        cookedButton.isSelected = !cookedButton.isSelected
+            try! realm.write {
+                realm.create(RecipeRealm.self,
+                         value: ["id": recipe.id,
+                                 "imageURL": recipe.imageURL,
+                                 "title": recipe.title,
+                                 "isCooked": cookedButton.isSelected],
+                         update: true)
+            }
+        
+    }
+    
+    @IBAction func favoritesButtonPressed(_ sender: Any) {
+        favoritesButton.isSelected = !favoritesButton.isSelected
+        try! realm.write {
+            realm.create(RecipeRealm.self,
+                         value: ["id": recipe.id,
+                                 "imageURL": recipe.imageURL,
+                                 "title": recipe.title,
+                                 "isFavorite": favoritesButton.isSelected],
+                         update: true)
+        }
     }
 }
 
@@ -134,17 +178,19 @@ extension DetailsViewController{
                 ingridientsList.append(newItem)
                 }
             }
-                let newRecipe = RecipeRealm()
-                newRecipe.id = recipe.id
-                newRecipe.imageURL = recipe.imageURL
-                newRecipe.ingridients = ingridientsList
-                newRecipe.instructions = recipe.instructions
-                newRecipe.readyInMinutes = recipe.readyInMinutes
-                newRecipe.servings = recipe.servings
-                newRecipe.title = recipe.title
-                newRecipe.vegan = recipe.vegan
-                newRecipe.vegeterian = recipe.vegeterian
-                realm.add(newRecipe, update: true)
+            
+            realm.create(RecipeRealm.self,
+                         value: ["id": recipe.id,
+                                 "imageURL": recipe.imageURL,
+                                 "title": recipe.title,
+                                 "ingridients": ingridientsList,
+                                 "instructions": recipe.instructions ?? "",
+                                 "readyInMinutes": recipe.readyInMinutes,
+                                 "servings": recipe.servings,
+                                 "vegan": recipe.vegan,
+                                 "vegeterian": recipe.vegeterian,
+                                 "isInList": true],
+                         update: true)
         }
     }
 }
@@ -204,12 +250,9 @@ extension DetailsViewController: UITableViewDelegate, UITableViewDataSource{
         if tableView.restorationIdentifier! == "instructionsTableView"{
             let cell = tableView.dequeueReusableCell(withIdentifier: "instructionCell", for: indexPath)
             cell.textLabel?.text = recipe.extendedInstructions[indexPath.row]
-            cell.imageView?.image = UIImage(named: String(indexPath.row + 1))
-            
+            cell.imageView?.image = UIImage(named: String(indexPath.row + 1))  
             return cell
-            
         }
         return UITableViewCell()
     }
 }
-
