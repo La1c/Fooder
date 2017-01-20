@@ -8,19 +8,29 @@
 
 import UIKit
 import RealmSwift
+import DZNEmptyDataSet
+
 class FavoritesViewController: UIViewController {
 
 
     var recipes: Results<RecipeRealm>?
     
     @IBOutlet weak var recipesTableView: UITableView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         recipesTableView.delegate = self
         recipesTableView.dataSource = self
+        recipesTableView.emptyDataSetSource = self
+        recipesTableView.emptyDataSetDelegate = self
         recipes = realm.objects(RecipeRealm.self).filter("isFavorite == true")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        recipesTableView.reloadData()
     }
 
     @IBAction func segmentedControlValueChanged(_ sender: UISegmentedControl) {
@@ -34,7 +44,7 @@ class FavoritesViewController: UIViewController {
     }
 }
 
-
+//MARK: -table views
 extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -59,7 +69,6 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource{
 
 //MARK: -prepareForSegue
 extension FavoritesViewController{
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowDetails"{
             if let cell = sender as? CookTableViewCell{
@@ -72,6 +81,33 @@ extension FavoritesViewController{
                 vc.image = cell.mealUIImageView.image
                 vc.recipe = Recipe(id: recipe.id, title: recipe.title, imageURL: recipe.imageURL)
             }
+        }
+    }
+}
+
+extension FavoritesViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate{
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let attributes = [NSForegroundColorAttributeName: self.view.tintColor]
+        return NSAttributedString(string: "Nothing here yet", attributes: attributes)
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let attributes = [NSForegroundColorAttributeName: self.view.tintColor]
+        
+        if segmentedControl.selectedSegmentIndex == 0{
+            return NSAttributedString(string: "Try to find something you like at the Explore tab!", attributes: attributes)
+        }else{
+            return NSAttributedString(string: "You can add recipe to this list from a recipe card", attributes: attributes)
+        }
+        
+        
+    }
+    
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        if segmentedControl.selectedSegmentIndex == 0{
+            return UIImage(named: "star")
+        }else{
+            return UIImage(named: "accept")
         }
     }
 }

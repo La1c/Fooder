@@ -684,6 +684,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="recipesTableView" destination="Vae-69-xxb" id="eg5-zb-Qdy"/>
+                        <outlet property="segmentedControl" destination="Lki-0p-mFZ" id="IcU-7p-8nb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MKV-B9-Unj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1052,7 +1053,7 @@
         <image name="users" width="30" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qu6-r6-sLO"/>
+        <segue reference="12g-qB-zuD"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.46274509803921571" green="0.64313725490196072" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
 </document>
