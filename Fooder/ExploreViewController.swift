@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class ExploreViewController: UIViewController {
 
@@ -20,11 +21,14 @@ class ExploreViewController: UIViewController {
     
     var recipes = [Recipe]()
     var model: ExploreModel!
+    
+    var prefetchedImagesForCells = [Int: UIImage]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.prefetchDataSource = self
         
         model = ExploreModel.sharedInstance
         model.delegate = self
@@ -87,6 +91,10 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
                                                       for: indexPath)
         cell.sizeThatFits(CGSize(width: view.frame.width, height: cell.frame.height))
         if let cell =  cell as? ExploreRecipeCell{
+            if let prefetchedImage = prefetchedImagesForCells[indexPath.row]{
+                cell.imageView.image = prefetchedImage
+                prefetchedImagesForCells[indexPath.row] = nil
+            }
             cell.configureCell(for: recipes[indexPath.row])
         }
         
@@ -103,7 +111,7 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
         self.lastOffset = scrollView.contentOffset.y
         
         
-        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
+        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height * 5
         let deltaOffset = maximumOffset - self.lastOffset
         
         if deltaOffset <= 0 {
@@ -157,6 +165,19 @@ extension ExploreViewController{
             }
         }
     }
+}
+
+extension ExploreViewController: UICollectionViewDataSourcePrefetching{
+    @available(iOS 10.0, *)
+    public func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        for index in indexPaths{
+            Alamofire.request(recipes[index.row].imageURL, method: HTTPMethod.get).response(completionHandler: {response in
+                self.prefetchedImagesForCells[index.row] = UIImage(data: response.data!, scale: 1)
+            })
+        }
+    }
+
+    
 }
 
 

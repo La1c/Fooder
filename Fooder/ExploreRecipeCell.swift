@@ -16,7 +16,9 @@ class ExploreRecipeCell: UICollectionViewCell {
     @IBOutlet weak var mealNameView: UIView!
     
     func configureCell(for recipe: Recipe){
-        imageView.imageFromUrl(urlString: recipe.imageURL)
+        if imageView.image == nil{
+            imageView.imageFromUrl(urlString: recipe.imageURL)
+        }
         mealNameLabel.text = recipe.title
     }
 }
