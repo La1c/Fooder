@@ -110,12 +110,8 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y >= self.lastOffset, scrollView.contentOffset.y > 0 || self.navigationItem.titleView != self.searchBar{
-            self.foodTypeScrollView.isHidden = true
-        }
-        else{
-            self.foodTypeScrollView.isHidden = false
-        }
+        self.foodTypeScrollView.isHidden = (self.navigationController?.navigationBar.isHidden)! ||  self.navigationItem.titleView != self.searchBar
+        
         self.lastOffset = scrollView.contentOffset.y
         
         

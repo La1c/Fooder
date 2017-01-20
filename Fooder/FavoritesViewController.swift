@@ -85,6 +85,7 @@ extension FavoritesViewController{
     }
 }
 
+//MARK: -empty data set
 extension FavoritesViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate{
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         let attributes = [NSForegroundColorAttributeName: self.view.tintColor]

@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 
+
 class GroceryListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var cookTableViewHeightConstraint: NSLayoutConstraint!
@@ -211,7 +212,7 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
         }
         let indexPaths = [from]
         tableView.deleteRows(at: indexPaths, with: .automatic)
-        
+        bagLabel.isHidden = (bag?.count)! == 0
         setGoodConstrains(for: groceryListTableView, withContstraint: listTableViewHeightConstraint, list: items!)
         setGoodConstrains(for: bagTableView, withContstraint: bagTableViewHeightConstraint,list: bag!)
         setGoodConstrains(for: cookTableView, withContstraint: cookTableViewHeightConstraint, list: cook!)
@@ -238,5 +239,7 @@ extension GroceryListViewController{
         }
     }
 }
+
+
 
 
