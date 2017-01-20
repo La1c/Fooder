@@ -11,12 +11,12 @@ Current status:
  * Search within categories
  * Recipes you wanted to cook are right at grocery list screen
  * User can choose intolerances in settings (e.g. one has peanut allergy), recipes with such products will be omited from search results
+ * Favorites / Cooked screen
 
 TO-DO:
 
 * Flexible search (search works, but I want make it "live" and enable food type change) -- probably no
 * Cuisine and diet search?
-* Favorites / Cooked screen
 * Sharing (VK, Telegram)
 * A lot of different stuff to make this app better
 
