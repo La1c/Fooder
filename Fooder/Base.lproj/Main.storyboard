@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="MVv-iR-Pzl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="MVv-iR-Pzl">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -624,7 +624,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XW1-GU-TLD" id="pPe-lO-VGB">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OlQ-0s-YRX">
@@ -843,6 +843,7 @@
                                                 </view>
                                             </subviews>
                                         </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="4yx-lt-17h" firstAttribute="top" secondItem="BOl-iM-omh" secondAttribute="top" id="5D0-QJ-642"/>
                                             <constraint firstAttribute="bottom" secondItem="qXz-5k-Osu" secondAttribute="bottom" id="76a-Vk-3Rx"/>
@@ -944,7 +945,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EBf-4R-mvw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3139" y="491"/>
+            <point key="canvasLocation" x="3138.75" y="490.14084507042253"/>
         </scene>
         <!--Settings-->
         <scene sceneID="QZ6-nf-6dQ">
@@ -1051,7 +1052,7 @@
         <image name="users" width="30" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="12g-qB-zuD"/>
+        <segue reference="qu6-r6-sLO"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.46274509803921571" green="0.64313725490196072" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
 </document>

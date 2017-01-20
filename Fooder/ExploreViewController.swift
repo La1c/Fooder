@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import DZNEmptyDataSet
 
 class ExploreViewController: UIViewController {
 
@@ -29,6 +30,8 @@ class ExploreViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.prefetchDataSource = self
+        collectionView.emptyDataSetSource = self
+        collectionView.emptyDataSetDelegate = self
         
         model = ExploreModel.sharedInstance
         model.delegate = self
@@ -48,6 +51,11 @@ class ExploreViewController: UIViewController {
         lastOffset = self.collectionView.contentOffset.y
         foodTypeScrollView.isHidden = self.navigationItem.titleView != searchBar
         
+    }
+    
+    deinit {
+        collectionView.emptyDataSetDelegate = nil
+        collectionView.emptyDataSetSource = nil
     }
     
     @IBAction func searchButtonPressed(_ sender: Any) {
@@ -102,7 +110,7 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y >= self.lastOffset || self.navigationItem.titleView != self.searchBar{
+        if scrollView.contentOffset.y >= self.lastOffset, scrollView.contentOffset.y > 0 || self.navigationItem.titleView != self.searchBar{
             self.foodTypeScrollView.isHidden = true
         }
         else{
@@ -119,7 +127,6 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
                 search(offset: recipes.count, more: true)
             }
         }
-        
     }
 }
 
@@ -167,6 +174,7 @@ extension ExploreViewController{
     }
 }
 
+//MARK: -prefetching images
 extension ExploreViewController: UICollectionViewDataSourcePrefetching{
     @available(iOS 10.0, *)
     public func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
@@ -176,8 +184,25 @@ extension ExploreViewController: UICollectionViewDataSourcePrefetching{
             })
         }
     }
+}
 
+
+//MARK: -empty data set
+extension ExploreViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate{
     
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let attributes = [NSForegroundColorAttributeName: self.view.tintColor]
+        return NSAttributedString(string: "Nothing to Show", attributes: attributes)
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let attributes = [NSForegroundColorAttributeName: self.view.tintColor]
+        return NSAttributedString(string: "Try to look for something else or check your internet connection", attributes: attributes)
+    }
+    
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        return UIImage(named: "food")
+    }
 }
 
 
