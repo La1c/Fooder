@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import DZNEmptyDataSet
 
 
 class GroceryListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -20,10 +21,13 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet var bagLabel: UILabel!
     @IBOutlet var listTableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet var groceryListTableView: UITableView!
-    var items: Results<IngridientRealm>? = nil
-    var bag: Results<IngridientRealm>? = nil
-    var cook: Results<RecipeRealm>? = nil
+    var items: Results<IngridientRealm>?
+    var bag: Results<IngridientRealm>?
+    var cook: Results<RecipeRealm>?
 
+    @IBOutlet weak var emptyStateLabel: UILabel!
+    @IBOutlet weak var bagImageView: UIImageView!
+    @IBOutlet weak var cookLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -64,15 +68,11 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
         items = realm.objects(IngridientRealm.self).filter("inGroceryList == true AND inBag == false")
         bag = realm.objects(IngridientRealm.self).filter("inGroceryList == true AND inBag == true")
         cook = realm.objects(RecipeRealm.self).filter("isInList == true")
-        
-        bagLabel.isHidden = (bag?.count)! == 0
-        bagTableView.isHidden = bagLabel.isHidden
-        
-        
         groceryListTableView.reloadData()
         bagTableView.reloadData()
         cookTableView.reloadData()
         
+        checkEmptyStates()
         
         setGoodConstrains(for: groceryListTableView, withContstraint: listTableViewHeightConstraint, list: items!)
         setGoodConstrains(for: bagTableView, withContstraint: bagTableViewHeightConstraint,list: bag!)
@@ -212,7 +212,7 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
         }
         let indexPaths = [from]
         tableView.deleteRows(at: indexPaths, with: .automatic)
-        bagLabel.isHidden = (bag?.count)! == 0
+        checkEmptyStates()
         setGoodConstrains(for: groceryListTableView, withContstraint: listTableViewHeightConstraint, list: items!)
         setGoodConstrains(for: bagTableView, withContstraint: bagTableViewHeightConstraint,list: bag!)
         setGoodConstrains(for: cookTableView, withContstraint: cookTableViewHeightConstraint, list: cook!)
@@ -237,6 +237,23 @@ extension GroceryListViewController{
                 vc.hideAddButton = true
             }
         }
+    }
+}
+
+
+//MARK: -handling empty state
+extension GroceryListViewController{
+    func checkEmptyStates(){
+        let cookIsEmpty = cook?.count == 0
+        let ingridientsIsEmpty = items?.count == 0
+        let bagIsEmpty = bag?.count == 0
+        let everythignIsEmpty = cookIsEmpty && ingridientsIsEmpty && bagIsEmpty
+        
+        bagLabel.isHidden = bagIsEmpty
+        cookLabel.isHidden = cookIsEmpty
+        
+        bagImageView.isHidden = !everythignIsEmpty
+        emptyStateLabel.isHidden = !everythignIsEmpty
     }
 }
 

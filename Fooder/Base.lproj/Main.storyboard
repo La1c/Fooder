@@ -274,6 +274,25 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e4J-HR-51y">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="879"/>
                                         <subviews>
+                                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bag" translatesAutoresizingMaskIntoConstraints="NO" id="edo-9f-zuZ">
+                                                <rect key="frame" x="130" y="416.5" width="60" height="60"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="60" id="CEV-mz-cOq"/>
+                                                    <constraint firstAttribute="height" constant="60" id="UDb-2v-Frj"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nothing here yet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lk5-mb-AYW">
+                                                <rect key="frame" x="64" y="484.5" width="192" height="31.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                                <color key="textColor" red="0.46274509800000002" green="0.64313725489999995" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can add items to your grocery list from a recipe card" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zZw-kt-keY">
+                                                <rect key="frame" x="24" y="524" width="272" height="41"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.46274509800000002" green="0.64313725489999995" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="listTableView" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CSm-Yl-AS5">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -287,7 +306,7 @@
                                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="adg-SS-v5b" id="BO0-X5-SfW">
-                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a6F-En-Nxq">
@@ -355,7 +374,7 @@
                                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Sxr-0j-GpQ" id="sNr-er-0oQ">
-                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cTc-U5-jn4">
@@ -422,7 +441,7 @@
                                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3AJ-tS-ufq" id="Rpo-8j-gf0">
-                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eEG-5V-7RM">
@@ -462,6 +481,7 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="drj-Ve-Pi8" secondAttribute="trailing" id="3x5-LL-Yz4"/>
                                             <constraint firstAttribute="bottom" secondItem="drj-Ve-Pi8" secondAttribute="bottom" id="4mp-42-jmW"/>
+                                            <constraint firstItem="lk5-mb-AYW" firstAttribute="top" secondItem="edo-9f-zuZ" secondAttribute="bottom" constant="8" id="5tT-W0-pFi"/>
                                             <constraint firstItem="yle-K4-UFU" firstAttribute="centerX" secondItem="e4J-HR-51y" secondAttribute="centerX" id="8aq-YA-U2F"/>
                                             <constraint firstItem="yle-K4-UFU" firstAttribute="top" secondItem="lAN-6v-sBf" secondAttribute="bottom" constant="16" id="FUg-TY-kzw"/>
                                             <constraint firstAttribute="trailing" secondItem="lAN-6v-sBf" secondAttribute="trailing" id="NOC-1C-1mr"/>
@@ -470,9 +490,11 @@
                                             <constraint firstItem="4sL-dG-vJq" firstAttribute="centerX" secondItem="e4J-HR-51y" secondAttribute="centerX" id="cET-qR-0PG"/>
                                             <constraint firstItem="drj-Ve-Pi8" firstAttribute="leading" secondItem="e4J-HR-51y" secondAttribute="leading" id="hvd-Ui-obh"/>
                                             <constraint firstItem="CSm-Yl-AS5" firstAttribute="leading" secondItem="e4J-HR-51y" secondAttribute="leading" id="hvk-42-PAO"/>
+                                            <constraint firstItem="lk5-mb-AYW" firstAttribute="centerX" secondItem="e4J-HR-51y" secondAttribute="centerX" id="lez-XG-g1P"/>
                                             <constraint firstItem="drj-Ve-Pi8" firstAttribute="top" secondItem="yle-K4-UFU" secondAttribute="bottom" constant="8" id="nVl-Jj-AXW"/>
                                             <constraint firstItem="4sL-dG-vJq" firstAttribute="top" secondItem="CSm-Yl-AS5" secondAttribute="bottom" constant="16" id="t7P-Yp-OBP"/>
                                             <constraint firstItem="lAN-6v-sBf" firstAttribute="leading" secondItem="e4J-HR-51y" secondAttribute="leading" id="v6G-aZ-dQZ"/>
+                                            <constraint firstItem="zZw-kt-keY" firstAttribute="top" secondItem="lk5-mb-AYW" secondAttribute="bottom" constant="8" id="vFY-OG-ID9"/>
                                             <constraint firstItem="lAN-6v-sBf" firstAttribute="top" secondItem="4sL-dG-vJq" secondAttribute="bottom" constant="8" id="zjb-Qj-wd3"/>
                                         </constraints>
                                     </view>
@@ -488,22 +510,31 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="e4J-HR-51y" firstAttribute="width" secondItem="xuO-YZ-3Xr" secondAttribute="width" id="853-93-svY"/>
+                            <constraint firstItem="zZw-kt-keY" firstAttribute="centerX" secondItem="xuO-YZ-3Xr" secondAttribute="centerX" id="8gt-t0-3xs"/>
                             <constraint firstAttribute="trailing" secondItem="OWK-gk-UxT" secondAttribute="trailing" id="Bfx-x9-vk5"/>
                             <constraint firstItem="OWK-gk-UxT" firstAttribute="leading" secondItem="xuO-YZ-3Xr" secondAttribute="leading" id="EBU-GY-xpN"/>
                             <constraint firstAttribute="bottom" secondItem="OWK-gk-UxT" secondAttribute="bottom" id="OM3-i8-DGK"/>
+                            <constraint firstItem="lk5-mb-AYW" firstAttribute="centerX" secondItem="xuO-YZ-3Xr" secondAttribute="centerX" id="XE0-8F-WGj"/>
+                            <constraint firstItem="lk5-mb-AYW" firstAttribute="centerY" secondItem="xuO-YZ-3Xr" secondAttribute="centerY" id="Z63-ne-YUt"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zZw-kt-keY" secondAttribute="trailing" constant="8" id="igf-PZ-VVd"/>
+                            <constraint firstItem="zZw-kt-keY" firstAttribute="leading" secondItem="xuO-YZ-3Xr" secondAttribute="leadingMargin" constant="8" id="rVJ-8L-c6t"/>
                             <constraint firstItem="OWK-gk-UxT" firstAttribute="top" secondItem="xuO-YZ-3Xr" secondAttribute="top" id="snY-kG-kHi"/>
+                            <constraint firstItem="edo-9f-zuZ" firstAttribute="centerX" secondItem="xuO-YZ-3Xr" secondAttribute="centerX" id="vCH-vo-pnM"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Grocery List" id="pNw-O3-y7f"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="1000"/>
                     <connections>
+                        <outlet property="bagImageView" destination="edo-9f-zuZ" id="Dqb-WV-r7F"/>
                         <outlet property="bagLabel" destination="4sL-dG-vJq" id="PiP-0E-hJW"/>
                         <outlet property="bagTableView" destination="lAN-6v-sBf" id="HuE-bI-XLi"/>
                         <outlet property="bagTableViewHeightConstraint" destination="7GC-QQ-9dI" id="KXD-qV-oJX"/>
                         <outlet property="contentView" destination="e4J-HR-51y" id="sfR-8f-vNp"/>
+                        <outlet property="cookLabel" destination="yle-K4-UFU" id="3wc-kf-ZGm"/>
                         <outlet property="cookTableView" destination="drj-Ve-Pi8" id="S7R-45-YXm"/>
                         <outlet property="cookTableViewHeightConstraint" destination="QRf-Ee-hj4" id="vb2-Ve-Tju"/>
+                        <outlet property="emptyStateLabel" destination="lk5-mb-AYW" id="BiU-Sy-SHL"/>
                         <outlet property="groceryListTableView" destination="CSm-Yl-AS5" id="aWS-sF-v3W"/>
                         <outlet property="listTableViewHeightConstraint" destination="Knw-8a-oFu" id="T1Y-qk-ukc"/>
                     </connections>
@@ -1046,6 +1077,7 @@
         <image name="accept" width="24" height="24"/>
         <image name="accept copy" width="24" height="24"/>
         <image name="add" width="24" height="24"/>
+        <image name="bag" width="61" height="60"/>
         <image name="clock1" width="24" height="24"/>
         <image name="gear" width="25" height="25"/>
         <image name="star" width="24" height="24"/>
