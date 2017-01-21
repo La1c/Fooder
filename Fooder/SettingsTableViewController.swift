@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import MessageUI
 
 class SettingsTableViewController: UITableViewController {
 
@@ -16,6 +17,21 @@ class SettingsTableViewController: UITableViewController {
             if let navigationVC = segue.destination as? UINavigationController,
                let destinationVC = navigationVC.viewControllers[0] as? IntolerancesTableViewController{
                     destinationVC.delegate = self
+            }
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    //    super.tableView(tableView, didSelectRowAt: indexPath)
+        
+        if indexPath.section == 0, indexPath.row == 0{
+            //Send email
+            let mailComposeViewController = configuredMailComposeViewController()
+            
+            if MFMailComposeViewController.canSendMail(){
+                self.present(mailComposeViewController, animated: true, completion: nil)
+            } else{
+                self.showSendMailErrorAlert()
             }
         }
     }
@@ -47,5 +63,27 @@ extension SettingsTableViewController: IntolerancesTableViewControllerDelegate{
     func userFinishedChoosingIntolerances(chosen: Results<Intolerance>) {
         configureSubtitleText(with: chosen)
         dismiss(animated: true, completion: nil)
+    }
+}
+
+//MARK: -email compose view controller
+extension SettingsTableViewController: MFMailComposeViewControllerDelegate{
+    func configuredMailComposeViewController() -> MFMailComposeViewController{
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self
+        mailComposerVC.setToRecipients(["fooder.feedback@gmail.com"])
+        mailComposerVC.setSubject("Fooder feedback")
+        mailComposerVC.setMessageBody("Hello!\nI have some thoughts about Fooder:", isHTML: false)
+        return mailComposerVC
+    }
+    
+    func showSendMailErrorAlert(){
+        let sendMailErrorAlert = UIAlertController(title: "Could Not Send Email", message: "Please check your internet connection, email configuration and try again.", preferredStyle: .alert)
+        sendMailErrorAlert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(sendMailErrorAlert, animated: true, completion: nil)
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
     }
 }
