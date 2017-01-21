@@ -1,4 +1,7 @@
 # Fooder
+<p align="center">
+<img src="https://github.com/La1c/Fooder/blob/master/Fooder/Assets.xcassets/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png?raw=true")>
+</p>
 
 Main project at VK University.
 
