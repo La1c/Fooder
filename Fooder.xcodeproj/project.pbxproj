@@ -37,6 +37,7 @@
 		E7DD8BF51DE1DC1C00EA1584 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7DD8BF31DE1DC1C00EA1584 /* LaunchScreen.storyboard */; };
 		E7DD8C001DE1DC1C00EA1584 /* FooderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DD8BFF1DE1DC1C00EA1584 /* FooderTests.swift */; };
 		E7DD8C0B1DE1DC1C00EA1584 /* FooderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DD8C0A1DE1DC1C00EA1584 /* FooderUITests.swift */; };
+		E7E4BAF31E350B1B000677A2 /* InstructionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E4BAF21E350B1B000677A2 /* InstructionTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,7 @@
 		E7DD8C061DE1DC1C00EA1584 /* FooderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FooderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7DD8C0A1DE1DC1C00EA1584 /* FooderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooderUITests.swift; sourceTree = "<group>"; };
 		E7DD8C0C1DE1DC1C00EA1584 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7E4BAF21E350B1B000677A2 /* InstructionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionTableViewCell.swift; sourceTree = "<group>"; };
 		FECC26CF3440DD78E9A76F3C /* Pods_Fooder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fooder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -187,6 +189,7 @@
 				E7B1C41F1E11291800A5B71D /* IntoleranceTableViewCell.swift */,
 				E7946DAD1E1C4AC900E98E3F /* CookTableViewCell.swift */,
 				E78AB2621DE3041000565CBF /* ExploreRecipeCell.swift */,
+				E7E4BAF21E350B1B000677A2 /* InstructionTableViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 				E78AB25D1DE2EDB200565CBF /* RecipeRealm.swift in Sources */,
 				E71FD5B01E072D8000C5B4AC /* Diets.swift in Sources */,
 				E7946DB01E1DB12500E98E3F /* FavoritesViewController.swift in Sources */,
+				E7E4BAF31E350B1B000677A2 /* InstructionTableViewCell.swift in Sources */,
 				E749DE0E1E143B9200E286BE /* Recipe.swift in Sources */,
 				E7B1C4221E11502200A5B71D /* FoodTypeSegmentedControl.swift in Sources */,
 				E78AB2611DE2FA4F00565CBF /* ExploreModel.swift in Sources */,

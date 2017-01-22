@@ -88,20 +88,18 @@ extension FavoritesViewController{
 //MARK: -empty data set
 extension FavoritesViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate{
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        let attributes = [NSForegroundColorAttributeName: self.view.tintColor]
+        let attributes = [NSForegroundColorAttributeName: self.view.tintColor as Any]
         return NSAttributedString(string: "Nothing here yet", attributes: attributes)
     }
     
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        let attributes = [NSForegroundColorAttributeName: self.view.tintColor]
+        let attributes = [NSForegroundColorAttributeName: self.view.tintColor as Any]
         
         if segmentedControl.selectedSegmentIndex == 0{
             return NSAttributedString(string: "Try to find something you like at the Explore tab!", attributes: attributes)
         }else{
             return NSAttributedString(string: "You can add recipe to this list from a recipe card", attributes: attributes)
         }
-        
-        
     }
     
     func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {

@@ -247,8 +247,9 @@ extension DetailsViewController: UITableViewDelegate, UITableViewDataSource{
         
         if tableView.restorationIdentifier! == "instructionsTableView"{
             let cell = tableView.dequeueReusableCell(withIdentifier: "instructionCell", for: indexPath)
-            cell.textLabel?.text = recipe.extendedInstructions[indexPath.row]
-            cell.imageView?.image = UIImage(named: String(indexPath.row + 1))  
+            if let cell = cell as? InstructionTableViewCell{
+                cell.configure(with: recipe.extendedInstructions[indexPath.row], at: indexPath.row)
+            }
             return cell
         }
         return UITableViewCell()

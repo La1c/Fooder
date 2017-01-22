@@ -187,12 +187,12 @@ extension ExploreViewController: UICollectionViewDataSourcePrefetching{
 extension ExploreViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate{
     
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        let attributes = [NSForegroundColorAttributeName: self.view.tintColor]
+        let attributes = [NSForegroundColorAttributeName: self.view.tintColor as Any]
         return NSAttributedString(string: "Nothing to Show", attributes: attributes)
     }
     
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        let attributes = [NSForegroundColorAttributeName: self.view.tintColor]
+        let attributes = [NSForegroundColorAttributeName: self.view.tintColor as Any]
         return NSAttributedString(string: "Try to look for something else or check your internet connection", attributes: attributes)
     }
     
