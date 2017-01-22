@@ -11,7 +11,7 @@ import RealmSwift
 
 class DetailsViewController: UIViewController {
 
-    @IBOutlet weak var imgeView: UIImageView!
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var instructionsTableView: UITableView!
     
     @IBOutlet var favoritesButton: UIButton!
@@ -45,10 +45,13 @@ class DetailsViewController: UIViewController {
         instructionsTableView.setNeedsLayout()
         instructionsTableView.layoutIfNeeded()
         
+        
+        scrollView.delegate = self
+        
         addToListButton.isHidden = hideAddButton
         
         
-        imgeView.image = image
+        imageView.image = image
         recipeNameLabel.text = recipe.title
         
         let formatter = NumberFormatter()
@@ -66,9 +69,6 @@ class DetailsViewController: UIViewController {
                                     self.updateUI()
                                 }})
         }
-        
-        
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -78,7 +78,6 @@ class DetailsViewController: UIViewController {
         let statusBarBlurView = UIVisualEffectView(effect: statusBarBlur)
         statusBarBlurView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 20)
         view.addSubview(statusBarBlurView)
-        
         checkFavoritesAndCooked()
     }
     
@@ -125,7 +124,6 @@ class DetailsViewController: UIViewController {
                                  "isCooked": cookedButton.isSelected],
                          update: true)
             }
-        
     }
     
     @IBAction func favoritesButtonPressed(_ sender: Any) {
@@ -254,5 +252,21 @@ extension DetailsViewController: UITableViewDelegate, UITableViewDataSource{
             return cell
         }
         return UITableViewCell()
+    }
+}
+
+//MARK: - header animation
+extension DetailsViewController{
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offset = scrollView.contentOffset.y
+        var imageTransform = CATransform3DIdentity
+        let navigationBarHeight = self.navigationController?.navigationBar.bounds.height ?? 0
+        if (offset + navigationBarHeight) < 0 {
+            let imageScaleFactor:CGFloat = -(offset + navigationBarHeight) / imageView.bounds.height
+            let imageSizevariation = ((imageView.bounds.height * (1.0 + imageScaleFactor)) - imageView.bounds.height)/2.0
+            imageTransform = CATransform3DTranslate(imageTransform, 0, imageSizevariation + offset + navigationBarHeight, 0)
+            imageTransform = CATransform3DScale(imageTransform, 1.0 + imageScaleFactor, 1.0 + imageScaleFactor, 0)
+            imageView.layer.transform = imageTransform
+        } 
     }
 }

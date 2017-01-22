@@ -25,6 +25,7 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
     var bag: Results<IngridientRealm>?
     var cook: Results<RecipeRealm>?
 
+    @IBOutlet weak var emptyStateSubLabel: UILabel!
     @IBOutlet weak var emptyStateLabel: UILabel!
     @IBOutlet weak var bagImageView: UIImageView!
     @IBOutlet weak var cookLabel: UILabel!
@@ -254,6 +255,7 @@ extension GroceryListViewController{
         
         bagImageView.isHidden = !everythignIsEmpty
         emptyStateLabel.isHidden = !everythignIsEmpty
+        emptyStateSubLabel.isHidden = emptyStateLabel.isHidden
     }
 }
 

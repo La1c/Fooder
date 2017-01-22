@@ -22,7 +22,6 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //    super.tableView(tableView, didSelectRowAt: indexPath)
         
         if indexPath.section == 0, indexPath.row == 0{
             //Send email
