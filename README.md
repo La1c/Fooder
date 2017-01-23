@@ -38,7 +38,7 @@ Screenshots:
 <img src="https://github.com/La1c/Fooder/blob/master/screenshot7.png?raw=true" width="260">
 
 
-Animated (outdated):
+Animated:
 
-![](https://github.com/La1c/Fooder/blob/master/screengif.gif)
+![](https://github.com/La1c/Fooder/blob/master/screencast.gif)
 
