@@ -99,11 +99,13 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
                                                       for: indexPath)
         cell.sizeThatFits(CGSize(width: view.frame.width, height: cell.frame.height))
         if let cell =  cell as? ExploreRecipeCell{
+            var prefetched = false
             if let prefetchedImage = prefetchedImagesForCells[indexPath.row]{
                 cell.imageView.image = prefetchedImage
+                prefetched = true
                 prefetchedImagesForCells[indexPath.row] = nil
             }
-            cell.configureCell(for: recipes[indexPath.row])
+            cell.configureCell(for: recipes[indexPath.row],prefetched: prefetched)
         }
         
         return cell
