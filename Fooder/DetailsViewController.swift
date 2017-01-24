@@ -14,6 +14,10 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var instructionsTableView: UITableView!
     
+    @IBOutlet weak var rightDotImageView: UIImageView!
+    @IBOutlet weak var centerDotImageView: UIImageView!
+    @IBOutlet weak var leftDotImageView: UIImageView!
+    @IBOutlet weak var placeholderView: UIView!
     @IBOutlet var favoritesButton: UIButton!
     @IBOutlet weak var cookedButton: UIButton!
     @IBOutlet weak var instructionsTableViewHeightConstrain: NSLayoutConstraint!
@@ -30,6 +34,7 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var addToListButton: UIButton!
     var recipe: Recipe!
     var image: UIImage!
+    
     var hideAddButton = false
     
     override func viewDidLoad() {
@@ -45,30 +50,20 @@ class DetailsViewController: UIViewController {
         instructionsTableView.setNeedsLayout()
         instructionsTableView.layoutIfNeeded()
         
-        
         scrollView.delegate = self
-        
-        addToListButton.isHidden = hideAddButton
-        
-        
         imageView.image = image
         recipeNameLabel.text = recipe.title
         
-        let formatter = NumberFormatter()
-        formatter.maximumFractionDigits = 1
+        startAnimation()
         
-        
-        servingsLabel.text = servingsLabel.text! + " " +  formatter.string(from: recipe.servings as NSNumber)!
-        readyInLabel.text = readyInLabel.text! + " " + formatter.string(from: recipe.readyInMinutes as NSNumber)! + " min"
-        
-        
-        if recipe.ingridients.count == 0{
-            FoodService.getRecipeByID(id: recipe.id, completion: {data in
+        addToListButton.isHidden = hideAddButton
+
+        FoodService.getRecipeByID(id: recipe.id, completion: {data in
                                 if let newRecipe = data{
                                     self.recipe = newRecipe
                                     self.updateUI()
+                                    self.stopAnimation()
                                 }})
-        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -270,4 +265,38 @@ extension DetailsViewController{
             imageView.layer.transform = imageTransform
         } 
     }
+}
+
+//MARK: - loading animation
+extension DetailsViewController{
+    func startAnimation(){
+        self.scrollView.isScrollEnabled = false
+        leftDotImageView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+        centerDotImageView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+        rightDotImageView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+        
+        UIView.animate(withDuration: 0.6, delay: 0.0, options: [.repeat, .autoreverse], animations: {
+            self.leftDotImageView.transform = CGAffineTransform.identity
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 0.6, delay: 0.2, options: [.repeat, .autoreverse], animations: {
+            self.centerDotImageView.transform = CGAffineTransform.identity
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 0.6, delay: 0.4, options: [.repeat, .autoreverse], animations: {
+            self.rightDotImageView.transform = CGAffineTransform.identity
+        }, completion: nil)
+        
+    }
+    
+    func stopAnimation(){
+       
+       UIView.transition(from: placeholderView,
+                         to: contentView,
+                         duration: 0.5,
+                         options: .transitionCrossDissolve,
+                         completion: nil)
+       self.scrollView.isScrollEnabled = true
+    }
+    
 }
