@@ -13,7 +13,11 @@ import Alamofire
 extension UIImageView{
     public func imageFromUrl(urlString: String) {
         Alamofire.request(urlString, method: HTTPMethod.get).response(completionHandler: {response in
-            self.image = UIImage(data: response.data!, scale: 1)
+            UIView.transition(with: self,
+                              duration: 0.8,
+                              options: .transitionCrossDissolve,
+                              animations: {self.image = UIImage(data: response.data!, scale: 1)},
+                              completion: nil)
         })
     }
 }

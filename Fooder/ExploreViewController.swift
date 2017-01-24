@@ -78,7 +78,7 @@ class ExploreViewController: UIViewController {
     func search(offset: Int = 0, more: Bool = false){
         let foodType =   foodTypeSegmentControl.titleForSegment(at: foodTypeSegmentControl.selectedSegmentIndex)!.lowercased()
         let foodTypeEnum = FoodType(rawValue: foodType) ?? .all
-        let query = searchBar.text!
+        let query = searchBar.text ?? ""
         loadingMore = true
         model.searchRecipes(query: query, type: foodTypeEnum, offset:offset, more: more)
     }
@@ -97,6 +97,7 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MealCell",
                                                       for: indexPath)
+        
         cell.sizeThatFits(CGSize(width: view.frame.width, height: cell.frame.height))
         if let cell =  cell as? ExploreRecipeCell{
             var prefetched = false
@@ -107,7 +108,6 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
             }
             cell.configureCell(for: recipes[indexPath.row],prefetched: prefetched)
         }
-        
         return cell
     }
     
@@ -117,7 +117,7 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
         self.lastOffset = scrollView.contentOffset.y
         
         
-        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height * 5
+        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
         let deltaOffset = maximumOffset - self.lastOffset
         
         if deltaOffset <= 0 {
