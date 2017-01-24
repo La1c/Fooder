@@ -19,6 +19,7 @@ class ExploreViewController: UIViewController {
     let searchBar = UISearchBar()
     var lastOffset: CGFloat = 0
     var loadingMore = false
+    var noMoreResults = false
     
     var recipes = [Recipe]()
     var model: ExploreModel!
@@ -50,7 +51,6 @@ class ExploreViewController: UIViewController {
         view.addSubview(statusBarBlurView)
         lastOffset = self.collectionView.contentOffset.y
         foodTypeScrollView.isHidden = self.navigationItem.titleView != searchBar
-        
     }
     
     deinit {
@@ -84,7 +84,7 @@ class ExploreViewController: UIViewController {
     }
 }
 
-
+//MARK: - Collection view delegare/data source
 extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataSource{
      func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -121,14 +121,22 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
         let deltaOffset = maximumOffset - self.lastOffset
         
         if deltaOffset <= 0 {
-            if(!loadingMore){
+            if !loadingMore, !noMoreResults{
                 search(offset: recipes.count, more: true)
             }
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "statusFooter", for: indexPath)
+        if let footerView = footerView as? LoadingFooterCollectionReusableView{
+            footerView.configurate(loading: !noMoreResults)
+        }
+        return footerView
+    }
 }
 
-
+//MARK: -search bar
 extension ExploreViewController: UISearchBarDelegate{
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         self.navigationItem.titleView = nil
@@ -150,7 +158,13 @@ extension ExploreViewController: ExploreModelDelegate{
     func modelDidLoadNewData() {
         recipes = model.recipes
         loadingMore = false
+        noMoreResults = false
         collectionView.reloadData()
+    }
+    
+    func modelCantLoadMore(){
+        loadingMore = false
+        noMoreResults = true
     }
 }
 

@@ -11,6 +11,7 @@ import RealmSwift
 
 protocol ExploreModelDelegate: class{
     func modelDidLoadNewData()
+    func modelCantLoadMore()
 }
 
 class ExploreModel{
@@ -54,7 +55,12 @@ class ExploreModel{
                     self.recipes = data
                 }
                 
-                self.delegate?.modelDidLoadNewData()
+                if data.count == 0{
+                    self.delegate?.modelCantLoadMore()
+                } else {
+                    self.delegate?.modelDidLoadNewData()
+                }
+                
             }})
     }
     
