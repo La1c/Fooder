@@ -60,7 +60,6 @@ class ExploreViewController: UIViewController {
     
     @IBAction func searchButtonPressed(_ sender: Any) {
         self.navigationItem.titleView?.addSubview(searchBar)
-        
         self.navigationItem.titleView = searchBar
         self.navigationItem.rightBarButtonItem = nil
         foodTypeScrollView.isHidden = false
@@ -99,8 +98,10 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
                                                       for: indexPath)
         
         cell.sizeThatFits(CGSize(width: view.frame.width, height: cell.frame.height))
+        
         if let cell =  cell as? ExploreRecipeCell{
             var prefetched = false
+            cell.imageView.image = nil
             if let prefetchedImage = prefetchedImagesForCells[indexPath.row]{
                 cell.imageView.image = prefetchedImage
                 prefetched = true
