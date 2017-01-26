@@ -85,7 +85,7 @@ class ExploreViewController: UIViewController {
 }
 
 //MARK: - Collection view delegare/data source
-extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
      func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -138,6 +138,12 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
         print(indexPath)
         return footerView
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.bounds.width
+        let height = 0.8 * width
+        return CGSize(width: width, height: height)
+    }
 }
 
 //MARK: -search bar
@@ -163,7 +169,7 @@ extension ExploreViewController: ExploreModelDelegate{
         recipes = model.recipes
         loadingMore = false
         noMoreResults = false
-       collectionView.reloadData()
+        collectionView.reloadData()
     }
     
     func modelCantLoadMore(){
