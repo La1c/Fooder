@@ -37,6 +37,7 @@ class ExploreViewController: UIViewController {
         model = ExploreModel.sharedInstance
         model.delegate = self
         model.searchRecipes()
+        loadingMore = true
         searchBar.delegate = self
         searchBar.showsCancelButton = true
         searchBar.searchBarStyle = .minimal
@@ -133,6 +134,8 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
         if let footerView = footerView as? LoadingFooterCollectionReusableView{
             footerView.configurate(loading: !noMoreResults)
         }
+        print(kind)
+        print(indexPath)
         return footerView
     }
 }
@@ -160,12 +163,18 @@ extension ExploreViewController: ExploreModelDelegate{
         recipes = model.recipes
         loadingMore = false
         noMoreResults = false
-        collectionView.reloadData()
+       collectionView.reloadData()
     }
     
     func modelCantLoadMore(){
         loadingMore = false
         noMoreResults = true
+        if let footer = self.collectionView.supplementaryView(forElementKind: "UICollectionElementKindSectionFooter",
+                                                              at: IndexPath(row: 0, section: 0)) as? LoadingFooterCollectionReusableView{
+            footer.configurate(loading: !noMoreResults)
+        }
+        
+        
     }
 }
 

@@ -13,7 +13,6 @@ class DetailsViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var instructionsTableView: UITableView!
-    
     @IBOutlet weak var rightDotImageView: UIImageView!
     @IBOutlet weak var centerDotImageView: UIImageView!
     @IBOutlet weak var leftDotImageView: UIImageView!
@@ -102,7 +101,6 @@ class DetailsViewController: UIViewController {
         if recipe.extendedInstructions.count > 0{
             let lastRowFrame = instructionsTableView.rectForRow(at: IndexPath(row: recipe.extendedInstructions.count - 1, section: 0))
             
-            
             instructionsTableViewHeightConstrain.constant = (lastRowFrame.origin.y + lastRowFrame.height)
             instructionsTableView.frame.size.height = (lastRowFrame.origin.y + lastRowFrame.height)
         }
@@ -131,6 +129,28 @@ class DetailsViewController: UIViewController {
                                  "isFavorite": favoritesButton.isSelected],
                          update: true)
         }
+        
+//        let star = UIImageView(image: favoritesButton.currentBackgroundImage)
+//        star.frame = favoritesButton.frame
+//        star.contentMode = .scaleAspectFit
+//        self.contentView.addSubview(star)
+//        self.contentView.bringSubview(toFront: star)
+//        
+//        let path = UIBezierPath()
+//        let endPointX = CGFloat(self.contentView.frame.width * 7/8)
+//        let endPointY = self.tabBarController!.tabBar.center.y + scrollView.contentOffset.y
+//        let endPoint = CGPoint(x: endPointX, y: endPointY)
+//        path.move(to: star.center)
+//        
+//        let controlPoint = CGPoint(x: self.contentView.center.x,
+//                                   y: (endPointY + star.center.y)/2)
+//        path.addCurve(to: endPoint, controlPoint1: controlPoint, controlPoint2: controlPoint)
+//        let animation = CAKeyframeAnimation(keyPath: "position")
+//        animation.path = path.cgPath
+//        animation.rotationMode = kCAAnimationRotateAuto
+//        animation.repeatCount = Float.infinity
+//        animation.duration = 1.0
+//        star.layer.add(animation, forKey: "animate position along path")
     }
 }
 
