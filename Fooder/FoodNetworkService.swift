@@ -54,11 +54,10 @@ struct FoodService {
             })
     }
     
-    static func recipeSearch(cuisine: Cuisine? = nil, diet: Diet = .none, intolerances: String = "", query: String = "", type: FoodType = .all, offset: Int = 0, completion: @escaping ([Recipe]?) -> Void){
+    static func recipeSearch(diet: Diet = .none, intolerances: String = "", query: String = "", type: FoodType = .all, offset: Int = 0, completion: @escaping ([Recipe]?) -> Void){
         var responseRecipes = [Recipe]()
         Alamofire.request("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search",
                           parameters: ["limitLicense": true,
-                                       //   "cuisine": "", //enable later!
                             "diet": diet.rawValue,
                             "instructionsRequired": true,
                             "intolerances":  intolerances,

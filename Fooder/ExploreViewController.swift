@@ -134,8 +134,6 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
         if let footerView = footerView as? LoadingFooterCollectionReusableView{
             footerView.configurate(loading: !noMoreResults)
         }
-        print(kind)
-        print(indexPath)
         return footerView
     }
     
@@ -155,7 +153,7 @@ extension ExploreViewController: UISearchBarDelegate{
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-       search()
+        search()
         if !collectionView.visibleCells.isEmpty{
             collectionView.scrollToItem(at: IndexPath(row:0, section: 0), at: .top, animated: true)
         }

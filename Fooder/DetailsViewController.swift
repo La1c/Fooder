@@ -22,14 +22,11 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var instructionsTableViewHeightConstrain: NSLayoutConstraint!
     @IBOutlet weak var ingridientsTableView: UITableView!
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
-    
     @IBOutlet weak var recipeNameLabel: UILabel!
     @IBOutlet weak var servingsLabel: UILabel!
     @IBOutlet weak var readyInLabel: UILabel!
-    
     @IBOutlet weak var addToListButton: UIButton!
     var recipe: Recipe!
     var image: UIImage!
@@ -40,7 +37,6 @@ class DetailsViewController: UIViewController {
         super.viewDidLoad()
         ingridientsTableView.delegate = self
         ingridientsTableView.dataSource = self
-        
         instructionsTableView.delegate = self
         instructionsTableView.dataSource = self
         instructionsTableView.rowHeight = UITableViewAutomaticDimension
@@ -92,7 +88,6 @@ class DetailsViewController: UIViewController {
     func setGoodConstrains(){
         ingridientsTableView.sizeToFit()
         tableViewHeightConstraint.constant = ingridientsTableView.contentSize.height
-        
         instructionsTableView.sizeToFit()
         instructionsTableViewHeightConstrain.constant = instructionsTableView.contentSize.height
         instructionsTableView.frame.size.height = instructionsTableView.contentSize.height
@@ -129,28 +124,6 @@ class DetailsViewController: UIViewController {
                                  "isFavorite": favoritesButton.isSelected],
                          update: true)
         }
-        
-//        let star = UIImageView(image: favoritesButton.currentBackgroundImage)
-//        star.frame = favoritesButton.frame
-//        star.contentMode = .scaleAspectFit
-//        self.contentView.addSubview(star)
-//        self.contentView.bringSubview(toFront: star)
-//        
-//        let path = UIBezierPath()
-//        let endPointX = CGFloat(self.contentView.frame.width * 7/8)
-//        let endPointY = self.tabBarController!.tabBar.center.y + scrollView.contentOffset.y
-//        let endPoint = CGPoint(x: endPointX, y: endPointY)
-//        path.move(to: star.center)
-//        
-//        let controlPoint = CGPoint(x: self.contentView.center.x,
-//                                   y: (endPointY + star.center.y)/2)
-//        path.addCurve(to: endPoint, controlPoint1: controlPoint, controlPoint2: controlPoint)
-//        let animation = CAKeyframeAnimation(keyPath: "position")
-//        animation.path = path.cgPath
-//        animation.rotationMode = kCAAnimationRotateAuto
-//        animation.repeatCount = Float.infinity
-//        animation.duration = 1.0
-//        star.layer.add(animation, forKey: "animate position along path")
     }
 }
 
