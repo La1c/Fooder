@@ -17,6 +17,7 @@
 		E749DE0E1E143B9200E286BE /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E749DE0D1E143B9200E286BE /* Recipe.swift */; };
 		E756E1F41E0F334500501B0C /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E756E1F31E0F334500501B0C /* ExploreViewController.swift */; };
 		E75C14301E0579A300477A66 /* GroceryListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75C142F1E0579A300477A66 /* GroceryListTableViewCell.swift */; };
+		E778734B1E44AD4800E54228 /* ClearAllUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E778734A1E44AD4800E54228 /* ClearAllUIButton.swift */; };
 		E78AB2571DE25B0700565CBF /* FoodNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78AB2561DE25B0700565CBF /* FoodNetworkService.swift */; };
 		E78AB25D1DE2EDB200565CBF /* RecipeRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78AB25C1DE2EDB200565CBF /* RecipeRealm.swift */; };
 		E78AB25F1DE2EEA500565CBF /* IngridientRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78AB25E1DE2EEA500565CBF /* IngridientRealm.swift */; };
@@ -68,6 +69,7 @@
 		E749DE0D1E143B9200E286BE /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		E756E1F31E0F334500501B0C /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		E75C142F1E0579A300477A66 /* GroceryListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryListTableViewCell.swift; sourceTree = "<group>"; };
+		E778734A1E44AD4800E54228 /* ClearAllUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClearAllUIButton.swift; sourceTree = "<group>"; };
 		E78AB2561DE25B0700565CBF /* FoodNetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodNetworkService.swift; sourceTree = "<group>"; };
 		E78AB25C1DE2EDB200565CBF /* RecipeRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeRealm.swift; sourceTree = "<group>"; };
 		E78AB25E1DE2EEA500565CBF /* IngridientRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngridientRealm.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			children = (
 				E78AB2561DE25B0700565CBF /* FoodNetworkService.swift */,
 				E78AB2641DE30E9C00565CBF /* UIImageExtension.swift */,
+				E778734A1E44AD4800E54228 /* ClearAllUIButton.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -313,7 +316,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Vladimir Ageev";
 				TargetAttributes = {
 					E7DD8BE61DE1DC1C00EA1584 = {
@@ -451,6 +454,7 @@
 				E78AB2611DE2FA4F00565CBF /* ExploreModel.swift in Sources */,
 				E78AB2651DE30E9C00565CBF /* UIImageExtension.swift in Sources */,
 				E78AB2571DE25B0700565CBF /* FoodNetworkService.swift in Sources */,
+				E778734B1E44AD4800E54228 /* ClearAllUIButton.swift in Sources */,
 				E71FD5B61E07339C00C5B4AC /* FoodType.swift in Sources */,
 				E75C14301E0579A300477A66 /* GroceryListTableViewCell.swift in Sources */,
 				E7DD8BEB1DE1DC1C00EA1584 /* AppDelegate.swift in Sources */,
@@ -620,6 +624,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.vladimir.ageev.Fooder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -635,6 +640,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.vladimir.ageev.Fooder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

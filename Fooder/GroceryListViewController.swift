@@ -13,25 +13,26 @@ import DZNEmptyDataSet
 
 class GroceryListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet var cookTableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet var cookTableView: UITableView!
     @IBOutlet var contentView: UIView!
     @IBOutlet var bagTableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet var bagTableView: UITableView!
-    @IBOutlet var bagLabel: UILabel!
     @IBOutlet var listTableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet var groceryListTableView: UITableView!
     var items: Results<IngridientRealm>?
     var bag: Results<IngridientRealm>?
     var cook: Results<RecipeRealm>?
+    
+    @IBOutlet var clearButtons: [ClearAllUIButton]!
 
     @IBOutlet weak var emptyStateSubLabel: UILabel!
     @IBOutlet weak var emptyStateLabel: UILabel!
     @IBOutlet weak var bagImageView: UIImageView!
-    @IBOutlet weak var cookLabel: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureTableView(tableView: groceryListTableView)
         configureTableView(tableView: bagTableView)
         
@@ -49,7 +50,10 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.dataSource = self
     }
     
-    func setGoodConstrains<T: Object>(for tableView: UITableView, withContstraint: NSLayoutConstraint, list: Results<T>){
+    func setGoodConstrains<T: Object>(for tableView: UITableView,
+                           withContstraint: NSLayoutConstraint,
+                           list: Results<T>){
+        
         tableView.sizeToFit()
         withContstraint.constant = tableView.contentSize.height
         if  list.count > 0{
@@ -173,8 +177,7 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
             
             groceryListTableView.deleteRows(at: indexPaths, with: .automatic)
             bag = realm.objects(IngridientRealm.self).filter("inGroceryList == true AND inBag == true")
-            bagLabel.isHidden = false
-            bagTableView.isHidden = false
+            checkEmptyStates()
             bagTableView.reloadData()
             setGoodConstrains(for: groceryListTableView, withContstraint: listTableViewHeightConstraint, list: items)
             setGoodConstrains(for: bagTableView, withContstraint: bagTableViewHeightConstraint,list: bag!)
@@ -250,14 +253,76 @@ extension GroceryListViewController{
         let bagIsEmpty = bag?.count == 0
         let everythignIsEmpty = cookIsEmpty && ingridientsIsEmpty && bagIsEmpty
         
-        bagLabel.isHidden = bagIsEmpty
-        cookLabel.isHidden = cookIsEmpty
+//        bagTableView.tableHeaderView?.isHidden = bagIsEmpty
+//        groceryListTableView.tableHeaderView?.isHidden = ingridientsIsEmpty
+//        cookTableView.tableHeaderView?.isHidden = cookIsEmpty
+        
+        bagTableView.isHidden = bagIsEmpty
+        groceryListTableView.isHidden = ingridientsIsEmpty
+        cookTableView.isHidden = cookIsEmpty
+        
         
         bagImageView.isHidden = !everythignIsEmpty
         emptyStateLabel.isHidden = !everythignIsEmpty
         emptyStateSubLabel.isHidden = emptyStateLabel.isHidden
     }
 }
+
+//MARK: - clear all buttons
+extension GroceryListViewController{
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            if let button = clearButtons.first(where: {$0.clearState == .preparedForAction}),
+                let touch = touches.first{
+                
+                if button.frame.contains(touch.location(in: button.superview)){
+                    if let tableview = button.superview?.superview as? UITableView{
+                        clearAll(from: tableview.restorationIdentifier ?? "")
+                        tableview.reloadData()
+                    }
+                    checkEmptyStates()
+                   setGoodConstrains(for: cookTableView, withContstraint: cookTableViewHeightConstraint, list: cook!)
+                    setGoodConstrains(for: bagTableView, withContstraint: bagTableViewHeightConstraint,list: bag!)
+                    setGoodConstrains(for: groceryListTableView, withContstraint: listTableViewHeightConstraint, list: items!)
+                }
+                button.switchState()
+        }
+        self.scrollView.isUserInteractionEnabled = true
+    }
+    
+    @IBAction func clearAllButtonPressed(_ sender: Any){
+        if let button = sender as? ClearAllUIButton{
+            button.switchState()
+            
+            if button.clearState == .preparedForAction{
+                scrollView.isUserInteractionEnabled = false
+            }
+        }
+    }
+    
+    
+    func clearAll(from tableView: String){
+        switch tableView {
+        case "listTableView":
+            try! realm.write {
+                realm.delete(items!)
+            }
+        case "bagTableView":
+            try! realm.write {
+                realm.delete(bag!)
+            }
+        case "cookTableView":
+            try! realm.write {
+                realm.delete(cook!)
+            }
+
+        default:
+            return
+        }
+        
+    }
+}
+
+
 
 
 
