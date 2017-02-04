@@ -8,6 +8,7 @@
 
 import UIKit
 
+@IBDesignable
 class ClearAllUIButton: UIButton {
     
 
@@ -22,13 +23,23 @@ class ClearAllUIButton: UIButton {
         }
     }
 
-    
     func setLable(for state: States){
         switch state {
         case .initial:
-            self.setTitle("Tap to Clear" , for: .normal)
+            UIView.animate(withDuration: 0.5, delay: 0.0, options: [.curveLinear, .allowAnimatedContent], animations: {
+                self.backgroundColor = UIColor.white
+                self.setTitle("" , for: .normal)
+                self.setImage(UIImage(named: "Cancel"), for: .normal)
+                self.contentEdgeInsets = UIEdgeInsetsMake(0,0,0,0)
+            }, completion: nil)
         case .preparedForAction:
-            self.setTitle("Clear All", for: .normal)
+            UIView.animate(withDuration: 0.5, delay: 0.0, options: [.curveLinear, .allowAnimatedContent], animations: {
+                self.setTitle("Clear", for: .normal)
+                self.backgroundColor = self.tintColor
+                self.setImage(nil, for: .normal)
+                self.cornerRadius = self.frame.height / 2
+                self.contentEdgeInsets = UIEdgeInsetsMake(5,8,5,8)
+            }, completion: nil)
         }
     }
     
@@ -38,6 +49,27 @@ class ClearAllUIButton: UIButton {
             self.clearState = .preparedForAction
         case .preparedForAction:
             self.clearState = .initial
+        }
+    }
+    
+    @IBInspectable var cornerRadius: CGFloat {
+        get {
+            return layer.cornerRadius
+        }
+        set {
+            layer.cornerRadius = newValue
+            layer.masksToBounds = newValue > 0
+        }
+    }
+    
+    @IBInspectable var borderWidth: CGFloat = 0 {
+        didSet {
+            layer.borderWidth = borderWidth
+        }
+    }
+    @IBInspectable var borderColor: UIColor? {
+        didSet {
+            layer.borderColor = borderColor?.cgColor
         }
     }
 

@@ -372,20 +372,33 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Groceries" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLo-49-tLy">
-                                                                    <rect key="frame" x="8" y="10" width="84.5" height="24"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Groceries" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="NLo-49-tLy">
+                                                                    <rect key="frame" x="16" y="10" width="88" height="24"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="24" id="UJQ-oD-TKT"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
                                                                     <color key="textColor" red="0.27450980390000002" green="0.3803921569" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fc-Ga-Axf" customClass="ClearAllUIButton" customModule="Fooder" customModuleProvider="target">
-                                                                    <rect key="frame" x="214" y="5" width="98" height="34"/>
-                                                                    <state key="normal" title="Tap to Clear">
-                                                                        <color key="titleColor" red="0.46274509800000002" green="0.64313725489999995" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fc-Ga-Axf" customClass="ClearAllUIButton" customModule="Fooder" customModuleProvider="target">
+                                                                    <rect key="frame" x="280" y="10" width="24" height="24"/>
+                                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="24" id="3nR-8Y-eta"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                                    <state key="normal" image="Cancel">
+                                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                            <real key="value" value="0.0"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                            <real key="value" value="0.0"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="clearAllButtonPressed:" destination="t7K-Yb-NRF" eventType="touchUpInside" id="LdT-bs-FNt"/>
                                                                     </connections>
@@ -394,9 +407,9 @@
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstItem="4fc-Ga-Axf" firstAttribute="centerY" secondItem="NLo-49-tLy" secondAttribute="centerY" id="92D-2Q-Ijq"/>
-                                                                <constraint firstAttribute="trailing" secondItem="4fc-Ga-Axf" secondAttribute="trailing" constant="8" id="TWs-sZ-VzP"/>
+                                                                <constraint firstAttribute="trailing" secondItem="4fc-Ga-Axf" secondAttribute="trailing" constant="16" id="TWs-sZ-VzP"/>
                                                                 <constraint firstItem="NLo-49-tLy" firstAttribute="centerY" secondItem="MZO-Zn-paM" secondAttribute="centerY" id="uG4-ff-aIE"/>
-                                                                <constraint firstItem="NLo-49-tLy" firstAttribute="leading" secondItem="MZO-Zn-paM" secondAttribute="leading" constant="8" id="uSs-MZ-1nR"/>
+                                                                <constraint firstItem="NLo-49-tLy" firstAttribute="leading" secondItem="MZO-Zn-paM" secondAttribute="leading" constant="16" id="uSs-MZ-1nR"/>
                                                             </constraints>
                                                         </view>
                                                         <prototypes>
@@ -461,20 +474,30 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In your Bag" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4sL-dG-vJq">
-                                                                    <rect key="frame" x="8" y="10" width="98" height="24"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In your Bag" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="4sL-dG-vJq">
+                                                                    <rect key="frame" x="16" y="10" width="102.5" height="24"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="24" id="Y5y-Na-bBD"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
                                                                     <color key="textColor" red="0.27450980390000002" green="0.3803921569" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5JM-P0-YUE" customClass="ClearAllUIButton" customModule="Fooder" customModuleProvider="target">
-                                                                    <rect key="frame" x="214" y="5" width="98" height="34"/>
-                                                                    <state key="normal" title="Tap to Clear">
-                                                                        <color key="titleColor" red="0.46274509800000002" green="0.64313725489999995" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5JM-P0-YUE" customClass="ClearAllUIButton" customModule="Fooder" customModuleProvider="target">
+                                                                    <rect key="frame" x="280" y="10" width="24" height="24"/>
+                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="24" id="gXQ-po-Wej"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                                    <state key="normal" image="Cancel">
+                                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                            <real key="value" value="0.0"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="clearAllButtonPressed:" destination="t7K-Yb-NRF" eventType="touchUpInside" id="BAa-RK-HjP"/>
                                                                     </connections>
@@ -482,10 +505,10 @@
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
-                                                                <constraint firstItem="4sL-dG-vJq" firstAttribute="leading" secondItem="Pxd-26-AtV" secondAttribute="leading" constant="8" id="64g-Fd-sTy"/>
+                                                                <constraint firstItem="4sL-dG-vJq" firstAttribute="leading" secondItem="Pxd-26-AtV" secondAttribute="leading" constant="16" id="64g-Fd-sTy"/>
                                                                 <constraint firstItem="5JM-P0-YUE" firstAttribute="centerY" secondItem="4sL-dG-vJq" secondAttribute="centerY" id="ZL1-LW-bbe"/>
                                                                 <constraint firstItem="4sL-dG-vJq" firstAttribute="centerY" secondItem="Pxd-26-AtV" secondAttribute="centerY" id="ass-uU-N9q"/>
-                                                                <constraint firstAttribute="trailing" secondItem="5JM-P0-YUE" secondAttribute="trailing" constant="8" id="c02-cb-2UL"/>
+                                                                <constraint firstAttribute="trailing" secondItem="5JM-P0-YUE" secondAttribute="trailing" constant="16" id="c02-cb-2UL"/>
                                                             </constraints>
                                                         </view>
                                                         <prototypes>
@@ -549,19 +572,23 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You Wanted to Cook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yle-K4-UFU">
-                                                                    <rect key="frame" x="8" y="10" width="178" height="24"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You Wanted to Cook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="yle-K4-UFU">
+                                                                    <rect key="frame" x="16" y="10" width="186" height="24"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="24" id="Jl0-Uv-a46"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
                                                                     <color key="textColor" red="0.27450980390000002" green="0.3803921569" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WIJ-0f-Xw7" customClass="ClearAllUIButton" customModule="Fooder" customModuleProvider="target">
-                                                                    <rect key="frame" x="214" y="5" width="98" height="34"/>
-                                                                    <state key="normal" title="Tap to Clear">
-                                                                        <color key="titleColor" red="0.46274509800000002" green="0.64313725489999995" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WIJ-0f-Xw7" customClass="ClearAllUIButton" customModule="Fooder" customModuleProvider="target">
+                                                                    <rect key="frame" x="280" y="10" width="24" height="24"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="24" id="0ht-3z-x4V"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                                    <state key="normal" image="Cancel">
+                                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
                                                                     <connections>
                                                                         <action selector="clearAllButtonPressed:" destination="t7K-Yb-NRF" eventType="touchUpInside" id="EeM-eI-Z2e"/>
@@ -570,9 +597,9 @@
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
-                                                                <constraint firstItem="yle-K4-UFU" firstAttribute="leading" secondItem="orH-KL-U5G" secondAttribute="leading" constant="8" id="6YT-N4-ivY"/>
+                                                                <constraint firstItem="yle-K4-UFU" firstAttribute="leading" secondItem="orH-KL-U5G" secondAttribute="leading" constant="16" id="6YT-N4-ivY"/>
                                                                 <constraint firstItem="WIJ-0f-Xw7" firstAttribute="centerY" secondItem="yle-K4-UFU" secondAttribute="centerY" id="jAa-S9-5QI"/>
-                                                                <constraint firstAttribute="trailing" secondItem="WIJ-0f-Xw7" secondAttribute="trailing" constant="8" id="tlA-7N-sAp"/>
+                                                                <constraint firstAttribute="trailing" secondItem="WIJ-0f-Xw7" secondAttribute="trailing" constant="16" id="tlA-7N-sAp"/>
                                                                 <constraint firstItem="yle-K4-UFU" firstAttribute="centerY" secondItem="orH-KL-U5G" secondAttribute="centerY" id="v4s-ch-Ayh"/>
                                                             </constraints>
                                                         </view>
@@ -1285,6 +1312,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Cancel" width="24" height="24"/>
         <image name="Explore Icon" width="24" height="24"/>
         <image name="List" width="26" height="26"/>
         <image name="accept" width="24" height="24"/>
@@ -1299,7 +1327,7 @@
         <image name="users" width="30" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qu6-r6-sLO"/>
+        <segue reference="hRw-xU-FSC"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.46274509803921571" green="0.64313725490196072" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
 </document>
