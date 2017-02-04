@@ -103,7 +103,11 @@ class DetailsViewController: UIViewController {
         instructionsTableView.updateConstraints()
     }
     @IBAction func cookedButtonPressed(_ sender: Any) {
-        cookedButton.isSelected = !cookedButton.isSelected
+
+        scale(button: self.cookedButton)
+        self.cookedButton.isSelected = !self.cookedButton.isSelected
+
+        
             try! realm.write {
                 realm.create(RecipeRealm.self,
                          value: ["id": recipe.id,
@@ -115,7 +119,11 @@ class DetailsViewController: UIViewController {
     }
     
     @IBAction func favoritesButtonPressed(_ sender: Any) {
-        favoritesButton.isSelected = !favoritesButton.isSelected
+        
+        scale(button: self.favoritesButton)
+        self.favoritesButton.isSelected = !self.favoritesButton.isSelected
+        
+     
         try! realm.write {
             realm.create(RecipeRealm.self,
                          value: ["id": recipe.id,
@@ -132,6 +140,7 @@ class DetailsViewController: UIViewController {
 //MARK: -add button pressed
 extension DetailsViewController{
     @IBAction func AddToGroceryListButonTapped(_ sender: Any) {
+        scale(button: addToListButton)
         let ingridientsList = List<IngridientRealm>()
         try! realm.write {
         for item in recipe.ingridients{
@@ -292,4 +301,23 @@ extension DetailsViewController{
        self.scrollView.isScrollEnabled = true
     }
     
+}
+
+
+extension DetailsViewController{
+    func scale(button: UIButton){
+        UIView.animate(withDuration: 0.3,
+                       delay: 0.0,
+                       options: [.curveLinear, .allowUserInteraction],
+                       animations: {
+                        button.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+        },completion: {finish in
+            UIView.animate(withDuration: 0.3,
+                           delay: 0.0,
+                           options: [.curveLinear, .allowUserInteraction],
+                           animations: {
+                            button.transform = CGAffineTransform.identity
+            },completion: nil)
+        })
+    }
 }

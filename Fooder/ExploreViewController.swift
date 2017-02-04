@@ -117,8 +117,6 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
         self.foodTypeScrollView.isHidden = (self.navigationController?.navigationBar.isHidden)! ||  self.navigationItem.titleView != self.searchBar
         
         self.lastOffset = scrollView.contentOffset.y
-        
-        
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
         let deltaOffset = maximumOffset - self.lastOffset
         

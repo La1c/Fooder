@@ -61,7 +61,6 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
             tableView.layoutIfNeeded()
             let lastRowFrame = tableView.rectForRow(at: IndexPath(row: list.count - 1, section: 0))
             
-            
             withContstraint.constant = (lastRowFrame.origin.y + lastRowFrame.height)
             tableView.frame.size.height = (lastRowFrame.origin.y + lastRowFrame.height)
         }
@@ -252,10 +251,6 @@ extension GroceryListViewController{
         let ingridientsIsEmpty = items?.count == 0
         let bagIsEmpty = bag?.count == 0
         let everythignIsEmpty = cookIsEmpty && ingridientsIsEmpty && bagIsEmpty
-        
-//        bagTableView.tableHeaderView?.isHidden = bagIsEmpty
-//        groceryListTableView.tableHeaderView?.isHidden = ingridientsIsEmpty
-//        cookTableView.tableHeaderView?.isHidden = cookIsEmpty
         
         bagTableView.isHidden = bagIsEmpty
         groceryListTableView.isHidden = ingridientsIsEmpty
