@@ -68,8 +68,25 @@ class ExploreViewController: UIViewController {
     }
     
     
-    @IBAction func segmentControlValueChanged(_ sender: Any) {
+    @IBAction func segmentControlValueChanged(_ sender: UISegmentedControl) {
         search()
+        
+        let selectedIndex = sender.selectedSegmentIndex
+        let itemWidth = sender.widthForSegment(at: selectedIndex)
+        let rightBorder = itemWidth * CGFloat(selectedIndex + 1)
+        let leftBorder = itemWidth * CGFloat(selectedIndex)
+        
+        
+        if foodTypeScrollView.contentOffset.x + foodTypeScrollView.frame.width <= rightBorder{
+            let half = foodTypeScrollView.frame.width/2
+            foodTypeScrollView.scrollRectToVisible( CGRect(x: leftBorder, y: foodTypeScrollView.contentOffset.y, width: half, height: foodTypeScrollView.frame.height), animated: true)
+        }
+        
+        if foodTypeScrollView.contentOffset.x >= leftBorder{
+            let half = foodTypeScrollView.frame.width/2
+            foodTypeScrollView.scrollRectToVisible( CGRect(x: rightBorder - half, y: foodTypeScrollView.contentOffset.y, width: half, height: foodTypeScrollView.frame.height), animated: true)
+        }
+        
         if !collectionView.visibleCells.isEmpty{
             collectionView.scrollToItem(at: IndexPath(row:0, section: 0), at: .top, animated: true)
         }
