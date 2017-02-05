@@ -33,11 +33,9 @@ class ExploreViewController: UIViewController {
         collectionView.prefetchDataSource = self
         collectionView.emptyDataSetSource = self
         collectionView.emptyDataSetDelegate = self
-        
         model = ExploreModel.sharedInstance
         model.delegate = self
         model.searchRecipes()
-        loadingMore = true
         searchBar.delegate = self
         searchBar.showsCancelButton = true
         searchBar.searchBarStyle = .minimal
@@ -96,7 +94,7 @@ class ExploreViewController: UIViewController {
         let foodType =   foodTypeSegmentControl.titleForSegment(at: foodTypeSegmentControl.selectedSegmentIndex)!.lowercased()
         let foodTypeEnum = FoodType(rawValue: foodType) ?? .all
         let query = searchBar.text ?? ""
-        loadingMore = true
+        loadingMore = more
         if !more{
             prefetchedImagesForCells.removeAll()
         }
@@ -171,11 +169,11 @@ extension ExploreViewController: UISearchBarDelegate{
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        search()
         if !collectionView.visibleCells.isEmpty{
             collectionView.scrollToItem(at: IndexPath(row:0, section: 0), at: .top, animated: true)
         }
         searchBar.resignFirstResponder()
+        search()
     }
 }
 
@@ -195,8 +193,8 @@ extension ExploreViewController: ExploreModelDelegate{
                                                               at: IndexPath(row: 0, section: 0)) as? LoadingFooterCollectionReusableView{
             footer.configurate(loading: !noMoreResults)
         }
-        
-        
+        recipes = model.recipes
+        collectionView.reloadData()
     }
 }
 
