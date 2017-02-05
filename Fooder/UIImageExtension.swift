@@ -14,7 +14,7 @@ extension UIImageView{
     public func imageFromUrl(urlString: String) {
         Alamofire.request(urlString, method: HTTPMethod.get).response(completionHandler: {response in
             UIView.transition(with: self,
-                              duration: 0.8,
+                              duration: 0.3,
                               options: .transitionCrossDissolve,
                               animations: {self.image = UIImage(data: response.data!, scale: 1)},
                               completion: nil)

@@ -97,6 +97,9 @@ class ExploreViewController: UIViewController {
         let foodTypeEnum = FoodType(rawValue: foodType) ?? .all
         let query = searchBar.text ?? ""
         loadingMore = true
+        if !more{
+            prefetchedImagesForCells.removeAll()
+        }
         model.searchRecipes(query: query, type: foodTypeEnum, offset:offset, more: more)
     }
 }

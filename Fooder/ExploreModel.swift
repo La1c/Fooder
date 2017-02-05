@@ -39,7 +39,7 @@ class ExploreModel{
     
     func searchRecipes(query: String = "", type: FoodType = .all, offset: Int = 0, more: Bool = false){
         
-        let intolerancesList = realm.objects(Intolerance.self)
+        let intolerancesList = realm.objects(Intolerance.self).filter("status == true")
         var namesArray = [String]()
         for intolerance in intolerancesList{
             namesArray.append(intolerance.name)
