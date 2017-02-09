@@ -12,6 +12,7 @@ import RealmSwift
 protocol ExploreModelDelegate: class{
     func modelDidLoadNewData()
     func modelCantLoadMore()
+    func modelHasNoConnection()
 }
 
 class ExploreModel{
@@ -61,6 +62,8 @@ class ExploreModel{
                     self.delegate?.modelDidLoadNewData()
                 }
                 
+            }else{
+                self.delegate?.modelHasNoConnection()
             }})
     }
     

@@ -21,7 +21,11 @@ class ExploreViewController: UIViewController {
     var loadingMore = false
     var noMoreResults = false
     
-    var recipes = [Recipe]()
+    var recipes = [Recipe](){
+        didSet{
+            collectionView.reloadData()
+        }
+    }
     var model: ExploreModel!
     
     var prefetchedImagesForCells = [Int: UIImage]()
@@ -73,15 +77,13 @@ class ExploreViewController: UIViewController {
         let itemWidth = sender.widthForSegment(at: selectedIndex)
         let rightBorder = itemWidth * CGFloat(selectedIndex + 1)
         let leftBorder = itemWidth * CGFloat(selectedIndex)
-        
+        let half = foodTypeScrollView.frame.width/2
         
         if foodTypeScrollView.contentOffset.x + foodTypeScrollView.frame.width <= rightBorder{
-            let half = foodTypeScrollView.frame.width/2
             foodTypeScrollView.scrollRectToVisible( CGRect(x: leftBorder, y: foodTypeScrollView.contentOffset.y, width: half, height: foodTypeScrollView.frame.height), animated: true)
         }
         
         if foodTypeScrollView.contentOffset.x >= leftBorder{
-            let half = foodTypeScrollView.frame.width/2
             foodTypeScrollView.scrollRectToVisible( CGRect(x: rightBorder - half, y: foodTypeScrollView.contentOffset.y, width: half, height: foodTypeScrollView.frame.height), animated: true)
         }
         
@@ -91,7 +93,7 @@ class ExploreViewController: UIViewController {
     }
     
     func search(offset: Int = 0, more: Bool = false){
-        let foodType =   foodTypeSegmentControl.titleForSegment(at: foodTypeSegmentControl.selectedSegmentIndex)!.lowercased()
+        let foodType =   foodTypeSegmentControl.titleForSegment(at: foodTypeSegmentControl.selectedSegmentIndex)?.lowercased() ?? "all"
         let foodTypeEnum = FoodType(rawValue: foodType) ?? .all
         let query = searchBar.text ?? ""
         loadingMore = more
@@ -183,7 +185,6 @@ extension ExploreViewController: ExploreModelDelegate{
         recipes = model.recipes
         loadingMore = false
         noMoreResults = false
-        collectionView.reloadData()
     }
     
     func modelCantLoadMore(){
@@ -194,7 +195,16 @@ extension ExploreViewController: ExploreModelDelegate{
             footer.configurate(loading: !noMoreResults)
         }
         recipes = model.recipes
-        collectionView.reloadData()
+    }
+    
+    func modelHasNoConnection(){
+        if loadingMore{
+            modelCantLoadMore()
+        }else{
+            loadingMore = false
+            noMoreResults = true
+            recipes.removeAll()
+        }
     }
 }
 
@@ -203,11 +213,8 @@ extension ExploreViewController{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowDetails"{
-            if let cell = sender as? ExploreRecipeCell{
-                guard let row = collectionView?.indexPath(for: cell)?.row else{
-                    return
-                }
-                
+            if let cell = sender as? ExploreRecipeCell,
+                let row = collectionView?.indexPath(for: cell)?.row{
                 let vc = segue.destination as! DetailsViewController
                 vc.image = cell.imageView.image
                 vc.recipe = recipes[row]
