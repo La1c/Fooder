@@ -17,6 +17,7 @@ class ExploreRecipeCell: UICollectionViewCell {
     
     func configureCell(for recipe: Recipe, prefetched: Bool = false){
         if !prefetched{
+            imageView.image = nil
             imageView.imageFromUrl(urlString: recipe.imageURL)
         }
         mealNameLabel.text = recipe.title

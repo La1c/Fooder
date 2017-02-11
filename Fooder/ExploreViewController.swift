@@ -40,7 +40,7 @@ class ExploreViewController: UIViewController {
         collectionView.emptyDataSetDelegate = self
         model = ExploreModel.sharedInstance
         model.delegate = self
-        model.searchRecipes()
+        search()
         searchBar.delegate = self
         searchBar.showsCancelButton = true
         searchBar.searchBarStyle = .minimal
@@ -123,7 +123,6 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         if let cell =  cell as? ExploreRecipeCell{
             var prefetched = false
-            cell.imageView.image = nil
             if let prefetchedImage = prefetchedImagesForCells[indexPath.row]{
                 cell.imageView.image = prefetchedImage
                 prefetched = true
@@ -141,7 +140,7 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
         let deltaOffset = maximumOffset - self.lastOffset
         
-        if deltaOffset <= 0 {
+        if deltaOffset <= 0, recipes.count > 0 {
             if !loadingMore, !noMoreResults{
                 search(offset: recipes.count, more: true)
             }
@@ -230,8 +229,9 @@ extension ExploreViewController: UICollectionViewDataSourcePrefetching{
     @available(iOS 10.0, *)
     public func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         for index in indexPaths{
-            Alamofire.request(recipes[index.row].imageURL, method: HTTPMethod.get).response(completionHandler: {response in
-                self.prefetchedImagesForCells[index.row] = UIImage(data: response.data!, scale: 1)
+            Alamofire.request(recipes[index.row].imageURL, method: HTTPMethod.get).response(completionHandler: {response in if let data = response.data{
+                    self.prefetchedImagesForCells[index.row] = UIImage(data: data, scale: 1)
+                }
             })
         }
     }

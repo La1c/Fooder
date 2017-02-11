@@ -19,7 +19,6 @@ class ExploreModel{
     
     var recipes = [Recipe]()
     var intolerances:Results<Intolerance>!
-    let foodService = FoodService()
     let numberOfRecipesToGetEveryTime: Int
     weak var delegate: ExploreModelDelegate?
 
