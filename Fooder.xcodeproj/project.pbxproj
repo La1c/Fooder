@@ -321,7 +321,7 @@
 				TargetAttributes = {
 					E7DD8BE61DE1DC1C00EA1584 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 25X7RU6WJ8;
+						DevelopmentTeam = J6AZLU53N8;
 						ProvisioningStyle = Automatic;
 					};
 					E7DD8BFA1DE1DC1C00EA1584 = {
@@ -618,7 +618,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 25X7RU6WJ8;
+				DEVELOPMENT_TEAM = J6AZLU53N8;
 				INFOPLIST_FILE = Fooder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vladimir.ageev.Fooder;
@@ -634,7 +634,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 25X7RU6WJ8;
+				DEVELOPMENT_TEAM = J6AZLU53N8;
 				INFOPLIST_FILE = Fooder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vladimir.ageev.Fooder;

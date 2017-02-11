@@ -20,6 +20,7 @@ class ExploreViewController: UIViewController {
     var lastOffset: CGFloat = 0
     var loadingMore = false
     var noMoreResults = false
+    var currentQuery = ""
     
     var recipes = [Recipe](){
         didSet{
@@ -95,7 +96,7 @@ class ExploreViewController: UIViewController {
     func search(offset: Int = 0, more: Bool = false){
         let foodType =   foodTypeSegmentControl.titleForSegment(at: foodTypeSegmentControl.selectedSegmentIndex)?.lowercased() ?? "all"
         let foodTypeEnum = FoodType(rawValue: foodType) ?? .all
-        let query = searchBar.text ?? ""
+        let query = currentQuery
         loadingMore = more
         if !more{
             prefetchedImagesForCells.removeAll()
@@ -175,6 +176,7 @@ extension ExploreViewController: UISearchBarDelegate{
             collectionView.scrollToItem(at: IndexPath(row:0, section: 0), at: .top, animated: true)
         }
         searchBar.resignFirstResponder()
+        currentQuery = searchBar.text ?? ""
         search()
     }
 }
