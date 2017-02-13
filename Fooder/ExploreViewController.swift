@@ -147,11 +147,16 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView{
+        
         let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "statusFooter", for: indexPath)
         if let footerView = footerView as? LoadingFooterCollectionReusableView{
             footerView.configurate(loading: !noMoreResults)
         }
+        
+        if recipes.count == 0{
+            footerView.isHidden = true
+        }   
         return footerView
     }
     
@@ -211,7 +216,6 @@ extension ExploreViewController: ExploreModelDelegate{
 
 //MARK: -prepareForSegue
 extension ExploreViewController{
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowDetails"{
             if let cell = sender as? ExploreRecipeCell,
@@ -253,6 +257,13 @@ extension ExploreViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate{
     
     func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
         return UIImage(named: "food")
+    }
+    
+    func emptyDataSetWillDisappear(_ scrollView: UIScrollView!) {
+        if let footer = self.collectionView.supplementaryView(forElementKind: "UICollectionElementKindSectionFooter",
+                                                              at: IndexPath(row: 0, section: 0)) as? LoadingFooterCollectionReusableView{
+            footer.isHidden = false
+        }
     }
 }
 

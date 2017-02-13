@@ -37,9 +37,7 @@ extension LoadingFooterCollectionReusableView{
                               options: [.transitionCrossDissolve, .showHideTransitionViews],
                               completion: nil)
         }
-       
-        
-        
+             
         leftDot.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
         centerDot.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
         rightDot.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
@@ -59,7 +57,9 @@ extension LoadingFooterCollectionReusableView{
     }
     
     func stopAnimation(){
-        
+        self.leftDot.stopAnimating()
+        self.centerDot.stopAnimating()
+        self.rightDot.stopAnimating()
         UIView.transition(from: loadingView,
                           to: noMoreResultsView,
                           duration: 0.2,
