@@ -24,6 +24,10 @@ class ExploreViewController: UIViewController {
     
     var recipes = [Recipe](){
         didSet{
+            if loadingMore{
+                updateCollectionView(old: oldValue)
+                return
+            }
             collectionView.reloadData()
         }
     }
@@ -156,7 +160,7 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         if recipes.count == 0{
             footerView.isHidden = true
-        }   
+        }
         return footerView
     }
     
@@ -164,6 +168,14 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
         let width = collectionView.bounds.width
         let height = 0.8 * width
         return CGSize(width: width, height: height)
+    }
+    
+    func updateCollectionView(old: [Recipe]){
+        collectionView.performBatchUpdates({
+            for index in old.count ... (self.recipes.count - 1){
+                self.collectionView.insertItems(at: [IndexPath(row: index, section: 0)])
+            }
+        })
     }
 }
 
