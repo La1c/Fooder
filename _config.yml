@@ -20,7 +20,7 @@ app:
 #
 # Marketing
 #
-marketing_header: Find great recipes# Optional
+marketing_header: Find great recipes
 marketing_desc: Fooder is an app which gives you access to thousands of great recipes. In addition it allows you to create a simple grocery list instantly. 
 
 #
