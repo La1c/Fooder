@@ -1,10 +1,21 @@
 use_frameworks!
 
+def allPods
+    pod 'SwiftyJSON'
+    pod 'Alamofire', '~> 4.0'
+    pod 'RealmSwift'
+    pod 'DZNEmptyDataSet'
+end
+    
+
+
 target 'Fooder' do
-pod 'SwiftyJSON'
-pod 'Alamofire', '~> 4.0'
-pod 'RealmSwift'
-pod 'DZNEmptyDataSet'
+ allPods
+end
+
+target 'FooderUITests' do
+   allPods
+end
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
@@ -14,8 +25,9 @@ post_install do |installer|
   end
 end
 
+
+
 plugin 'cocoapods-keys', {
 	:keys => [
 	"FoodAPIKey"
   ]}
-end

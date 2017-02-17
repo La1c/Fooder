@@ -8,16 +8,16 @@
 # General App Info
 #
 app:
-  name: Awesome App # REQUIRED - Enter your app name
-  ios_id: 1109109105 # REQUIRED - 10 Digit Numeric App ID (lookup in iTunes Connect)
+  name: Fooder # REQUIRED - Enter your app name
+  ios_id: 1206813458 # REQUIRED - 10 Digit Numeric App ID (lookup in iTunes Connect)
   android_id: # Optional - Enter Android app id like: com.example.app
-
-  icon: # Leave blank to auto-magically populate
+/
+  icon: Fooder/Assets.xcassets/AppIcon.appiconset/Icon-App-512x512@3x.png# Leave blank to auto-magically populate
   # To update use path relative to project root with no leading slash:
   # e.g. images/app-icon-512.png
   # 512px or greater, square
 
-  screenshot: # Leave blank to auto-magically populate
+  screenshot: screenshots/en-US/iPhoneSE-02Search-d41d8cd98f00b204e9800998ecf8427e.png# Leave blank to auto-magically populate
   # To update use path relative to project root with no leading slash:
   # e.g. images/app-screen-640x1136.png
   # 640x1136px
@@ -25,8 +25,8 @@ app:
 #
 # Marketing
 #
-marketing_header: Does Awesome Stuff # Optional
-marketing_desc: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+marketing_header: Find great recipes# Optional
+marketing_desc: Fooder is an app which gives you access to thousands of great recipes. In addition it allows you to create a simple grocery list instantly. 
 
 #
 # Social Links
