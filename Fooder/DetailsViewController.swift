@@ -159,8 +159,6 @@ extension DetailsViewController{
                                                     try! realm.write {
                                                         itemAlreadyInList.amount += converted.convertedAmount
                                                     }
-                                                }else{
-                                                    print(item.name, item.unitLong, unitInList)
                                                 }
                    })
                 }

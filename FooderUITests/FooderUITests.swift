@@ -2,8 +2,8 @@
 //  FooderUITests.swift
 //  FooderUITests
 //
-//  Created by Vladimir on 20.11.16.
-//  Copyright © 2016 Vladimir Ageev. All rights reserved.
+//  Created by Vladimir on 15.02.17.
+//  Copyright © 2017 Vladimir Ageev. All rights reserved.
 //
 
 import XCTest
@@ -18,7 +18,10 @@ class FooderUITests: XCTestCase {
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
+        let app = XCUIApplication()
+        setupSnapshot(app)
+        app.launchArguments = ["NoAnimations"]
+        app.launch()
 
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
@@ -31,6 +34,26 @@ class FooderUITests: XCTestCase {
     func testExample() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let app = XCUIApplication()
+        snapshot("01Explore")
+        let exploreNavigationBar = app.navigationBars["Explore"]
+        exploreNavigationBar.buttons["Search"].tap()
+        exploreNavigationBar.searchFields.element.typeText("Burger")
+        app.keyboards.buttons["Search"].tap()
+        snapshot("02Search")
+        app.collectionViews.children(matching: .cell).element(boundBy: 0).tap()
+        snapshot("03RecipeCard")
+        let elementsQuery = app.scrollViews.otherElements
+        elementsQuery.buttons["add"].tap()
+        elementsQuery.buttons["star"].tap()
+        
+        let tabBarsQuery = app.tabBars
+        tabBarsQuery.buttons["List"].tap()
+        snapshot("04Groceries")
+        tabBarsQuery.buttons["You Liked"].tap()
+        snapshot("05Favourites")
+        tabBarsQuery.buttons["Explore"].tap()
+        
     }
     
 }

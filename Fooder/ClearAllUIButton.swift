@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable
+
 class ClearAllUIButton: UIButton {
     
 
@@ -52,7 +52,7 @@ class ClearAllUIButton: UIButton {
         }
     }
     
-    @IBInspectable var cornerRadius: CGFloat {
+    var cornerRadius: CGFloat {
         get {
             return layer.cornerRadius
         }
@@ -62,7 +62,7 @@ class ClearAllUIButton: UIButton {
         }
     }
     
-    @IBInspectable var borderWidth: CGFloat = 0 {
+     var borderWidth: CGFloat = 0 {
         didSet {
             layer.borderWidth = borderWidth
         }
