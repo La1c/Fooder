@@ -29,12 +29,12 @@ marketing_desc: Fooder is an app which gives you access to thousands of great re
 # Includes an icon for each username you enter
 #
 social-links:
-  github:
+  github:@La1c
   facebook:
   twitter:
   pinterest:
   instagram:
-  email:
+  email: fooder.feedback@gmail.com
   youtube: # channel/<your_long_string> or <user-name>
   googleplus: # anything in your profile username that comes after plus.google.com/
 
