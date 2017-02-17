@@ -67,7 +67,7 @@ class ClearAllUIButton: UIButton {
             layer.borderWidth = borderWidth
         }
     }
-    @IBInspectable var borderColor: UIColor? {
+    var borderColor: UIColor? {
         didSet {
             layer.borderColor = borderColor?.cgColor
         }

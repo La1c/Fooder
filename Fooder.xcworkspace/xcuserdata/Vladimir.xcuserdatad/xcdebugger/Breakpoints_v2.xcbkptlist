@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Fooder/DetailsViewController.swift"
-            timestampString = "507925478.347716"
+            timestampString = "509046543.50214"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "205"
-            endingLineNumber = "205"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
             landmarkName = "updateUI()"
             landmarkType = "7">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Fooder/DetailsViewController.swift"
-            timestampString = "507925478.347716"
+            timestampString = "509046543.50214"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "209"
-            endingLineNumber = "209">
+            startingLineNumber = "207"
+            endingLineNumber = "207">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -530,11 +530,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Fooder/DetailsViewController.swift"
-            timestampString = "507925478.347716"
+            timestampString = "509046543.50214"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
             landmarkName = "AddToGroceryListButonTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -562,11 +562,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Fooder/DetailsViewController.swift"
-            timestampString = "507925478.347716"
+            timestampString = "509046543.50214"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
             landmarkName = "AddToGroceryListButonTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -642,11 +642,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Fooder/DetailsViewController.swift"
-            timestampString = "507925478.347716"
+            timestampString = "509046543.50214"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "227"
-            endingLineNumber = "227"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
             landmarkName = "DetailsViewController"
             landmarkType = "4">
          </BreakpointContent>
@@ -1010,11 +1010,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Fooder/DetailsViewController.swift"
-            timestampString = "507925478.347716"
+            timestampString = "509046543.50214"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "259"
-            endingLineNumber = "259"
+            startingLineNumber = "257"
+            endingLineNumber = "257"
             landmarkName = "scrollViewDidScroll(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1818,11 +1818,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Fooder/AppDelegate.swift"
-            timestampString = "508860063.935118"
+            timestampString = "509046543.50214"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
             landmarkName = "application(_:didFinishLaunchingWithOptions:)"
             landmarkType = "7">
          </BreakpointContent>
