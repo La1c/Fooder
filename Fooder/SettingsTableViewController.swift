@@ -22,9 +22,8 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if indexPath.section == 0, indexPath.row == 0{
-            //Send email
+        switch (indexPath.section, indexPath.row) {
+        case (0,0):
             let mailComposeViewController = configuredMailComposeViewController()
             
             if MFMailComposeViewController.canSendMail(){
@@ -32,7 +31,15 @@ class SettingsTableViewController: UITableViewController {
             } else{
                 self.showSendMailErrorAlert()
             }
+            
+        case(0,1):
+            rateApp(appId: "id1206813458") {success in
+                return
+            }
+        default:
+            break
         }
+        tableView.cellForRow(at: indexPath)?.isSelected = false
     }
     
     func configureSubtitleText(with: Results<Intolerance>){
@@ -84,5 +91,19 @@ extension SettingsTableViewController: MFMailComposeViewControllerDelegate{
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
+    }
+}
+//MARK: -rate this app
+extension SettingsTableViewController{
+    func rateApp(appId: String, completion: @escaping ((_ success: Bool)->())) {
+        guard let url = URL(string : "itms-apps://itunes.apple.com/app/" + appId) else {
+            completion(false)
+            return
+        }
+        guard #available(iOS 10, *) else {
+            completion(UIApplication.shared.openURL(url))
+            return
+        }
+        UIApplication.shared.open(url, options: [:], completionHandler: completion)
     }
 }
