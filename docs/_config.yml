@@ -53,7 +53,7 @@ enable:
 # * iphone-se-space-gray-vertical
 # * ipod-touch-blue-vertical
 #
-device: iphone-se-silver-vertical # REQUIRED
+device: iphone-7-plus-silver-vertical # REQUIRED
 
 #
 # Theme Settings
