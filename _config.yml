@@ -11,7 +11,6 @@ app:
   name: Fooder # REQUIRED - Enter your app name
   ios_id: 1206813458 # REQUIRED - 10 Digit Numeric App ID (lookup in iTunes Connect)
   android_id: # Optional - Enter Android app id like: com.example.app
-/
   icon: images/app-icon-512.png
   # 512px or greater, square
 
