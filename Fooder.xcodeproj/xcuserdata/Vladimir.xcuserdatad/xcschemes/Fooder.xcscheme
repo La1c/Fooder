@@ -20,6 +20,20 @@
                ReferencedContainer = "container:Fooder.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "NO"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E7DD8BFA1DE1DC1C00EA1584"
+               BuildableName = "FooderTests.xctest"
+               BlueprintName = "FooderTests"
+               ReferencedContainer = "container:Fooder.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -32,17 +46,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E7DD8BFA1DE1DC1C00EA1584"
-               BuildableName = "FooderTests.xctest"
-               BlueprintName = "FooderTests"
-               ReferencedContainer = "container:Fooder.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E7DD8C051DE1DC1C00EA1584"
+               BlueprintIdentifier = "E74A61181E548121003EA031"
                BuildableName = "FooderUITests.xctest"
                BlueprintName = "FooderUITests"
                ReferencedContainer = "container:Fooder.xcodeproj">
