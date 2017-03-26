@@ -75,8 +75,7 @@ class DetailsViewController: UIViewController {
     
     func checkFavoritesAndCooked(){
         //checking data in realm in background
-        let backgroundQueue = DispatchQueue(label: "com.fooder.background", qos: .userInitiated, attributes: .concurrent)
-        backgroundQueue.async {
+       DispatchQueue.global(qos: .default).async {
             let realmThread = try! Realm()
             if let recipeInRealm = realmThread.object(ofType: RecipeRealm.self, forPrimaryKey: self.recipe.id){
                 if recipeInRealm.isCooked{
@@ -116,8 +115,7 @@ class DetailsViewController: UIViewController {
         scale(button: self.cookedButton)
         self.cookedButton.isSelected = !self.cookedButton.isSelected
         
-        let backgroundQueue = DispatchQueue(label: "com.fooder.background", qos: .userInitiated, attributes: .concurrent)
-        backgroundQueue.async {
+        DispatchQueue.global(qos: .default).async {
             let realmThread = try! Realm()
             try! realmThread.write {
                 realmThread.create(RecipeRealm.self,
@@ -134,9 +132,8 @@ class DetailsViewController: UIViewController {
         
         scale(button: self.favoritesButton)
         self.favoritesButton.isSelected = !self.favoritesButton.isSelected
-        
-        let backgroundQueue = DispatchQueue(label: "com.fooder.background", qos: .userInitiated, attributes: .concurrent)
-        backgroundQueue.async {
+
+        DispatchQueue.global(qos: .default).async {
             let realmThread = try! Realm()
             try! realmThread.write {
                 realmThread.create(RecipeRealm.self,

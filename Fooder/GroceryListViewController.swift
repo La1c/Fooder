@@ -15,12 +15,12 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet var cookTableViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet var cookTableView: UITableView!
+    @IBOutlet  weak var cookTableView: UITableView!
     @IBOutlet var contentView: UIView!
     @IBOutlet var bagTableViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet var bagTableView: UITableView!
+    @IBOutlet weak var bagTableView: UITableView!
     @IBOutlet var listTableViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet var groceryListTableView: UITableView!
+    @IBOutlet weak var groceryListTableView: UITableView!
     var items: Results<IngridientRealm>?
     var bag: Results<IngridientRealm>?
     var cook: Results<RecipeRealm>?
@@ -195,21 +195,25 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
         }
         
         if tableView.restorationIdentifier == "cookTableView"{
-            if let cook = cook{
-                try! realm.write {
-                    if cook[from.row].isCooked || cook[from.row].isFavorite{
-                        cook[from.row].isInList = false
-                    }else{
-                        realm.delete(cook[from.row])
+            //Haven't found the way to make it async (realm allows writes only from a thread where it was created)
+             DispatchQueue.global(qos: .default).sync {
+                let realmThread = try! Realm()
+                if let cook = self.cook{
+                    try! realmThread.write {
+                        if cook[from.row].isCooked || cook[from.row].isFavorite{
+                            cook[from.row].isInList = false
+                        }else{
+                            realmThread.delete(cook[from.row])
+                        }
                     }
-                }
-            }
-        }else{
-            if let list = list{
-                let id = list[from.row].id
-                let product = realm.objects(IngridientRealm.self).filter("id == %@", id)[0]
-                try! realm.write{
-                    realm.delete(product)
+                }else{
+                    if let list = list{
+                        let id = list[from.row].id
+                        let product = realmThread.objects(IngridientRealm.self).filter("id == %@", id)[0]
+                        try! realmThread.write{
+                            realmThread.delete(product)
+                        }
+                    }
                 }
             }
         }

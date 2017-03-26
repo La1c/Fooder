@@ -95,13 +95,13 @@ struct FoodService {
                       "Accept": "application/json"]
             ).responseJSON(completionHandler: { response in
                 
-                guard response.result.isSuccess else{
-                    completion(nil)
-                    return
-                }
-                
-                let json = JSON(response.result.value!)
-                completion((convertedAmount: json["targetAmount"].doubleValue, convertedUnit: json["targetUnit"].stringValue))
+                    guard response.result.isSuccess else{
+                        completion(nil)
+                        return
+                    }
+                    
+                    let json = JSON(response.result.value!)
+                    completion((convertedAmount: json["targetAmount"].doubleValue, convertedUnit: json["targetUnit"].stringValue))
         })
     }
 }

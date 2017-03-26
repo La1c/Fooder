@@ -51,11 +51,18 @@ class IntolerancesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        try! realm.write {
-            realm.create(Intolerance.self,
-                         value: ["name":intolerancesNames[indexPath.row].lowercased(), "status": !(cell?.accessoryType == .checkmark)],
-                         update: true)
+        DispatchQueue.global(qos: .default).sync {
+            let realmThread = try! Realm()
+            try! realmThread.write {
+                realm.create(Intolerance.self,
+                             value: ["name":intolerancesNames[indexPath.row].lowercased(), "status": !(cell?.accessoryType == .checkmark)],
+                             update: true)
+            }
+            
+            DispatchQueue.main.async {
+                tableView.reloadData()
+            }
+            
         }
-        tableView.reloadData()
     }
 }
