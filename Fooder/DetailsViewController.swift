@@ -74,13 +74,22 @@ class DetailsViewController: UIViewController {
     
     
     func checkFavoritesAndCooked(){
-        if let recipeInRealm = realm.object(ofType: RecipeRealm.self, forPrimaryKey: recipe.id){
-            if recipeInRealm.isCooked{
-                cookedButton.isSelected = true
-            }
-            
-            if recipeInRealm.isFavorite{
-                favoritesButton.isSelected = true
+        //checking data in realm in background
+        let backgroundQueue = DispatchQueue(label: "com.fooder.background", qos: .userInitiated, attributes: .concurrent)
+        backgroundQueue.async {
+            let realmThread = try! Realm()
+            if let recipeInRealm = realmThread.object(ofType: RecipeRealm.self, forPrimaryKey: self.recipe.id){
+                if recipeInRealm.isCooked{
+                    DispatchQueue.main.async {
+                       self.cookedButton.isSelected = true
+                    }
+                }
+                
+                if recipeInRealm.isFavorite{
+                    DispatchQueue.main.async {
+                       self.favoritesButton.isSelected = true
+                    }
+                }
             }
         }
     }
@@ -106,16 +115,19 @@ class DetailsViewController: UIViewController {
 
         scale(button: self.cookedButton)
         self.cookedButton.isSelected = !self.cookedButton.isSelected
-
         
-            try! realm.write {
-                realm.create(RecipeRealm.self,
-                         value: ["id": recipe.id,
-                                 "imageURL": recipe.imageURL,
-                                 "title": recipe.title,
-                                 "isCooked": cookedButton.isSelected],
-                         update: true)
+        let backgroundQueue = DispatchQueue(label: "com.fooder.background", qos: .userInitiated, attributes: .concurrent)
+        backgroundQueue.async {
+            let realmThread = try! Realm()
+            try! realmThread.write {
+                realmThread.create(RecipeRealm.self,
+                             value: ["id": self.recipe.id,
+                                     "imageURL": self.recipe.imageURL,
+                                     "title": self.recipe.title,
+                                     "isCooked": self.cookedButton.isSelected],
+                             update: true)
             }
+        }
     }
     
     @IBAction func favoritesButtonPressed(_ sender: Any) {
@@ -123,29 +135,36 @@ class DetailsViewController: UIViewController {
         scale(button: self.favoritesButton)
         self.favoritesButton.isSelected = !self.favoritesButton.isSelected
         
-     
-        try! realm.write {
-            realm.create(RecipeRealm.self,
-                         value: ["id": recipe.id,
-                                 "imageURL": recipe.imageURL,
-                                 "title": recipe.title,
-                                 "isFavorite": favoritesButton.isSelected],
-                         update: true)
+        let backgroundQueue = DispatchQueue(label: "com.fooder.background", qos: .userInitiated, attributes: .concurrent)
+        backgroundQueue.async {
+            let realmThread = try! Realm()
+            try! realmThread.write {
+                realmThread.create(RecipeRealm.self,
+                             value: ["id": self.recipe.id,
+                                     "imageURL": self.recipe.imageURL,
+                                     "title": self.recipe.title,
+                                     "isFavorite": self.favoritesButton.isSelected],
+                             update: true)
+            }
         }
+
     }
 }
-
 
 
 //MARK: -add button pressed
 extension DetailsViewController{
     @IBAction func AddToGroceryListButonTapped(_ sender: Any) {
+        
+        
+        //TO-DO: - get this to background thread
         scale(button: addToListButton)
+        let realmThread = try! Realm()
         let ingridientsList = List<IngridientRealm>()
-        try! realm.write {
-        for item in recipe.ingridients{
+        try! realmThread.write {
+        for item in self.recipe.ingridients{
 
-            if let itemAlreadyInList = realm.object(ofType: IngridientRealm.self, forPrimaryKey: item.id) {
+            if let itemAlreadyInList = realmThread.object(ofType: IngridientRealm.self, forPrimaryKey: item.id) {
                      itemAlreadyInList.inGroceryList = true
                      let unitInList = itemAlreadyInList.unitLong
                      let unitOfItem = item.unitLong
@@ -153,10 +172,11 @@ extension DetailsViewController{
                 if preffix == unitOfItem || preffix == unitInList{
                      itemAlreadyInList.amount += item.amount
                 }else{
+                    
                    FoodService.convertAmount(ingridientName: item.name, sourceAmount: item.amount, sourceUnit: item.unitLong, targetUnit: unitInList,
                                               completion: { converted in
                                                 if let converted = converted{
-                                                    try! realm.write {
+                                                    try! realmThread.write {
                                                         itemAlreadyInList.amount += converted.convertedAmount
                                                     }
                                                 }
@@ -167,21 +187,21 @@ extension DetailsViewController{
             }
             else{
                 let newItem = IngridientRealm(data: item, isInList: true)
-                realm.add(newItem)
+                realmThread.add(newItem)
                 ingridientsList.append(newItem)
                 }
             }
             
-            realm.create(RecipeRealm.self,
-                         value: ["id": recipe.id,
-                                 "imageURL": recipe.imageURL,
-                                 "title": recipe.title,
+            realmThread.create(RecipeRealm.self,
+                         value: ["id": self.recipe.id,
+                                 "imageURL": self.recipe.imageURL,
+                                 "title": self.recipe.title,
                                  "ingridients": ingridientsList,
-                                 "instructions": recipe.instructions ?? "",
-                                 "readyInMinutes": recipe.readyInMinutes,
-                                 "servings": recipe.servings,
-                                 "vegan": recipe.vegan,
-                                 "vegeterian": recipe.vegeterian,
+                                 "instructions": self.recipe.instructions ?? "",
+                                 "readyInMinutes": self.recipe.readyInMinutes,
+                                 "servings": self.recipe.servings,
+                                 "vegan": self.recipe.vegan,
+                                 "vegeterian": self.recipe.vegeterian,
                                  "isInList": true],
                          update: true)
         }
